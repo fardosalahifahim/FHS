@@ -1,0 +1,44 @@
+/* Super beautiful loader styles */
+#loading-spinner {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: radial-gradient(circle at center, #6a0dad, #3a007d);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 99999;
+  perspective: 800px;
+}
+
+#loading-spinner .cube {
+  width: 3rem;
+  height: 3rem;
+  position: relative;
+  transform-style: preserve-3d;
+  animation: rotateCube 1.5s linear infinite;
+}
+
+#loading-spinner .cube div {
+  position: absolute;
+  width: 3rem;
+  height: 3rem;
+  background: linear-gradient(45deg, #a678ff, #f0e6ff);
+  border: 2px solid #d8b3ff;
+  border-radius: 0.5rem;
+  box-shadow: 0 0 15px #a678ff;
+}
+
+#loading-spinner .front  { transform: translateZ(1.5rem); }
+#loading-spinner .back   { transform: rotateY(180deg) translateZ(1.5rem); }
+#loading-spinner .right  { transform: rotateY(90deg) translateZ(1.5rem); }
+#loading-spinner .left   { transform: rotateY(-90deg) translateZ(1.5rem); }
+#loading-spinner .top    { transform: rotateX(90deg) translateZ(1.5rem); }
+#loading-spinner .bottom { transform: rotateX(-90deg) translateZ(1.5rem); }
+
+@keyframes rotateCube {
+  from { transform: rotateX(0deg) rotateY(0deg); }
+  to   { transform: rotateX(360deg) rotateY(360deg); }
+}

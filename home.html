@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Faridpur High School</title>
+  <link rel="stylesheet" href="src/styles.css" />
+  <link rel="stylesheet" href="src/loader.css" />
+</head>
+<body>
+  <div id="loading-spinner"></div>
+  <div id="offline-message" style="display:none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
+    background: rgba(45, 0, 90, 0.9); color: #d8b3ff; padding: 2rem 3rem; border-radius: 15px; box-shadow: 0 0 20px #a678ff; font-size: 1.5rem; text-align: center; z-index: 100000;">
+    You are currently offline. Please check your internet connection.
+  </div>
+  <nav>
+    <div class="nav-container container">
+      <div class="nav-logo" tabindex="0" aria-label="Faridpur High School Home">
+        <img src="src/resources/image/logo.png" alt="Faridpur High School Logo" />
+      </div>
+      <div class="nav-toggle" aria-label="Toggle navigation menu" tabindex="0">&#9776;</div>
+      <ul class="nav-menu left-menu" role="menubar" aria-label="Primary navigation">
+        <li class="nav-item" role="none"><a href="index.html" class="nav-link" role="menuitem" tabindex="0">Home</a></li>
+        <li class="nav-item" role="none"><a href="school.html" class="nav-link" role="menuitem" tabindex="0">School</a></li>
+        <li class="nav-item" role="none"><a href="academic.html" class="nav-link" role="menuitem" tabindex="0">Academic</a></li>
+        <li class="nav-item" role="none"><a href="curriculum.html" class="nav-link" role="menuitem" tabindex="0">Curriculum</a></li>
+        <li class="nav-item" role="none"><a href="routine.html" class="nav-link" role="menuitem" tabindex="0">Routine</a></li>
+        <li class="nav-item" role="none"><a href="#" class="nav-link" role="menuitem" tabindex="0">Message</a></li>
+        <li class="nav-item" role="none"><a href="result.html" class="nav-link" role="menuitem" tabindex="0">Result</a></li>
+
+        <li class="nav-item more-menu" role="none" aria-haspopup="true" aria-expanded="false">
+          <ul class="more-dropdown-menu" role="menu" aria-label="More navigation items">
+            <!-- Removed See More menu items as per user request -->
+          </ul>
+        </li>
+      </ul>
+      <ul class="nav-menu right-menu" role="menubar" aria-label="Right navigation">
+        <li class="nav-item dropdown" role="none">
+          <a href="registration.html" class="nav-link dropdown-toggle" role="menuitem" aria-haspopup="true" aria-expanded="false" tabindex="0">Registration</a>
+          <ul class="dropdown-menu" role="menu" aria-label="Registration submenu">
+            <!-- Removed Student Registration item as requested -->
+          </ul>
+        </li>
+        <li class="nav-item" role="none"><a href="login.html" class="nav-link" role="menuitem" tabindex="0">Login</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <header class="hero" role="banner" aria-label="Welcome section">
+    <h1>Faridpur High School</h1>
+    <p>Welcome to Faridpur High School, where excellence and pride meet to shape the future.</p>
+    <div class="hero-buttons">
+      <button class="btn btn-primary" onclick="location.href='#admission'">Register Now</button>
+      <a href="routine.html" class="btn btn-routine">View Routine</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="content-section welcome-section">
+      <h2>Welcome to Faridpur High School</h2>
+      <p>Where excellence and pride meet to shape the future.</p>
+      <div class="welcome-cards">
+        <div class="card card-admission">
+          <h3>Admission</h3>
+          <p>Join our community of learners and achievers. Apply now for the upcoming academic year.</p>
+          <a href="admission.html" class="btn btn-primary">Learn More</a>
+        </div>
+        <div class="card card-routine">
+          <h3>Class Routine</h3>
+          <p>Stay organized with our updated class schedules and routines.</p>
+          <a href="routine.html" class="btn btn-routine">View Routine</a>
+        </div>
+        <div class="card card-contact">
+          <h3>Contact Us</h3>
+          <p>Have questions? Reach out to us anytime for assistance.</p>
+          <a href="contact.html" class="btn btn-secondary">Get in Touch</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="src/scripts.js"></script>
+  <script>
+    document.addEventListener('readystatechange', () => {
+      const spinner = document.getElementById('loading-spinner');
+      const offlineMessage = document.getElementById('offline-message');
+      if (!navigator.onLine) {
+        spinner.style.display = 'none';
+        offlineMessage.style.display = 'block';
+      } else if (document.readyState === 'loading') {
+        spinner.style.display = 'block';
+        offlineMessage.style.display = 'none';
+      } else {
+        spinner.style.display = 'none';
+        offlineMessage.style.display = 'none';
+      }
+    });
+  </script>
+</body>
+</html>
