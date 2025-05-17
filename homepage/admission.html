@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Admission - Faridpur High School</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="src/resources/image/logo.png" />
+  <link rel="shortcut icon" href="src/resources/image/logo.png" />
+  <link rel="stylesheet" href="src/styles.css" />
+  <link rel="stylesheet" href="src/school.css" />
+</head>
+<body>
+  <nav>
+    <div class="nav-container container">
+      <div class="nav-logo" tabindex="0" aria-label="Faridpur High School Home">
+        <a href="index.html"><img src="src/resources/image/logo.png" alt="Faridpur High School Logo" /></a>
+      </div>
+      <div class="nav-toggle" aria-label="Toggle navigation menu" tabindex="0">&#9776;</div>
+      <ul id="nav-menu" class="nav-menu left-menu" role="menubar" aria-label="Primary navigation">
+        <li class="nav-item" role="none"><a href="index.html" class="nav-link" role="menuitem" tabindex="0">Home</a></li>
+        <li class="nav-item" role="none"><a href="school.html" class="nav-link" role="menuitem" tabindex="0">School</a></li>
+        <li class="nav-item" role="none"><a href="academic.html" class="nav-link" role="menuitem" tabindex="0">Academic</a></li>
+        <li class="nav-item" role="none"><a href="curriculum.html" class="nav-link" role="menuitem" tabindex="0">Curriculum</a></li>
+        <li class="nav-item" role="none"><a href="routine.html" class="nav-link" role="menuitem" tabindex="0">Routine</a></li>
+        <li class="nav-item" role="none"><a href="#" class="nav-link" role="menuitem" tabindex="0">Message</a></li>
+        <li class="nav-item" role="none"><a href="result.html" class="nav-link" role="menuitem" tabindex="0">Result</a></li>
+      </ul>
+      <ul class="nav-menu right-menu" role="menubar" aria-label="Right navigation">
+        <li class="nav-item dropdown" role="none">
+          <a href="registration.html" class="nav-link dropdown-toggle" role="menuitem" aria-haspopup="true" aria-expanded="false" tabindex="0">Registration</a>
+          <ul class="dropdown-menu" role="menu" aria-label="Registration submenu">
+            <!-- Registration submenu items can be added here -->
+          </ul>
+        </li>
+        <li class="nav-item" role="none"><a href="login.html" class="nav-link" role="menuitem" tabindex="0">Login</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Removed banner section as per user request -->
+
+  <main>
+    <section class="content-section admission-form">
+      <h2>Admission Form</h2>
+      <form action="submit_admission" method="POST" novalidate>
+        <label for="fullName">Full Name:</label>
+        <input type="text" id="fullName" name="fullName" required />
+
+        <label for="dob">Date of Birth:</label>
+        <input type="date" id="dob" name="dob" required />
+
+        <label for="gender">Gender:</label>
+        <select id="gender" name="gender" required>
+          <option value="" disabled selected>Select your gender</option>
+          <option value="male">Male</option>
+          <option value="female">Female</option>
+          <option value="other">Other</option>
+        </select>
+
+        <label for="address">Address:</label>
+        <textarea id="address" name="address" rows="3" required></textarea>
+
+        <label for="parentName">Parent/Guardian Name:</label>
+        <input type="text" id="parentName" name="parentName" required />
+
+        <label for="contactNumber">Contact Number:</label>
+        <input type="tel" id="contactNumber" name="contactNumber" required pattern="[0-9]{10,15}" />
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required />
+
+        <label for="previousSchool">Previous School:</label>
+        <input type="text" id="previousSchool" name="previousSchool" />
+
+        <button type="submit" class="btn btn-primary">Submit Application</button>
+      </form>
+    </section>
+
+    <section class="content-section admission-info">
+      <h2>Admission Information</h2>
+      <p>Faridpur High School welcomes applications for new students. Please review the admission criteria, required documents, and application deadlines below.</p>
+      <ul>
+        <li>Admission Criteria: Academic records, entrance exam, and interview.</li>
+        <li>Required Documents: Birth certificate, previous school records, passport-sized photos.</li>
+        <li>Application Deadline: August 31st annually.</li>
+      </ul>
+      <p>For more details, please contact our admissions office or visit us in person.</p>
+    </section>
+
+    <section class="content-section admission-contact">
+      <h2>Contact Admissions</h2>
+      <p>If you have any questions about the admission process, please reach out to us:</p>
+      <ul>
+        <li>Email: admissions@faridpurhighschool.edu</li>
+        <li>Phone: +880 1234 567890</li>
+        <li>Address: 123 School Road, Faridpur, Bangladesh</li>
+      </ul>
+    </section>
+  </main>
+</body>
+</html>

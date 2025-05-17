@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Routine - Faridpur High School</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="src/resources/image/logo.png" />
+    <link rel="shortcut icon" href="src/resources/image/logo.png" />
+    <link rel="stylesheet" href="src/styles.css" />
+    <link rel="stylesheet" href="src/routine.css" />
+    <link rel="stylesheet" href="src/loader.css" />
+  </head>
+<body>
+  <div id="loading-spinner" style="display:none;"></div>
+  <div id="offline-message" style="display:none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
+    background: rgba(45, 0, 90, 0.9); color: #d8b3ff; padding: 2rem 3rem; border-radius: 15px; box-shadow: 0 0 20px #a678ff; font-size: 1.5rem; text-align: center; z-index: 100000;">
+    You are currently offline. Please check your internet connection.
+  </div>
+  <nav>
+    <div class="nav-container container">
+      <div class="nav-logo" tabindex="0" aria-label="Faridpur High School Home">
+        <img src="src/resources/image/logo.png" alt="Faridpur High School Logo" />
+      </div>
+      <div class="nav-toggle" aria-label="Toggle navigation menu" tabindex="0">&#9776;</div>
+      <ul id="nav-menu" class="nav-menu left-menu" role="menubar" aria-label="Primary navigation">
+        <li class="nav-item" role="none"><a href="index.html" class="nav-link" role="menuitem" tabindex="0">Home</a></li>
+        <li class="nav-item" role="none"><a href="school.html" class="nav-link" role="menuitem" tabindex="0">School</a></li>
+        <li class="nav-item" role="none"><a href="academic.html" class="nav-link" role="menuitem" tabindex="0">Academic</a></li>
+        <li class="nav-item" role="none"><a href="curriculum.html" class="nav-link" role="menuitem" tabindex="0">Curriculum</a></li>
+        <li class="nav-item" role="none"><a href="routine.html" class="nav-link" role="menuitem" tabindex="0">Routine</a></li>
+        <li class="nav-item" role="none"><a href="#" class="nav-link" role="menuitem" tabindex="0">Message</a></li>
+        <li class="nav-item" role="none"><a href="result.html" class="nav-link" role="menuitem" tabindex="0">Result</a></li>
+
+        <li class="nav-item more-menu" role="none" aria-haspopup="true" aria-expanded="false">
+          <ul class="more-dropdown-menu" role="menu" aria-label="More navigation items">
+            <!-- Removed See More menu items as per user request -->
+          </ul>
+        </li>
+      </ul>
+      <ul class="nav-menu right-menu" role="menubar" aria-label="Right navigation">
+        <li class="nav-item dropdown" role="none">
+          <a href="registration.html" class="nav-link dropdown-toggle" role="menuitem" aria-haspopup="true" aria-expanded="false" tabindex="0">Registration</a>
+          <ul class="dropdown-menu" role="menu" aria-label="Registration submenu">
+            <!-- Removed Student Registration and Admin Registration options as requested -->
+          </ul>
+        </li>
+        <li class="nav-item" role="none"><a href="login.html" class="nav-link" role="menuitem" tabindex="0">Login</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+    <div id="routine-image-container" class="routine-image-container">
+      <h1 style="color: #f0e6ff; text-align: center; margin-bottom: 1rem;">Your Routine</h1>
+      <div class="routine-select-container">
+        <select id="routine-select" class="highly-designed-select" aria-label="Select class routine" style="min-width: 160px;">
+          <option value="class6A" selected>Class 6A</option>
+          <option value="class6B">Class 6B</option>
+          <option value="class7A">Class 7A</option>
+          <option value="class7B">Class 7B</option>
+          <option value="class8A">Class 8A</option>
+          <option value="class8B">Class 8B</option>
+          <option value="class9A">Class 9A</option>
+          <option value="class9B">Class 9B</option>
+          <option value="class9C">Class 9C</option>
+          <option value="class10A">Class 10A</option>
+          <option value="class10B">Class 10B</option>
+          <option value="class10C">Class 10C</option>
+        </select>
+      </div>
+      <img id="routine-image" src="src/resources/image/class6A-routine.png" alt="Class 6A Routine" class="highly-designed-routine-image" />
+      <div class="routine-phone-buttons">
+        <button id="fullscreen-btn" class="routine-btn" aria-label="Full Screen">Full Screen</button>
+        <button id="download-btn" class="routine-btn" aria-label="Download Your Routine">Download Your Routine</button>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    const routineSelect = document.getElementById('routine-select');
+    const routineImage = document.getElementById('routine-image');
+    const fullscreenBtn = document.getElementById('fullscreen-btn');
+    const downloadBtn = document.getElementById('download-btn');
+
+    const routineImages = {
+      class6A: { src: 'src/resources/image/class6A-routine.png', alt: 'Class 6A Routine' },
+      class6B: { src: 'src/resources/image/class6B-routine.png', alt: 'Class 6B Routine' },
+      class7A: { src: 'src/resources/image/class7A-routine.png', alt: 'Class 7A Routine' },
+      class7B: { src: 'src/resources/image/class7B-routine.png', alt: 'Class 7B Routine' },
+      class8A: { src: 'src/resources/image/class8A-routine.png', alt: 'Class 8A Routine' },
+      class8B: { src: 'src/resources/image/class8B-routine.png', alt: 'Class 8B Routine' },
+      class9A: { src: 'src/resources/image/class9A-routine.png', alt: 'Class 9A Routine' },
+      class9B: { src: 'src/resources/image/class9B-routine.png', alt: 'Class 9B Routine' },
+      class9C: { src: 'src/resources/image/class9C-routine.png', alt: 'Class 9C Routine' },
+      class10A: { src: 'src/resources/image/class10A-routine.png', alt: 'Class 10A Routine' },
+      class10B: { src: 'src/resources/image/class10B-routine.png', alt: 'Class 10B Routine' },
+      class10C: { src: 'src/resources/image/class10C-routine.png', alt: 'Class 10C Routine' },
+    };
+
+    routineSelect.addEventListener('change', function() {
+      const selectedClass = this.value;
+      if (routineImages[selectedClass]) {
+        routineImage.src = routineImages[selectedClass].src;
+        routineImage.alt = routineImages[selectedClass].alt;
+      }
+    });
+
+    fullscreenBtn.addEventListener('click', () => {
+      if (document.fullscreenElement) {
+        document.exitFullscreen();
+      } else {
+        routineImage.requestFullscreen();
+      }
+    });
+
+    downloadBtn.addEventListener('click', () => {
+      const link = document.createElement('a');
+      link.href = routineImage.src;
+      link.download = routineImage.alt.replace(/\s+/g, '_').toLowerCase() + '.png';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    });
+  </script>
+  <script>
+    // Responsive nav toggle
+    const navToggle = document.querySelector('.nav-toggle');
+    const navMenu = document.getElementById('nav-menu');
+    const moreMenu = document.querySelector('.more-menu');
+    const moreDropdown = document.querySelector('.more-dropdown-menu');
+
+    navToggle.addEventListener('click', () => {
+      navMenu.classList.toggle('active');
+    });
+
+    moreMenu.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const expanded = moreMenu.getAttribute('aria-expanded') === 'true';
+      moreMenu.setAttribute('aria-expanded', !expanded);
+      moreDropdown.classList.toggle('show');
+    });
+
+    // Close more menu if clicking outside
+    document.addEventListener('click', () => {
+      moreMenu.setAttribute('aria-expanded', 'false');
+      moreDropdown.classList.remove('show');
+    });
+
+    // Keyboard accessibility for nav toggle
+    navToggle.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        navMenu.classList.toggle('active');
+      }
+    });
+
+    // Keyboard accessibility for more menu
+    moreMenu.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        const expanded = moreMenu.getAttribute('aria-expanded') === 'true';
+        moreMenu.setAttribute('aria-expanded', !expanded);
+        moreDropdown.classList.toggle('show');
+      }
+    });
+  </script>
+</body>
+</html>

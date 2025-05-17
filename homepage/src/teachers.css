@@ -1,0 +1,285 @@
+/* Teachers page styles */
+.head-teacher-section {
+  background: linear-gradient(135deg, #7b3fbf, #a678ff);
+  padding: 2rem 3rem;
+  border-radius: 40px;
+  box-shadow: 0 0 40px #a678ff;
+  max-width: 900px;
+  margin: 2rem auto;
+  color: #f0e6ff;
+  text-align: center;
+}
+
+.head-teacher-card {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 2rem;
+  padding: 1rem;
+}
+
+.head-teacher-card img {
+  width: 250px;
+  height: 250px;
+  border-radius: 30px;
+  padding: 10px;
+  box-shadow: 0 0 30px #d8b3ff;
+  object-fit: cover;
+  border: 5px solid #d8b3ff;
+}
+
+.head-teacher-info h3 {
+  font-size: 2.5rem;
+  font-weight: 900;
+  margin-bottom: 0.5rem;
+  text-shadow: 0 0 15px #d8b3ff;
+}
+
+.head-teacher-info p {
+  font-size: 1.3rem;
+  font-weight: 600;
+  max-width: 600px;
+  margin: 0 auto;
+  text-shadow: 0 0 10px #d8b3ff;
+}
+
+.senior-teachers-section {
+  background: linear-gradient(135deg, #5a2a83, #7b3fbf);
+  padding: 2rem 3rem;
+  border-radius: 20px;
+  box-shadow: 0 0 30px #a678ff;
+  max-width: 900px;
+  margin: 2rem auto;
+  color: #f0e6ff;
+}
+
+.senior-teachers-list {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.senior-teacher-card {
+  background: rgba(123, 63, 191, 0.7);
+  border-radius: 30px;
+  padding: 1rem 1.5rem;
+  box-shadow: 0 0 20px #7b3fbf;
+  width: 280px;
+  text-align: center;
+}
+
+.senior-teacher-card img {
+  width: 100%;
+  height: 200px;
+  border-radius: 20px;
+  object-fit: cover;
+  margin-bottom: 1rem;
+  box-shadow: 0 0 15px #a678ff;
+}
+
+.senior-teacher-card h3 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.senior-teacher-card p {
+  font-size: 1rem;
+  line-height: 1.4;
+}
+
+.junior-teachers-section {
+  background: linear-gradient(135deg, #3a1a5f, #5a2a83);
+  padding: 2rem 3rem;
+  border-radius: 20px;
+  box-shadow: 0 0 25px #7b3fbf;
+  max-width: 900px;
+  margin: 2rem auto;
+  color: #f0e6ff;
+}
+
+.junior-teachers-list {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.junior-teacher-card {
+  background: rgba(90, 42, 131, 0.7);
+  border-radius: 30px;
+  padding: 1rem 1.5rem;
+  box-shadow: 0 0 20px #5a2a83;
+  width: 280px;
+  text-align: center;
+}
+
+.junior-teacher-card img {
+  width: 100%;
+  height: 200px;
+  border-radius: 20px;
+  object-fit: cover;
+  margin-bottom: 1rem;
+  box-shadow: 0 0 15px #7b3fbf;
+}
+
+.junior-teacher-card h3 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.junior-teacher-card p {
+  font-size: 1rem;
+  line-height: 1.4;
+}
+
+/* Responsive for teachers page */
+@media (max-width: 768px) {
+  .head-teacher-card {
+    flex-direction: column;
+  }
+
+  .senior-teachers-list,
+  .junior-teachers-list {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+/* Head and Assistant Head Teacher container */
+.head-assistant-container {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  max-width: 900px;
+  margin: 2rem auto;
+}
+
+/* Assistant Head Teacher section styles similar to Head Teacher */
+.assistant-head-teacher-section {
+  background: linear-gradient(135deg, #7b3fbf, #a678ff);
+  padding: 2rem 3rem;
+  border-radius: 40px;
+  box-shadow: 0 0 40px #a678ff;
+  color: #f0e6ff;
+  text-align: center;
+}
+
+.assistant-head-teacher-card {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 2rem;
+  padding: 1rem;
+}
+
+.assistant-head-teacher-card img {
+  width: 250px;
+  height: 250px;
+  border-radius: 30px;
+  padding: 10px;
+  box-shadow: 0 0 30px #d8b3ff;
+  object-fit: cover;
+  border: 5px solid #d8b3ff;
+}
+
+.assistant-head-teacher-info h3 {
+  font-size: 2.5rem;
+  font-weight: 900;
+  margin-bottom: 0.5rem;
+  text-shadow: 0 0 15px #d8b3ff;
+}
+
+.assistant-head-teacher-info p {
+  font-size: 1.3rem;
+  font-weight: 600;
+  max-width: 600px;
+  margin: 0 auto;
+  text-shadow: 0 0 10px #d8b3ff;
+}
+
+/* Responsive for head and assistant head teacher container */
+@media (max-width: 768px) {
+  .head-assistant-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .assistant-head-teacher-card {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .assistant-head-teacher-card img {
+    margin: 0 auto;
+  }
+}
+
+/* Additional responsiveness for smaller screens */
+@media (max-width: 480px) {
+  .head-teacher-card,
+  .assistant-head-teacher-card {
+    padding: 0.5rem;
+  }
+
+  .head-teacher-card img,
+  .assistant-head-teacher-card img {
+    width: 180px;
+    height: 180px;
+    border-radius: 20px;
+  }
+
+  .head-teacher-info h3,
+  .assistant-head-teacher-info h3 {
+    font-size: 1.8rem;
+  }
+
+  .head-teacher-info p,
+  .assistant-head-teacher-info p {
+    font-size: 1rem;
+    max-width: 100%;
+  }
+
+  .senior-teacher-card,
+  .junior-teacher-card {
+    width: 100%;
+    padding: 0.75rem 1rem;
+  }
+
+  .senior-teacher-card img,
+  .junior-teacher-card img {
+    height: 150px;
+  }
+
+  .senior-teacher-card h3,
+  .junior-teacher-card h3 {
+    font-size: 1.2rem;
+  }
+
+  .senior-teacher-card p,
+  .junior-teacher-card p {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .head-teacher-info h3,
+  .assistant-head-teacher-info h3 {
+    font-size: 1.5rem;
+  }
+
+  .head-teacher-info p,
+  .assistant-head-teacher-info p {
+    font-size: 0.9rem;
+  }
+
+  .senior-teacher-card h3,
+  .junior-teacher-card h3 {
+    font-size: 1rem;
+  }
+
+  .senior-teacher-card p,
+  .junior-teacher-card p {
+    font-size: 0.8rem;
+  }
+}

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Email Verification - Faridpur High School</title>
+  <link rel="stylesheet" href="src/registration-styles.css" />
+</head>
+<body>
+  <main>
+    <section class="form-section">
+      <h2>Email Verification</h2>
+      <p>Please enter the OTP sent to your email to verify your account.</p>
+      <form id="otp-form" aria-label="OTP verification form">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="Enter your email" required />
+        <label for="otp">OTP</label>
+        <input type="text" id="otp" name="otp" placeholder="Enter your OTP" required />
+        <button type="submit" class="btn btn-primary">Verify OTP</button>
+      </form>
+      <button id="resend-btn" class="btn btn-secondary">Resend Verification Email</button>
+      <p id="message" style="margin-top: 1rem;"></p>
+    </section>
+  </main>
+  <script src="src/email-verification-handler-copy.js"></script>
+</body>
+</html>

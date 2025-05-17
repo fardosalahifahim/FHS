@@ -1,0 +1,74 @@
+body {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #2e0854, #5a2a83, #7b3fbf);
+  color: #f0e6ff;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.dashboard-section {
+  background: rgba(45, 0, 90, 0.85);
+  padding: 2rem 3rem;
+  border-radius: 20px;
+  box-shadow: 0 0 30px #a678ff;
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+}
+
+.dashboard-section h1 {
+  margin-bottom: 1.5rem;
+  font-size: 2rem;
+  color: #d8b3ff;
+  text-shadow: 0 0 10px #a678ff;
+}
+
+#student-info p {
+  font-size: 1.2rem;
+  margin: 0.5rem 0;
+  color: #d8b3ff;
+  text-shadow: 0 0 5px #7b3fbf;
+}
+
+.btn-primary {
+  background-color: #a678ff;
+  color: #2e0854;
+  font-weight: 700;
+  padding: 0.75rem 1.5rem;
+  border-radius: 30px;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 0 15px #a678ff;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  margin-top: 1.5rem;
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+  background-color: #d8b3ff;
+  box-shadow: 0 0 25px #d8b3ff;
+  outline: none;
+}
+
+/* Responsive styles */
+@media (max-width: 480px) {
+  body {
+    padding: 1rem;
+  }
+  .dashboard-section {
+    padding: 1.5rem 2rem;
+    max-width: 100%;
+  }
+  .dashboard-section h1 {
+    font-size: 1.5rem;
+  }
+  .btn-primary {
+    width: 100%;
+    padding: 0.75rem;
+    font-size: 1rem;
+  }
+}

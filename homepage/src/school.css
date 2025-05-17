@@ -1,0 +1,509 @@
+/* Banner overlay styles */
+.hero.hero-overlay {
+  position: relative;
+  width: 100%;
+  height: 70vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  margin-top: 6rem;
+}
+
+@media (max-width: 768px) {
+  .hero.hero-overlay {
+    height: auto;
+    padding: 2rem 1rem;
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .hero-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .hero-bg-image {
+    position: relative;
+    width: 100%;
+    height: auto;
+    filter: brightness(0.6);
+  }
+
+  .hero-content {
+    max-width: 100%;
+    padding: 1rem;
+    background: rgba(45, 0, 90, 0.7);
+    border-radius: 15px;
+    box-shadow: 0 0 20px #a678ff;
+    margin-top: -4rem;
+  }
+
+  .hero-content h1 {
+    font-size: 2rem;
+  }
+
+  .hero-content p {
+    font-size: 1rem;
+  }
+
+  .hero-buttons a.btn {
+    display: block;
+    margin: 0.5rem auto;
+    width: 80%;
+  }
+}
+
+.hero-bg-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.5);
+  z-index: 1;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 700px;
+  padding: 2rem;
+  background: rgba(45, 0, 90, 0.6);
+  border-radius: 15px;
+  box-shadow: 0 0 20px #a678ff;
+}
+
+.hero-content h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.hero-content p {
+  font-size: 1.25rem;
+  margin-bottom: 2rem;
+}
+
+.hero-buttons a.btn {
+  margin-right: 1rem;
+  padding: 0.75rem 1.5rem;
+  font-size: 1.1rem;
+  border-radius: 8px;
+  text-decoration: none;
+  color: #d8b3ff;
+  background: rgba(75, 0, 130, 0.7);
+  box-shadow: 0 0 15px #a678ff;
+  transition: background 0.3s ease;
+}
+
+.hero-buttons a.btn:hover {
+  background: #a678ff;
+  color: #2e0854;
+}
+
+.content-section {
+  margin: 10rem auto 3rem auto;
+  max-width: 1100px;
+  padding: 2rem;
+  background: linear-gradient(135deg, #2e0854, #5a2a83);
+  border-radius: 20px;
+  box-shadow: 0 0 30px rgba(123, 63, 191, 0.7);
+  color: #f0e6ff;
+}
+
+.content-section h2 {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  text-shadow: 0 0 10px #a678ff;
+}
+
+.about-content,
+.facilities-content,
+.events-content {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  background: rgba(45, 0, 90, 0.6);
+  padding: 1.5rem;
+  border-radius: 20px;
+  box-shadow: 0 0 25px #a678ff;
+}
+
+.about-content img {
+  max-width: 250px;
+  width: 100%;
+  height: auto;
+  border-radius: 20px;
+  box-shadow: 0 0 25px #a678ff;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.facilities-content img,
+.events-content img {
+  max-width: 150px;
+  width: 100%;
+  height: auto;
+  border-radius: 20px;
+  box-shadow: 0 0 25px #a678ff;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.about-content img:hover,
+.facilities-content img:hover,
+.events-content img:hover {
+  transform: scale(1.05);
+}
+
+.about-content p,
+.facilities-content p,
+.events-content p {
+  flex: 1;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  text-align: justify;
+  text-shadow: 0 0 5px #7b3fbf;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .about-content,
+  .facilities-content,
+  .events-content {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .about-content p,
+  .facilities-content p,
+  .events-content p {
+    text-align: center;
+  }
+}
+
+/* Admission form styles */
+.admission-form {
+  background: linear-gradient(135deg, #5a2a83, #7b3fbf);
+  padding: 2rem 3rem;
+  border-radius: 20px;
+  box-shadow: 0 0 30px #a678ff;
+  max-width: 700px;
+  margin: 2rem auto;
+  color: #f0e6ff;
+}
+
+/* About Our Teacher section styles */
+.about-teacher-content {
+  display: flex;
+  gap: 2rem;
+  align-items: flex-start;
+  max-width: 900px;
+  margin: 2rem auto;
+  background: linear-gradient(135deg, #5a2a83, #7b3fbf);
+  padding: 1.5rem 2rem;
+  border-radius: 20px;
+  box-shadow: 0 0 30px #a678ff;
+  color: #f0e6ff;
+}
+
+.about-teacher-content img {
+  max-width: 300px;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  box-shadow: 0 0 40px #a678ff;
+  object-fit: cover;
+  margin-right: 1.5rem;
+  transition: transform 0.3s ease;
+}
+
+.about-teacher-content img:hover {
+  transform: scale(1.05);
+}
+
+.about-teacher-text {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  position: relative;
+}
+
+.about-teacher-text p {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  margin-bottom: 2.5rem;
+  text-shadow: 0 0 10px #d8b3ff;
+}
+
+.see-teachers-btn {
+  align-self: flex-end;
+  padding: 0.75rem 1.5rem;
+  font-weight: 700;
+  border-radius: 30px;
+  box-shadow: 0 0 15px #a678ff;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.see-teachers-btn:hover,
+.see-teachers-btn:focus {
+  background-color: #d8b3ff;
+  box-shadow: 0 0 25px #d8b3ff;
+  outline: none;
+}
+
+/* Responsive for About Our Teacher section */
+@media (max-width: 768px) {
+  .about-teacher-content {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .about-teacher-text {
+    align-items: center;
+    text-align: center;
+  }
+
+  .see-teachers-btn {
+    align-self: center;
+  }
+}
+
+/* Admission form styles */
+.admission-form h2 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  font-size: 2rem;
+  font-weight: 700;
+  text-shadow: 0 0 10px #d8b3ff;
+}
+
+.admission-form form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.admission-form label {
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  display: block;
+  color: #d8b3ff;
+  text-shadow: 0 0 5px #a678ff;
+}
+
+.admission-form input[type="text"],
+.admission-form input[type="date"],
+.admission-form input[type="email"],
+.admission-form input[type="tel"],
+.admission-form select,
+.admission-form textarea {
+  padding: 0.75rem 1rem;
+  border-radius: 12px;
+  border: none;
+  font-size: 1rem;
+  font-family: 'Poppins', sans-serif;
+  box-shadow: inset 0 0 8px rgba(255, 255, 255, 0.2);
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #f0e6ff;
+  transition: box-shadow 0.3s ease;
+  resize: vertical;
+}
+
+.admission-form input[type="text"]:focus,
+.admission-form input[type="date"]:focus,
+.admission-form input[type="email"]:focus,
+.admission-form input[type="tel"]:focus,
+.admission-form select:focus,
+.admission-form textarea:focus {
+  outline: none;
+  box-shadow: 0 0 12px #d8b3ff;
+  background-color: rgba(255, 255, 255, 0.15);
+}
+
+.admission-form button[type="submit"] {
+  background-color: #a678ff;
+  color: #2e0854;
+  font-weight: 700;
+  padding: 1rem 2rem;
+  border-radius: 30px;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 0 15px #a678ff;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  align-self: center;
+  width: 50%;
+  text-align: center;
+}
+
+.admission-form button[type="submit"]:hover,
+.admission-form button[type="submit"]:focus {
+  background-color: #d8b3ff;
+  box-shadow: 0 0 25px #d8b3ff;
+  outline: none;
+}
+
+/* Responsive for admission form */
+@media (max-width: 768px) {
+  .admission-form {
+    padding: 1.5rem 1.5rem;
+    width: 90%;
+  }
+  .admission-form button[type="submit"] {
+    width: 100%;
+  }
+}
+
+/* Teachers page styles */
+.head-teacher-section {
+  background: linear-gradient(135deg, #7b3fbf, #a678ff);
+  padding: 2rem 3rem;
+  border-radius: 25px;
+  box-shadow: 0 0 40px #a678ff;
+  max-width: 900px;
+  margin: 2rem auto;
+  color: #f0e6ff;
+  text-align: center;
+}
+
+.head-teacher-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.head-teacher-card img {
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  box-shadow: 0 0 30px #d8b3ff;
+  object-fit: cover;
+  border: 5px solid #d8b3ff;
+}
+
+.head-teacher-info h3 {
+  font-size: 2.5rem;
+  font-weight: 900;
+  margin-bottom: 0.5rem;
+  text-shadow: 0 0 15px #d8b3ff;
+}
+
+.head-teacher-info p {
+  font-size: 1.3rem;
+  font-weight: 600;
+  max-width: 600px;
+  margin: 0 auto;
+  text-shadow: 0 0 10px #d8b3ff;
+}
+
+.senior-teachers-section {
+  background: linear-gradient(135deg, #5a2a83, #7b3fbf);
+  padding: 2rem 3rem;
+  border-radius: 20px;
+  box-shadow: 0 0 30px #a678ff;
+  max-width: 900px;
+  margin: 2rem auto;
+  color: #f0e6ff;
+}
+
+.senior-teachers-list {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.senior-teacher-card {
+  background: rgba(123, 63, 191, 0.7);
+  border-radius: 20px;
+  padding: 1rem 1.5rem;
+  box-shadow: 0 0 20px #7b3fbf;
+  width: 280px;
+  text-align: center;
+}
+
+.senior-teacher-card img {
+  width: 100%;
+  height: 200px;
+  border-radius: 20px;
+  object-fit: cover;
+  margin-bottom: 1rem;
+  box-shadow: 0 0 15px #a678ff;
+}
+
+.senior-teacher-card h3 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.senior-teacher-card p {
+  font-size: 1rem;
+  line-height: 1.4;
+}
+
+.junior-teachers-section {
+  background: linear-gradient(135deg, #3a1a5f, #5a2a83);
+  padding: 2rem 3rem;
+  border-radius: 20px;
+  box-shadow: 0 0 25px #7b3fbf;
+  max-width: 900px;
+  margin: 2rem auto;
+  color: #f0e6ff;
+}
+
+.junior-teachers-list {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.junior-teacher-card {
+  background: rgba(90, 42, 131, 0.7);
+  border-radius: 20px;
+  padding: 1rem 1.5rem;
+  box-shadow: 0 0 20px #5a2a83;
+  width: 280px;
+  text-align: center;
+}
+
+.junior-teacher-card img {
+  width: 100%;
+  height: 200px;
+  border-radius: 20px;
+  object-fit: cover;
+  margin-bottom: 1rem;
+  box-shadow: 0 0 15px #7b3fbf;
+}
+
+.junior-teacher-card h3 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.junior-teacher-card p {
+  font-size: 1rem;
+  line-height: 1.4;
+}
+
+/* Responsive for teachers page */
+@media (max-width: 768px) {
+  .head-teacher-card {
+    flex-direction: column;
+  }
+
+  .senior-teachers-list,
+  .junior-teachers-list {
+    flex-direction: column;
+    align-items: center;
+  }
+}

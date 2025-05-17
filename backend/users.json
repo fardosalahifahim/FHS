@@ -1,0 +1,15 @@
+[
+  {
+    "id": "958ce122-87e4-45be-a932-19d74c159497",
+    "name": "Fahim Fahim",
+    "rollnumber": "0001",
+    "class": "10",
+    "section": "A",
+    "shift": "morning",
+    "phone": "01643128376",
+    "email": "fahim.student106@gmail.com",
+    "password": "123456",
+    "verified": false,
+    "verificationToken": "535cd05ac169b9397d31585239c784baff5765d77f23acffafae6e7ece751f5d"
+  }
+]

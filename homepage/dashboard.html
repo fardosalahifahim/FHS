@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Student Dashboard - Faridpur High School</title>
+  <link rel="stylesheet" href="src/dashboard.css" />
+</head>
+<body>
+  <main>
+    <section class="dashboard-section">
+      <h1>Student Dashboard</h1>
+      <div id="student-info">
+        <!-- Student data will be displayed here -->
+      </div>
+      <button id="logout-btn" class="btn btn-primary">Logout</button>
+    </section>
+  </main>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const studentInfoDiv = document.getElementById('student-info');
+      const logoutBtn = document.getElementById('logout-btn');
+
+      const loggedInUser = localStorage.getItem('loggedInUser');
+      if (!loggedInUser) {
+        alert('You are not logged in. Redirecting to login page.');
+        window.location.href = 'login.html';
+        return;
+      }
+
+      const user = JSON.parse(loggedInUser);
+
+      studentInfoDiv.innerHTML = `
+        <p><strong>Name:</strong> ${user.name}</p>
+        <p><strong>Email:</strong> ${user.email}</p>
+      `;
+
+      logoutBtn.addEventListener('click', () => {
+        localStorage.removeItem('loggedInUser');
+        alert('You have been logged out.');
+        window.location.href = 'login.html';
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Result - Faridpur High School</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="src/resources/image/logo.png" />
+  <link rel="shortcut icon" href="src/resources/image/logo.png" />
+  <link rel="stylesheet" href="src/styles.css" />
+  <link rel="stylesheet" href="src/loader.css" />
+  <link rel="stylesheet" href="src/routine.css" />
+</head>
+<body>
+  <div id="loading-spinner" style="display:none;"></div>
+  <div id="offline-message" style="display:none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
+    background: rgba(45, 0, 90, 0.9); color: #d8b3ff; padding: 2rem 3rem; border-radius: 15px; box-shadow: 0 0 20px #a678ff; font-size: 1.5rem; text-align: center; z-index: 100000;">
+    You are currently offline. Please check your internet connection.
+  </div>
+  <nav>
+    <div class="nav-container container">
+      <div class="nav-logo" tabindex="0" aria-label="Faridpur High School Home">
+        <img src="src/resources/image/logo.png" alt="Faridpur High School Logo" />
+      </div>
+      <div class="nav-toggle" aria-label="Toggle navigation menu" tabindex="0">&#9776;</div>
+      <ul id="nav-menu" class="nav-menu left-menu" role="menubar" aria-label="Primary navigation">
+        <li class="nav-item" role="none"><a href="index.html" class="nav-link" role="menuitem" tabindex="0">Home</a></li>
+        <li class="nav-item" role="none"><a href="school.html" class="nav-link" role="menuitem" tabindex="0">School</a></li>
+        <li class="nav-item" role="none"><a href="academic.html" class="nav-link" role="menuitem" tabindex="0">Academic</a></li>
+        <li class="nav-item" role="none"><a href="curriculum.html" class="nav-link" role="menuitem" tabindex="0">Curriculum</a></li>
+        <li class="nav-item" role="none"><a href="routine.html" class="nav-link" role="menuitem" tabindex="0">Routine</a></li>
+        <li class="nav-item" role="none"><a href="#" class="nav-link" role="menuitem" tabindex="0">Message</a></li>
+        <li class="nav-item" role="none"><a href="result.html" class="nav-link" role="menuitem" tabindex="0">Result</a></li>
+
+        <li class="nav-item more-menu" role="none" aria-haspopup="true" aria-expanded="false">
+          <ul class="more-dropdown-menu" role="menu" aria-label="More navigation items">
+            <!-- Removed See More menu items as per user request -->
+          </ul>
+        </li>
+      </ul>
+      <ul class="nav-menu right-menu" role="menubar" aria-label="Right navigation">
+        <li class="nav-item dropdown" role="none">
+          <a href="registration.html" class="nav-link dropdown-toggle" role="menuitem" aria-haspopup="true" aria-expanded="false" tabindex="0">Registration</a>
+          <ul class="dropdown-menu" role="menu" aria-label="Registration submenu">
+            <!-- Removed Student Registration and Admin Registration options as requested -->
+          </ul>
+        </li>
+        <li class="nav-item" role="none"><a href="login.html" class="nav-link" role="menuitem" tabindex="0">Login</a></li>
+      </ul>
+    </div>
+  </nav>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const navToggle = document.querySelector('.nav-toggle');
+      const navMenu = document.getElementById('nav-menu');
+      const moreMenu = document.querySelector('.more-menu');
+      const moreDropdown = document.querySelector('.more-dropdown-menu');
+
+      navToggle.addEventListener('click', () => {
+        navMenu.classList.toggle('active');
+      });
+
+      moreMenu.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const expanded = moreMenu.getAttribute('aria-expanded') === 'true';
+        moreMenu.setAttribute('aria-expanded', !expanded);
+        moreDropdown.classList.toggle('show');
+      });
+
+      // Close more menu if clicking outside
+      document.addEventListener('click', () => {
+        moreMenu.setAttribute('aria-expanded', 'false');
+        moreDropdown.classList.remove('show');
+      });
+
+      // Keyboard accessibility for nav toggle
+      navToggle.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          navMenu.classList.toggle('active');
+        }
+      });
+
+      // Keyboard accessibility for more menu
+      moreMenu.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          const expanded = moreMenu.getAttribute('aria-expanded') === 'true';
+          moreMenu.setAttribute('aria-expanded', !expanded);
+          moreDropdown.classList.toggle('show');
+        }
+      });
+    });
+  </script>
+</body>
+</html>
+
+  <header class="hero" role="banner" aria-label="Result welcome section">
+    <h1>Exam Results</h1>
+    <p>Check the latest exam results and academic achievements.</p>
+  </header>
+
+  <main>
+    <!-- Result content here -->
+  </main>
+</body>
+</html>
