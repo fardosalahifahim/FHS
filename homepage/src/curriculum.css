@@ -96,6 +96,40 @@ nav:hover {
   outline: none;
 }
 
+/* Fix nav menu always showing on phone view */
+@media (max-width: 768px) {
+  .nav-menu {
+    display: none;
+  }
+  .nav-menu.show {
+    display: flex;
+    flex-direction: column;
+    background: rgba(45, 0, 90, 0.9);
+    position: fixed;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    padding: 1rem 0;
+    border-radius: 0 0 15px 15px;
+    box-shadow: 0 4px 15px rgba(75, 0, 130, 0.7);
+    z-index: 10000;
+  }
+  .nav-item {
+    width: 100%;
+    text-align: center;
+    margin: 0.5rem 0;
+  }
+  .nav-link {
+    display: block;
+    width: 100%;
+    padding: 0.75rem 0;
+    font-size: 1.2rem;
+  }
+  .nav-toggle {
+    display: block;
+  }
+}
+
 /* Curriculum page specific styles */
 
 main.content-section {
@@ -127,8 +161,22 @@ main.content-section:hover {
   text-transform: uppercase;
 }
 
-#curriculum p, #curriculum ul {
-  margin-bottom: 2.2rem;
+#curriculum h4 {
+  color: #c5a3ff;
+  text-shadow: 0 0 15px #b39ddb;
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  border-bottom: 2px solid #9575cd;
+  padding-bottom: 0.3rem;
+}
+
+#curriculum p {
+  margin-bottom: 1.5rem;
+  font-weight: 500;
+  color: #e0d7ff;
+  text-shadow: 0 0 10px #7b4fc1;
 }
 
 #curriculum ul {
@@ -137,6 +185,7 @@ main.content-section:hover {
   font-weight: 600;
   color: #b39ddb;
   text-shadow: 0 0 10px #6a1b9a;
+  margin-bottom: 2rem;
 }
 
 #curriculum ul li {
@@ -151,7 +200,48 @@ main.content-section:hover {
   text-shadow: 0 0 20px #d1c4e9;
 }
 
-/* Responsive */
+.group {
+  background: linear-gradient(135deg, #5a2a83, #7b3fbf);
+  border-radius: 15px;
+  padding: 1rem 1.5rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 0 25px #a678ff;
+  transition: box-shadow 0.3s ease;
+}
+
+.group:hover {
+  box-shadow: 0 0 40px #d1c4e9;
+}
+
+/* Enhanced styling for Science Group */
+.science-group {
+  background: linear-gradient(135deg, #5a2a83, #7b3fbf);
+  border-radius: 15px;
+  padding: 1rem 1.5rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 0 25px #a678ff;
+  transition: box-shadow 0.3s ease;
+}
+
+.science-group:hover {
+  box-shadow: 0 0 40px #d1c4e9;
+}
+
+.group h4 {
+  margin-top: 0;
+}
+
+.ssc-exam, .nctb-updates {
+  background: rgba(103, 58, 183, 0.8);
+  border-radius: 15px;
+  padding: 1.5rem 2rem;
+  margin-top: 2rem;
+  box-shadow: 0 0 30px #b39ddb;
+  color: #e6dbff;
+  font-weight: 600;
+  text-align: center;
+  text-shadow: 0 0 15px #9575cd;
+}
 
 @media (max-width: 768px) {
   main.content-section {
@@ -163,5 +253,8 @@ main.content-section:hover {
   }
   #curriculum h3 {
     font-size: 1.6rem;
+  }
+  #curriculum h4 {
+    font-size: 1.3rem;
   }
 }

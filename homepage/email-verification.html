@@ -5,23 +5,166 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Email Verification - Faridpur High School</title>
   <link rel="stylesheet" href="src/registration-styles.css" />
+  <style>
+    .email-verification-container {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      max-width: 500px;
+      margin: 2rem auto;
+    }
+    .email-display {
+      flex: 1;
+      font-size: 1.1rem;
+      font-weight: 600;
+      padding: 0.5rem 1rem;
+      background: linear-gradient(90deg, #be38e7, #6a0dad);
+      color: #ffffff;
+      border-radius: 8px;
+      user-select: none;
+    }
+    #send-otp-btn {
+      padding: 0.5rem 1rem;
+      font-size: 1rem;
+      cursor: pointer;
+      border: none;
+      border-radius: 8px;
+      background-color: #6a0dad; /* Darker purple */
+      color: #ffffff; /* White text */
+      box-shadow: 0 0 10px #6a0dad;
+      transition: background-color 0.3s ease;
+    }
+    #send-otp-btn:hover {
+      background-color: #9b30ff; /* Lighter purple */
+    }
+    #otp-input-section {
+      margin-top: 1.5rem;
+      display: none;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    #otp-input-section input {
+      padding: 0.5rem 1rem;
+      font-size: 1rem;
+      border-radius: 8px;
+      border: 1px solid #9767ad;
+      width: 100%;
+      box-sizing: border-box;
+      color: #ffffff; /* White text */
+      background-color: #6a0dad; /* Purple background */
+    }
+    #verify-otp-btn {
+      margin-top: 1rem;
+      padding: 0.5rem 1rem;
+      font-size: 1rem;
+      cursor: pointer;
+      border: none;
+      border-radius: 8px;
+      background-color: #6a0dad; /* Darker purple */
+      color: #ffffff; /* White text */
+      box-shadow: 0 0 10px #6a0dad;
+      transition: background-color 0.3s ease;
+      width: 100%;
+    }
+    #verify-otp-btn:hover {
+      background-color: #9b30ff; /* Lighter purple */
+    }
+    #message {
+      margin-top: 1rem;
+      text-align: center;
+      font-weight: 600;
+    }
+  </style>
 </head>
 <body>
   <main>
     <section class="form-section">
       <h2>Email Verification</h2>
-      <p>Please enter the OTP sent to your email to verify your account.</p>
-      <form id="otp-form" aria-label="OTP verification form">
-        <label for="email">Email</label>
-        <input type="email" id="email" name="email" placeholder="Enter your email" required />
-        <label for="otp">OTP</label>
-        <input type="text" id="otp" name="otp" placeholder="Enter your OTP" required />
-        <button type="submit" class="btn btn-primary">Verify OTP</button>
-      </form>
-      <button id="resend-btn" class="btn btn-secondary">Resend Verification Email</button>
-      <p id="message" style="margin-top: 1rem;"></p>
+      <p>Please verify your email by sending an OTP and entering it below.</p>
+      <div class="email-verification-container">
+        <div class="email-display" id="email-display" contenteditable="true"></div>
+        <button id="send-otp-btn">Send OTP</button>
+      </div>
+      <div id="otp-input-section">
+        <input type="text" id="otp-input" placeholder="Enter your OTP" maxlength="6" />
+        <button id="verify-otp-btn">Verify OTP</button>
+      </div>
+      <p id="message"></p>
     </section>
   </main>
   <script src="src/email-verification-handler-copy.js"></script>
+  <script>
+    const emailDisplay = document.getElementById('email-display');
+    let userEmail = emailDisplay.textContent.trim();
+
+    emailDisplay.addEventListener('input', () => {
+      userEmail = emailDisplay.textContent.trim();
+    });
+
+    const sendOtpBtn = document.getElementById('send-otp-btn');
+    const otpInputSection = document.getElementById('otp-input-section');
+    const verifyOtpBtn = document.getElementById('verify-otp-btn');
+    const messageEl = document.getElementById('message');
+
+    sendOtpBtn.addEventListener('click', async () => {
+      messageEl.textContent = '';
+      if (!userEmail || !userEmail.includes('@')) {
+        messageEl.style.color = 'red';
+        messageEl.textContent = 'Please enter a valid email address.';
+        return;
+      }
+      try {
+        const response = await fetch('http://localhost:3001/send-otp', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email: userEmail })
+        });
+        if (response.ok) {
+          messageEl.style.color = 'green';
+          messageEl.textContent = 'OTP sent to your email.';
+          otpInputSection.style.display = 'block';
+          sendOtpBtn.disabled = true;
+        } else {
+          const text = await response.text();
+          messageEl.style.color = 'red';
+          messageEl.textContent = 'Failed to send OTP: ' + text;
+        }
+      } catch (error) {
+        messageEl.style.color = 'red';
+        messageEl.textContent = 'Error sending OTP: ' + error.message;
+      }
+    });
+
+    verifyOtpBtn.addEventListener('click', async () => {
+      const otp = document.getElementById('otp-input').value.trim();
+      if (otp.length !== 6) {
+        messageEl.style.color = 'red';
+        messageEl.textContent = 'Please enter a valid 6-digit OTP.';
+        return;
+      }
+      try {
+        const response = await fetch('http://localhost:3001/verify-otp', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email: userEmail, otp })
+        });
+        if (response.ok) {
+          messageEl.style.color = 'green';
+          messageEl.textContent = 'Email verified successfully! You can now log in.';
+          setTimeout(() => {
+            window.location.href = 'login.html';
+          }, 2000);
+        } else {
+          const text = await response.text();
+          messageEl.style.color = 'red';
+          messageEl.textContent = 'OTP verification failed: ' + text;
+        }
+      } catch (error) {
+        messageEl.style.color = 'red';
+        messageEl.textContent = 'Error verifying OTP: ' + error.message;
+      }
+    });
+  </script>
 </body>
 </html>

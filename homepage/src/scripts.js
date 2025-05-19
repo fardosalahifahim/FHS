@@ -47,6 +47,18 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // More menu toggle
+  const moreButton = document.querySelector('.more-button');
+  const moreDropdownMenu = document.querySelector('.more-dropdown-menu');
+
+  if (moreButton && moreDropdownMenu) {
+    moreButton.addEventListener('click', () => {
+      moreDropdownMenu.classList.toggle('show');
+      const expanded = moreButton.getAttribute('aria-expanded') === 'true';
+      moreButton.setAttribute('aria-expanded', String(!expanded));
+    });
+  }
+
   // Authentication logic - Registration form handler
   const registrationForm = document.querySelector('form[aria-label="Registration form"]');
 

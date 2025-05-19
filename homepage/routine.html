@@ -53,19 +53,28 @@
     <div id="routine-image-container" class="routine-image-container">
       <h1 style="color: #f0e6ff; text-align: center; margin-bottom: 1rem;">Your Routine</h1>
       <div class="routine-select-container">
-        <select id="routine-select" class="highly-designed-select" aria-label="Select class routine" style="min-width: 160px;">
-          <option value="class6A" selected>Class 6A</option>
-          <option value="class6B">Class 6B</option>
-          <option value="class7A">Class 7A</option>
-          <option value="class7B">Class 7B</option>
-          <option value="class8A">Class 8A</option>
-          <option value="class8B">Class 8B</option>
-          <option value="class9A">Class 9A</option>
-          <option value="class9B">Class 9B</option>
-          <option value="class9C">Class 9C</option>
-          <option value="class10A">Class 10A</option>
-          <option value="class10B">Class 10B</option>
-          <option value="class10C">Class 10C</option>
+        <select id="time-of-day-select" class="highly-designed-select" aria-label="Select time of day" style="min-width: 120px; margin-right: 1rem;">
+          <option value="morning" selected>Morning</option>
+          <option value="day">Day</option>
+          <option value="board">Board</option>
+        </select>
+        <select id="class-select" class="highly-designed-select" aria-label="Select class routine" style="min-width: 160px;">
+          <option value="6A" selected>6A</option>
+          <option value="6B">6B</option>
+          <option value="7A">7A</option>
+          <option value="7B">7B</option>
+          <option value="8A">8A</option>
+          <option value="8B">8B</option>
+          <option value="9A">9A</option>
+          <option value="9B">9B</option>
+          <option value="9C">9C</option>
+          <option value="10A">10A</option>
+          <option value="10B">10B</option>
+          <option value="10C">10C</option>
+        </select>
+        <select id="board-select" class="highly-designed-select" aria-label="Select board routine" style="min-width: 160px; display: none;">
+          <option value="ssc" selected>SSC</option>
+          <option value="jsc">JSC</option>
         </select>
       </div>
       <img id="routine-image" src="src/resources/image/class6A-routine.png" alt="Class 6A Routine" class="highly-designed-routine-image" />
@@ -76,34 +85,72 @@
     </div>
   </main>
 
-  <script>
-    const routineSelect = document.getElementById('routine-select');
+    <script>
+    const timeOfDaySelect = document.getElementById('time-of-day-select');
+    const classSelect = document.getElementById('class-select');
+    const boardSelect = document.getElementById('board-select');
     const routineImage = document.getElementById('routine-image');
     const fullscreenBtn = document.getElementById('fullscreen-btn');
     const downloadBtn = document.getElementById('download-btn');
 
     const routineImages = {
-      class6A: { src: 'src/resources/image/class6A-routine.png', alt: 'Class 6A Routine' },
-      class6B: { src: 'src/resources/image/class6B-routine.png', alt: 'Class 6B Routine' },
-      class7A: { src: 'src/resources/image/class7A-routine.png', alt: 'Class 7A Routine' },
-      class7B: { src: 'src/resources/image/class7B-routine.png', alt: 'Class 7B Routine' },
-      class8A: { src: 'src/resources/image/class8A-routine.png', alt: 'Class 8A Routine' },
-      class8B: { src: 'src/resources/image/class8B-routine.png', alt: 'Class 8B Routine' },
-      class9A: { src: 'src/resources/image/class9A-routine.png', alt: 'Class 9A Routine' },
-      class9B: { src: 'src/resources/image/class9B-routine.png', alt: 'Class 9B Routine' },
-      class9C: { src: 'src/resources/image/class9C-routine.png', alt: 'Class 9C Routine' },
-      class10A: { src: 'src/resources/image/class10A-routine.png', alt: 'Class 10A Routine' },
-      class10B: { src: 'src/resources/image/class10B-routine.png', alt: 'Class 10B Routine' },
-      class10C: { src: 'src/resources/image/class10C-routine.png', alt: 'Class 10C Routine' },
+      morning6A: { src: 'src/resources/image/morning6A-routine.png', alt: 'Morning 6A Routine' },
+      morning6B: { src: 'src/resources/image/morning6B-routine.png', alt: 'Morning 6B Routine' },
+      morning7A: { src: 'src/resources/image/morning7A-routine.png', alt: 'Morning 7A Routine' },
+      morning7B: { src: 'src/resources/image/morning7B-routine.png', alt: 'Morning 7B Routine' },
+      morning8A: { src: 'src/resources/image/morning8A-routine.png', alt: 'Morning 8A Routine' },
+      morning8B: { src: 'src/resources/image/morning8B-routine.png', alt: 'Morning 8B Routine' },
+      morning9A: { src: 'src/resources/image/morning9A-routine.png', alt: 'Morning 9A Routine' },
+      morning9B: { src: 'src/resources/image/morning9B-routine.png', alt: 'Morning 9B Routine' },
+      morning9C: { src: 'src/resources/image/morning9C-routine.png', alt: 'Morning 9C Routine' },
+      morning10A: { src: 'src/resources/image/morning10A-routine.png', alt: 'Morning 10A Routine' },
+      morning10B: { src: 'src/resources/image/morning10B-routine.png', alt: 'Morning 10B Routine' },
+      morning10C: { src: 'src/resources/image/morning10C-routine.png', alt: 'Morning 10C Routine' },
+      day6A: { src: 'src/resources/image/day6A-routine.png', alt: 'Day 6A Routine' },
+      day6B: { src: 'src/resources/image/day6B-routine.png', alt: 'Day 6B Routine' },
+      day7A: { src: 'src/resources/image/day7A-routine.png', alt: 'Day 7A Routine' },
+      day7B: { src: 'src/resources/image/day7B-routine.png', alt: 'Day 7B Routine' },
+      day8A: { src: 'src/resources/image/day8A-routine.png', alt: 'Day 8A Routine' },
+      day8B: { src: 'src/resources/image/day8B-routine.png', alt: 'Day 8B Routine' },
+      day9A: { src: 'src/resources/image/day9A-routine.png', alt: 'Day 9A Routine' },
+      day9B: { src: 'src/resources/image/day9B-routine.png', alt: 'Day 9B Routine' },
+      day9C: { src: 'src/resources/image/day9C-routine.png', alt: 'Day 9C Routine' },
+      day10A: { src: 'src/resources/image/day10A-routine.png', alt: 'Day 10A Routine' },
+      day10B: { src: 'src/resources/image/day10B-routine.png', alt: 'Day 10B Routine' },
+      day10C: { src: 'src/resources/image/day10C-routine.png', alt: 'Day 10C Routine' },
+      ssc: { src: 'src/resources/image/ssc-routine.png', alt: 'SSC Board Routine' },
+      jsc: { src: 'src/resources/image/jsc-routine.png', alt: 'JSC Board Routine' },
     };
 
-    routineSelect.addEventListener('change', function() {
-      const selectedClass = this.value;
-      if (routineImages[selectedClass]) {
-        routineImage.src = routineImages[selectedClass].src;
-        routineImage.alt = routineImages[selectedClass].alt;
+    function updateRoutineImage() {
+      const timeOfDay = timeOfDaySelect.value;
+      let key = '';
+
+      if (timeOfDay === 'board') {
+        key = boardSelect.value;
+      } else {
+        const classSelected = classSelect.value;
+        key = timeOfDay + classSelected;
       }
+
+      if (routineImages[key]) {
+        routineImage.src = routineImages[key].src;
+        routineImage.alt = routineImages[key].alt;
+      }
+    }
+
+    timeOfDaySelect.addEventListener('change', () => {
+      if (timeOfDaySelect.value === 'board') {
+        classSelect.style.display = 'none';
+        boardSelect.style.display = 'inline-block';
+      } else {
+        classSelect.style.display = 'inline-block';
+        boardSelect.style.display = 'none';
+      }
+      updateRoutineImage();
     });
+    classSelect.addEventListener('change', updateRoutineImage);
+    boardSelect.addEventListener('change', updateRoutineImage);
 
     fullscreenBtn.addEventListener('click', () => {
       if (document.fullscreenElement) {
@@ -121,6 +168,9 @@
       link.click();
       document.body.removeChild(link);
     });
+
+    // Initialize image on page load
+    updateRoutineImage();
   </script>
   <script>
     // Responsive nav toggle

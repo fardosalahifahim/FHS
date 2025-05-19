@@ -1,15 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Result - Faridpur High School</title>
-  <link rel="icon" type="image/png" sizes="32x32" href="src/resources/image/logo.png" />
-  <link rel="shortcut icon" href="src/resources/image/logo.png" />
-  <link rel="stylesheet" href="src/styles.css" />
-  <link rel="stylesheet" href="src/loader.css" />
-  <link rel="stylesheet" href="src/routine.css" />
-</head>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Result - Faridpur High School</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="src/resources/image/logo.png" />
+    <link rel="shortcut icon" href="src/resources/image/logo.png" />
+    <link rel="stylesheet" href="src/styles.css" />
+    <link rel="stylesheet" href="src/loader.css" />
+    <link rel="stylesheet" href="src/routine.css" />
+    <link rel="stylesheet" href="src/result.css" />
+  </head>
 <body>
   <div id="loading-spinner" style="display:none;"></div>
   <div id="offline-message" style="display:none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
@@ -48,59 +49,306 @@
       </ul>
     </div>
   </nav>
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const navToggle = document.querySelector('.nav-toggle');
-      const navMenu = document.getElementById('nav-menu');
-      const moreMenu = document.querySelector('.more-menu');
-      const moreDropdown = document.querySelector('.more-dropdown-menu');
 
-      navToggle.addEventListener('click', () => {
-        navMenu.classList.toggle('active');
-      });
-
-      moreMenu.addEventListener('click', (e) => {
-        e.stopPropagation();
-        const expanded = moreMenu.getAttribute('aria-expanded') === 'true';
-        moreMenu.setAttribute('aria-expanded', !expanded);
-        moreDropdown.classList.toggle('show');
-      });
-
-      // Close more menu if clicking outside
-      document.addEventListener('click', () => {
-        moreMenu.setAttribute('aria-expanded', 'false');
-        moreDropdown.classList.remove('show');
-      });
-
-      // Keyboard accessibility for nav toggle
-      navToggle.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter' || e.key === ' ') {
-          e.preventDefault();
-          navMenu.classList.toggle('active');
-        }
-      });
-
-      // Keyboard accessibility for more menu
-      moreMenu.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter' || e.key === ' ') {
-          e.preventDefault();
-          const expanded = moreMenu.getAttribute('aria-expanded') === 'true';
-          moreMenu.setAttribute('aria-expanded', !expanded);
-          moreDropdown.classList.toggle('show');
-        }
-      });
-    });
-  </script>
-</body>
-</html>
-
-  <header class="hero" role="banner" aria-label="Result welcome section">
-    <h1>Exam Results</h1>
-    <p>Check the latest exam results and academic achievements.</p>
-  </header>
+  <!-- Removed banner as per user request -->
 
   <main>
-    <!-- Result content here -->
+    <div class="result-container">
+      <aside class="left-links-section" aria-label="Useful website links">
+        <h2>Useful Websites</h2>
+        <ul>
+          <li><a href="https://www.dhakaeducationboard.gov.bd/" target="_blank" rel="noopener noreferrer">Board results</a></li>
+          <li><a href="https://www.eximusedu.com/login" target="_blank" rel="noopener noreferrer">School Results</a></li>
+          <li><a href="routine.html" target="_blank" rel="noopener noreferrer">School class routine</a></li>
+          <li><a href="routine.html" target="_blank" rel="noopener noreferrer">Board Exam Routine</a></li>
+          <li><a href="https://www.eximusedu.com/login" target="_blank" rel="noopener noreferrer">Teaution Fees</a></li>
+          <li><a href="admitcard.html" target="_blank" rel="noopener noreferrer">Download Admitcard</a></li>
+        </ul>
+      </aside>
+      <section class="result-section content-section" style="flex-grow: 2;">
+        <div class="slider-banner" style="width: 100%; max-width: 800px; margin: 1rem auto; position: relative; overflow: hidden; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1);">
+          <div class="slides" style="display: flex; transition: transform 0.5s ease-in-out; position: relative;">
+            <div style="position: relative; flex-shrink: 0; width: 100%;">
+              <img src="src/resources/image/school1.jpg" alt="School Banner 1" style="width: 100%;" />
+              <div style="position: absolute; bottom: 20px; left: 20px; color: white; background: rgba(0,0,0,0.5); padding: 10px 15px; border-radius: 5px; font-size: 1.5rem; font-weight: bold;">
+                Welcome to Faridpur High School
+              </div>
+            </div>
+            <div style="position: relative; flex-shrink: 0; width: 100%;">
+              <img src="src/resources/image/school2.jpg" alt="School Banner 2" style="width: 100%;" />
+              <div style="position: absolute; bottom: 20px; left: 20px; color: white; background: rgba(0,0,0,0.5); padding: 10px 15px; border-radius: 5px; font-size: 1.5rem; font-weight: bold;">
+                Excellence in Education
+              </div>
+            </div>
+            <div style="position: relative; flex-shrink: 0; width: 100%;">
+              <img src="src/resources/image/school3.jpg" alt="School Banner 3" style="width: 100%;" />
+              <div style="position: absolute; bottom: 20px; left: 20px; color: white; background: rgba(0,0,0,0.5); padding: 10px 15px; border-radius: 5px; font-size: 1.5rem; font-weight: bold;">
+                Join Our Community
+              </div>
+            </div>
+          </div>
+          <button class="prev-btn" aria-label="Previous slide" style="position: absolute; top: 50%; left: 10px; transform: translateY(-50%); background: rgba(0,0,0,0.5); border: none; color: white; font-size: 2.5rem; padding: 0 12px; cursor: pointer; border-radius: 50%; box-shadow: 0 0 5px rgba(0,0,0,0.7); transition: background 0.3s;">&#10094;</button>
+          <button class="next-btn" aria-label="Next slide" style="position: absolute; top: 50%; right: 10px; transform: translateY(-50%); background: rgba(0,0,0,0.5); border: none; color: white; font-size: 2.5rem; padding: 0 12px; cursor: pointer; border-radius: 50%; box-shadow: 0 0 5px rgba(0,0,0,0.7); transition: background 0.3s;">&#10095;</button>
+          <div class="slider-dots" style="position: absolute; bottom: 15px; left: 50%; transform: translateX(-50%); display: flex; gap: 10px;">
+            <button class="dot active" aria-label="Slide 1" style="width: 12px; height: 12px; border-radius: 50%; background: white; border: none; cursor: pointer;"></button>
+            <button class="dot" aria-label="Slide 2" style="width: 12px; height: 12px; border-radius: 50%; background: rgba(255,255,255,0.5); border: none; cursor: pointer;"></button>
+            <button class="dot" aria-label="Slide 3" style="width: 12px; height: 12px; border-radius: 50%; background: rgba(255,255,255,0.5); border: none; cursor: pointer;"></button>
+          </div>
+        </div>
+      </section>
+      <aside class="notish-board" aria-label="Notish Board">
+        <h2>Notish Board</h2>
+        <ul>
+          <li>School reopens on 1st September</li>
+          <li>Annual sports day on 15th October</li>
+          <li>Parent-teacher meeting on 20th November</li>
+          <li>New library books available</li>
+          <li>Exam schedule released</li>
+        </ul>
+      </aside>
+    </div>
+    <div class="result-container" style="display: flex; justify-content: space-between;">
+   
+      <section class="result-section content-section" style="flex-grow: 1; min-width: 300px;">
+
+          <label for="class-select" id="class-select-label">Select Class</label>
+          <select id="class-select" name="class-select" aria-label="Select Class">
+            <option value="8A">8A</option>
+            <option value="8B">8B</option>
+            <option value="10A">10A</option>
+            <option value="10B">10B</option>
+            <option value="10C">10C</option>
+          </select>
+
+          <label for="board-select" id="board-select-label" style="display:none;">Select Board</label>
+          <select id="board-select" name="board-select" aria-label="Select Board" style="display:none;">
+            <option value="ssc">SSC</option>
+            <option value="jsc">JSC</option>
+          </select>
+        </div>
+        <div id="result-image-container" class="result-images-container" aria-live="polite" aria-atomic="true">
+          <img id="result-image" src="" alt="" />
+          <div class="result-buttons">
+            <button id="fullscreen-btn" type="button" aria-label="View result image in full screen">Full Screen</button>
+            <button id="download-btn" type="button" aria-label="Download your result image">Download Your Results</button>
+              <div class="eximusedu"><a href="https://www.eximusedu.com/login">Eximusedu</a> <style> eximusedu { color: #a678ff; }</style></div>
+          </div>
+        </div>
+      </section>
+    </div>
   </main>
+
+  <script src="src/scripts.js"></script>
+
+  <script>
+    const resultImages = {
+      "6A-morning": { src: "src/resources/image/6A-morning-results.jpg", alt: "6A Morning Result" },
+      "6B-morning": { src: "src/resources/image/6B-morning-results.jpg", alt: "6B Morning Result" },
+      "7A-morning": { src: "src/resources/image/7A-morning-results.jpg", alt: "7A Morning Result" },
+      "7B-morning": { src: "src/resources/image/7B-morning-results.jpg", alt: "7B Morning Result" },
+      "8A-morning": { src: "src/resources/image/8A-morning-results.jpg", alt: "8A Morning Result" },
+      "8B-morning": { src: "src/resources/image/8B-morning-results.jpg", alt: "8B Morning Result" },
+      "9A-morning": { src: "src/resources/image/9A-morning-results.jpg", alt: "9A Morning Result" },
+      "9B-morning": { src: "src/resources/image/9B-morning-results.jpg", alt: "9B Morning Result" },
+      "9C-morning": { src: "src/resources/image/9C-morning-results.jpg", alt: "9C Morning Result" },
+      "10A-morning": { src: "src/resources/image/10A-morning-results.jpg", alt: "10A Morning Result" },
+      "10B-morning": { src: "src/resources/image/10B-morning-results.jpg", alt: "10B Morning Result" },
+      "10C-morning": { src: "src/resources/image/10C-morning-results.jpg", alt: "10C Morning Result" },
+      "6A-day": { src: "src/resources/image/6A-day-results.jpg", alt: "6A Day Result" },
+      "6B-day": { src: "src/resources/image/6B-day-results.jpg", alt: "6B Day Result" },
+      "7A-day": { src: "src/resources/image/7A-day-results.jpg", alt: "7A Day Result" },
+      "7B-day": { src: "src/resources/image/7B-day-results.jpg", alt: "7B Day Result" },
+      "8A-day": { src: "src/resources/image/8A-day-results.jpg", alt: "8A Day Result" },
+      "8B-day": { src: "src/resources/image/8B-day-results.jpg", alt: "8B Day Result" },
+      "9A-day": { src: "src/resources/image/9A-day-results.jpg", alt: "9A Day Result" },
+      "9B-day": { src: "src/resources/image/9B-day-results.jpg", alt: "9B Day Result" },
+      "9C-day": { src: "src/resources/image/9C-day-results.jpg", alt: "9C Day Result" },
+      "10A-day": { src: "src/resources/image/10A-day-results.jpg", alt: "10A Day Result" },
+      "10B-day": { src: "src/resources/image/10B-day-results.jpg", alt: "10B Day Result" },
+      "10C-day": { src: "src/resources/image/10C-day-results.jpg", alt: "10C Day Result" },
+    };
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const timeSelect = document.getElementById("time-select");
+      const classSelect = document.getElementById("class-select");
+      const boardSelect = document.getElementById("board-select");
+      const classSelectLabel = document.getElementById("class-select-label");
+      const boardSelectLabel = document.getElementById("board-select-label");
+      const resultImage = document.getElementById("result-image");
+
+      function updateResultImage() {
+        const time = timeSelect.value;
+        let key = "";
+        if (time === "board") {
+          key = boardSelect.value;
+          classSelect.style.display = "none";
+          classSelectLabel.style.display = "none";
+          boardSelect.style.display = "inline-block";
+          boardSelectLabel.style.display = "inline-block";
+        } else {
+          key = `${classSelect.value}-${time}`;
+          classSelect.style.display = "inline-block";
+          classSelectLabel.style.display = "inline-block";
+          boardSelect.style.display = "none";
+          boardSelectLabel.style.display = "none";
+        }
+        if (resultImages[key]) {
+          resultImage.src = resultImages[key].src;
+          resultImage.alt = resultImages[key].alt;
+        } else {
+          resultImage.src = "";
+          resultImage.alt = "No result available";
+        }
+      }
+
+      timeSelect.addEventListener("change", updateResultImage);
+      classSelect.addEventListener("change", updateResultImage);
+      boardSelect.addEventListener("change", updateResultImage);
+
+      // Initialize image on page load
+      updateResultImage();
+    });
+
+    // Slider banner functionality
+    document.addEventListener("DOMContentLoaded", () => {
+      const slides = document.querySelector(".slider-banner .slides");
+      const slideCount = slides.children.length;
+      let currentIndex = 0;
+      let slideInterval;
+
+      // Clone first slide and append to end for infinite effect
+      const firstSlideClone = slides.children[0].cloneNode(true);
+      slides.appendChild(firstSlideClone);
+
+      const prevBtn = document.querySelector(".slider-banner .prev-btn");
+      const nextBtn = document.querySelector(".slider-banner .next-btn");
+      const dots = document.querySelectorAll(".slider-dots .dot");
+
+      function showSlide(index) {
+        currentIndex = index;
+        slides.style.transition = "transform 0.5s ease-in-out";
+        slides.style.transform = `translateX(-${currentIndex * 100}%)`;
+        dots.forEach((dot, i) => {
+          dot.style.background = i === (currentIndex % slideCount) ? "white" : "rgba(255,255,255,0.5)";
+        });
+      }
+
+      function startSlideShow() {
+        slideInterval = setInterval(() => {
+          currentIndex++;
+          slides.style.transition = "transform 0.5s ease-in-out";
+          slides.style.transform = `translateX(-${currentIndex * 100}%)`;
+
+          if (currentIndex === slideCount) {
+            setTimeout(() => {
+              slides.style.transition = "none";
+              slides.style.transform = "translateX(0)";
+              currentIndex = 0;
+              dots.forEach((dot, i) => {
+                dot.style.background = i === currentIndex ? "white" : "rgba(255,255,255,0.5)";
+              });
+            }, 500);
+          } else {
+            dots.forEach((dot, i) => {
+              dot.style.background = i === currentIndex ? "white" : "rgba(255,255,255,0.5)";
+            });
+          }
+        }, 5000);
+      }
+
+      function stopSlideShow() {
+        clearInterval(slideInterval);
+      }
+
+      prevBtn.addEventListener("click", () => {
+        stopSlideShow();
+        if (currentIndex === 0) {
+          slides.style.transition = "none";
+          currentIndex = slideCount;
+          slides.style.transform = `translateX(-${currentIndex * 100}%)`;
+          setTimeout(() => {
+            slides.style.transition = "transform 0.5s ease-in-out";
+            currentIndex--;
+            slides.style.transform = `translateX(-${currentIndex * 100}%)`;
+            dots.forEach((dot, i) => {
+              dot.style.background = i === currentIndex ? "white" : "rgba(255,255,255,0.5)";
+            });
+          }, 20);
+        } else {
+          currentIndex--;
+          showSlide(currentIndex);
+        }
+        startSlideShow();
+      });
+
+      nextBtn.addEventListener("click", () => {
+        stopSlideShow();
+        currentIndex++;
+        slides.style.transition = "transform 0.5s ease-in-out";
+        slides.style.transform = `translateX(-${currentIndex * 100}%)`;
+        if (currentIndex === slideCount) {
+          setTimeout(() => {
+            slides.style.transition = "none";
+            slides.style.transform = "translateX(0)";
+            currentIndex = 0;
+            dots.forEach((dot, i) => {
+              dot.style.background = i === currentIndex ? "white" : "rgba(255,255,255,0.5)";
+            });
+          }, 500);
+        } else {
+          dots.forEach((dot, i) => {
+            dot.style.background = i === currentIndex ? "white" : "rgba(255,255,255,0.5)";
+          });
+        }
+        startSlideShow();
+      });
+
+      dots.forEach((dot, i) => {
+        dot.addEventListener("click", () => {
+          stopSlideShow();
+          showSlide(i);
+          startSlideShow();
+        });
+      });
+
+      showSlide(currentIndex);
+      startSlideShow();
+    });
+  </script>
+
+      <script>
+        document.addEventListener("DOMContentLoaded", () => {
+          const fullscreenBtn = document.getElementById("fullscreen-btn");
+          const downloadBtn = document.getElementById("download-btn");
+          const resultImage = document.getElementById("result-image");
+          const resultImageContainer = document.getElementById("result-image-container");
+
+          fullscreenBtn.addEventListener("click", () => {
+            if (resultImage.requestFullscreen) {
+              resultImage.requestFullscreen();
+            } else if (resultImage.webkitRequestFullscreen) { /* Safari */
+              resultImage.webkitRequestFullscreen();
+            } else if (resultImage.msRequestFullscreen) { /* IE11 */
+              resultImage.msRequestFullscreen();
+            }
+          });
+
+          downloadBtn.addEventListener("click", () => {
+            const imageSrc = resultImage.src;
+            if (!imageSrc) {
+              alert("No result image to download.");
+              return;
+            }
+            const link = document.createElement("a");
+            link.href = imageSrc;
+            // Extract filename from src
+            const filename = imageSrc.substring(imageSrc.lastIndexOf("/") + 1);
+            link.download = filename;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+          });
+        });
+      </script>
 </body>
 </html>

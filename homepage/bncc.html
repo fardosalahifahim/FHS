@@ -10,17 +10,106 @@
   <link rel="stylesheet" href="src/styles.css" />
 </head>
 <body>
-  <header>
-    <h1>BNCC</h1>
-    <nav>
-      <a href="index.html">Home</a>
-    </nav>
+  <nav>
+    <div class="nav-container container">
+      <div class="nav-logo" tabindex="0" aria-label="Faridpur High School Home">
+        <a href="index.html"><img src="src/resources/image/logo.png" alt="Faridpur High School Logo" /></a>
+      </div>
+      <div class="nav-toggle" aria-label="Toggle navigation menu" tabindex="0">&#9776;</div>
+      <ul id="nav-menu" class="nav-menu left-menu" role="menubar" aria-label="Primary navigation">
+        <li class="nav-item" role="none"><a href="index.html" class="nav-link" role="menuitem" tabindex="0">Home</a></li>
+        <li class="nav-item" role="none"><a href="school.html" class="nav-link" role="menuitem" tabindex="0">School</a></li>
+        <li class="nav-item" role="none"><a href="academic.html" class="nav-link" role="menuitem" tabindex="0">Academic</a></li>
+        <li class="nav-item" role="none"><a href="curriculum.html" class="nav-link" role="menuitem" tabindex="0">Curriculum</a></li>
+        <li class="nav-item" role="none"><a href="routine.html" class="nav-link" role="menuitem" tabindex="0">Routine</a></li>
+        <li class="nav-item" role="none"><a href="#" class="nav-link" role="menuitem" tabindex="0">Message</a></li>
+        <li class="nav-item" role="none"><a href="result.html" class="nav-link" role="menuitem" tabindex="0">Result</a></li>
+      </ul>
+      <ul class="nav-menu right-menu" role="menubar" aria-label="Right navigation">
+        <li class="nav-item dropdown" role="none">
+          <a href="registration.html" class="nav-link dropdown-toggle" role="menuitem" aria-haspopup="true" aria-expanded="false" tabindex="0">Registration</a>
+          <ul class="dropdown-menu" role="menu" aria-label="Registration submenu">
+            <!-- Registration submenu items can be added here -->
+          </ul>
+        </li>
+        <li class="nav-item" role="none"><a href="login.html" class="nav-link" role="menuitem" tabindex="0">Login</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <header class="hero bncc-hero" role="banner" aria-label="BNCC banner">
+    <div class="hero-content">
+      <h1>BNCC - Building Discipline and Leadership</h1>
+      <p>Join BNCC to develop your skills and serve the community with pride and dedication.</p>
+    </div>
   </header>
+
   <main>
-    <section>
+    <section class="content-section bncc-about">
       <h2>About BNCC</h2>
       <p>Building discipline, leadership, and patriotism through BNCC activities and training. Join BNCC to develop your skills and serve the community.</p>
     </section>
+
+    <section class="content-section bncc-activities">
+      <h2>BNCC Activities</h2>
+      <div class="bncc-cards">
+        <article class="bncc-card">
+          <h3>Drill and Parade</h3>
+          <p>Learn discipline and teamwork through regular drill and parade sessions.</p>
+        </article>
+        <article class="bncc-card">
+          <h3>Community Service</h3>
+          <p>Participate in community service projects to help those in need and build leadership skills.</p>
+        </article>
+        <article class="bncc-card">
+          <h3>Adventure Training</h3>
+          <p>Engage in adventure activities like trekking, camping, and survival training.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="content-section bncc-contact">
+      <h2>Contact BNCC</h2>
+      <p>If you have any questions or want to join BNCC, please reach out to us:</p>
+      <ul>
+        <li>Email: bncc@faridpurhighschool.edu</li>
+        <li>Phone: +880 1234 567891</li>
+        <li>Address: 123 School Road, Faridpur, Bangladesh</li>
+      </ul>
+    </section>
   </main>
+
+  <footer class="site-footer" role="contentinfo" aria-label="BNCC page footer">
+    <div class="footer-container">
+      <div class="footer-about">
+        <h3>Faridpur High School</h3>
+        <p>Committed to academic excellence and community spirit.</p>
+      </div>
+      <div class="footer-contact">
+        <h4>Contact Us</h4>
+        <address>
+          123 School Street, Faridpur<br />
+          Phone: (123) 456-7890<br />
+          Email: info@faridpurhighschool.edu
+        </address>
+      </div>
+      <div class="footer-links">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="academic.html">Academic</a></li>
+          <li><a href="curriculum.html">Curriculum</a></li>
+          <li><a href="routine.html">Routine</a></li>
+          <li><a href="result.html">Result</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2024 Faridpur High School. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="src/scripts.js"></script>
 </body>
 </html>

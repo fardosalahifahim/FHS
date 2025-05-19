@@ -9,6 +9,8 @@
   <link rel="stylesheet" href="src/styles.css" />
   <link rel="stylesheet" href="src/loader.css" />
   <link rel="stylesheet" href="src/routine.css" />
+  <link rel="stylesheet" href="src/curriculum.css" />
+  <link rel="stylesheet" href="src/curriculum-new-theme.css" />
 </head>
 <body>
   <div id="loading-spinner" style="display:none;"></div>
@@ -56,7 +58,7 @@
       const moreDropdown = document.querySelector('.more-dropdown-menu');
 
       navToggle.addEventListener('click', () => {
-        navMenu.classList.toggle('active');
+        navMenu.classList.toggle('show');
       });
 
       moreMenu.addEventListener('click', (e) => {
@@ -76,7 +78,7 @@
       navToggle.addEventListener('keydown', (e) => {
         if (e.key === 'Enter' || e.key === ' ') {
           e.preventDefault();
-          navMenu.classList.toggle('active');
+          navMenu.classList.toggle('show');
         }
       });
 
@@ -94,13 +96,105 @@
 </body>
 </html>
 
-  <header class="hero" role="banner" aria-label="Curriculum welcome section">
-    <h1>Curriculum Overview</h1>
-    <p>Learn about our comprehensive curriculum designed to prepare students for success.</p>
-  </header>
 
-  <main>
-    <!-- Curriculum content here -->
+  <main id="curriculum" class="content-section faridpur-theme">
+    <section class="curriculum-overview">
+      <h2>Bangladesh National Curriculum (Classes 6 to 10)</h2>
+      <p>Faridpur High School follows the Bangladesh National Curriculum as prescribed by the National Curriculum and Textbook Board (NCTB). Our curriculum is designed to foster competency-based learning, creativity, and practical skills.</p>
+      <img src="src/resources/image/faridpur_high_school_building.jpg" alt="Faridpur High School Building" style="width:100%; max-width:800px; border-radius:15px; margin-top:1rem; box-shadow: 0 0 20px #a678ff;">
+    </section>
+
+    <section class="junior-secondary">
+      <h3>Classes 6 to 8 (Junior Secondary)</h3>
+      <p>All students study the following core subjects:</p>
+      <ul>
+        <li>Bangla</li>
+        <li>English</li>
+        <li>Mathematics</li>
+        <li>Science (General Science including Biology, Physics, and Chemistry basics)</li>
+        <li>Bangladesh and Global Studies (History, Civics, Geography)</li>
+        <li>Information and Communication Technology (ICT)</li>
+        <li>Religion Studies (Islam, Hinduism, Christianity, Buddhism)</li>
+        <li>Arts and Crafts</li>
+        <li>Physical Education and Health</li>
+        <li>Work and Life-Oriented Education (basic skills, vocational ideas)</li>
+      </ul>
+    </section>
+
+    <section class="secondary-level">
+      <h3>Classes 9 and 10 (Secondary Level / SSC Level)</h3>
+      <p>Students choose one of three groups: Science, Business Studies (Commerce), or Humanities (Arts). Each group has compulsory, elective, and optional subjects.</p>
+      <article class="group science-group">
+        <h4>Science Group (Science) </h4>
+        <p><strong>Compulsory Subjects:</strong></p>
+        <ul>
+          <li>Bangla</li>
+          <li>English</li>
+          <li>Mathematics</li>
+          <li>Information and Communication Technology (ICT)</li>
+          <li>Religion</li>
+          <li>Bangladesh and Global Studies (BGS)</li>
+        </ul>
+        <p><strong>Group Electives:</strong></p>
+        <ul>
+          <li>Physics</li>
+          <li>Chemistry</li>
+          <li>Biology</li>
+          <li>Higher Mathematics (Optional subject for extra GPA advantage)</li>
+        </ul>
+      </article>
+
+      <article class="group business-group">
+        <h4>Business Studies Group (Commerce)</h4>
+        <p><strong>Compulsory Subjects:</strong></p>
+        <ul>
+          <li>Bangla</li>
+          <li>English</li>
+          <li>Mathematics</li>
+          <li>Information and Communication Technology (ICT)</li>
+          <li>Religion</li>
+          <li>Bangladesh and Global Studies (BGS)</li>
+        </ul>
+        <p><strong>Group Electives:</strong></p>
+        <ul>
+          <li>Accounting</li>
+          <li>Business Entrepreneurship</li>
+          <li>Finance and Banking</li>
+        </ul>
+        <p><strong>Optional Subjects:</strong> Higher Math / Agriculture Studies / another approved subject</p>
+      </article>
+
+      <article class="group humanities-group">
+        <h4>Humanities Group (Arts)</h4>
+        <p><strong>Compulsory Subjects:</strong></p>
+        <ul>
+          <li>Bangla</li>
+          <li>English</li>
+          <li>Mathematics</li>
+          <li>Information and Communication Technology (ICT)</li>
+          <li>Religion</li>
+          <li>Bangladesh and Global Studies (BGS)</li>
+        </ul>
+        <p><strong>Group Electives:</strong></p>
+        <ul>
+          <li>History / Civics</li>
+          <li>Geography / Economics</li>
+          <li>Agriculture Studies / Home Science / Psychology</li>
+        </ul>
+        <p><strong>Optional Subjects:</strong> Arabic / Higher Math / another subject</p>
+      </article>
+    </section>
+
+    <section class="ssc-exam">
+      <h3>SSC Exam GPA System (Class 10 Final Exam)</h3>
+      <p>Students appear for the Secondary School Certificate (SSC) exam after class 10. GPA is calculated from the top 5 subjects plus optional subject bonus. The optional subject (4th subject) can increase GPA if scored high.</p>
+    </section>
+
+    <section class="nctb-updates">
+      <h3>NCTB Updates (As of 2023–2027)</h3>
+      <p>The new curriculum is being phased in with a focus on competency-based learning, creativity, ICT, and practical skills rather than memorization.</p>
+    </section>
+   
   </main>
 </body>
 </html>

@@ -1,0 +1,64 @@
+/* Faridpur High School Theme */
+.faridpur-theme {
+  background: linear-gradient(135deg, #004d40, #00796b, #004d40);
+  color: #a7ffeb;
+  box-shadow: 0 0 50px #004d40;
+  border-radius: 22px;
+  padding: 2.5rem 3.5rem;
+  font-family: 'Arial Black', Arial, sans-serif;
+  text-shadow: 0 0 15px #00796b;
+  transition: background 0.3s ease;
+}
+
+.faridpur-theme:hover {
+  background: linear-gradient(135deg, #00796b, #004d40, #00796b);
+  box-shadow: 0 0 70px #a7ffeb;
+}
+
+.faridpur-theme h2, .faridpur-theme h3 {
+  color: #a7ffeb;
+  text-shadow: 0 0 30px #004d40;
+  letter-spacing: 4px;
+  margin-bottom: 2rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.faridpur-theme h4 {
+  color: #64ffda;
+  text-shadow: 0 0 20px #004d40;
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  border-bottom: 3px solid #004d40;
+  padding-bottom: 0.4rem;
+}
+
+.faridpur-theme p {
+  color: #b2dfdb;
+  text-shadow: 0 0 12px #004d40;
+  font-weight: 600;
+  margin-bottom: 1.8rem;
+}
+
+.faridpur-theme ul {
+  padding-left: 2.5rem;
+  list-style-type: disc;
+  font-weight: 700;
+  color: #80cbc4;
+  text-shadow: 0 0 12px #004d40;
+  margin-bottom: 2.5rem;
+}
+
+.faridpur-theme ul li {
+  margin-bottom: 1rem;
+  cursor: default;
+  transition: color 0.3s ease;
+  text-decoration: none;
+}
+
+.faridpur-theme ul li:hover {
+  color: #a7ffeb;
+  text-shadow: 0 0 25px #00796b;
+}

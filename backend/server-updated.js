@@ -1,122 +1,135 @@
+// Import required modules
+require('dotenv').config();
 const express = require('express');
 const nodemailer = require('nodemailer');
 const bodyParser = require('body-parser');
-const cors = require('cors');
 const crypto = require('crypto');
+const cors = require('cors');
+
+const app = express();
+const port = 3001;
+
 const fs = require('fs');
 const path = require('path');
 
-const app = express();
-const PORT = 3001;
+// Logging middleware for debugging with file logging
+app.use((req, res, next) => {
+  const logEntry = `${new Date().toISOString()} ${req.method} ${req.url} - Body: ${JSON.stringify(req.body)}\n`;
+  fs.appendFile(path.join(__dirname, 'request.log'), logEntry, (err) => {
+    if (err) console.error('Failed to write log:', err);
+  });
+  console.log(logEntry.trim());
+  next();
+});
 
-app.use(cors());
+// Configure CORS to allow requests from frontend origin
+app.use(cors({
+  origin: 'http://localhost:5500',
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+  credentials: true
+}));
+
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-const usersFilePath = path.join(__dirname, 'users.json');
+// Store users and their OTPs in-memory
+const users = {};
 
-// Load users from file or initialize empty array
-let users = [];
-if (fs.existsSync(usersFilePath)) {
-  const data = fs.readFileSync(usersFilePath);
-  users = JSON.parse(data);
-}
-
-// Save users to file
-function saveUsers() {
-  fs.writeFileSync(usersFilePath, JSON.stringify(users, null, 2));
-}
-
-// Generate random token
-function generateToken() {
-  return crypto.randomBytes(32).toString('hex');
-}
-
-// Configure nodemailer transporter (use your email service credentials)
+// Nodemailer setup
 const transporter = nodemailer.createTransport({
   service: 'gmail',
   auth: {
-    user: 'mail.fhs.sup@gmail.com', // User's email
-    pass: 'FHS=pass'                // User's app password
+    user: process.env.EMAIL_USER,
+    pass: process.env.EMAIL_PASS
   }
 });
 
-// Register endpoint
+// Generate OTP function
+const generateOTP = () => {
+  return Math.floor(100000 + Math.random() * 900000);
+};
+
+// Endpoint to initiate email verification and registration
 app.post('/register', (req, res) => {
-  const { name, rollnumber, class: studentClass, section, shift, phone, email, password } = req.body;
+  const { email, password } = req.body;
 
-  if (users.find(u => u.email === email)) {
-    return res.status(400).json({ message: 'Email already registered' });
-  }
-  if (users.find(u => u.rollnumber === rollnumber)) {
-    return res.status(400).json({ message: 'Roll number already registered' });
+  if (users[email]) {
+    return res.status(400).json({ message: 'User already exists' });
   }
 
-  const verificationToken = generateToken();
+  // Generate OTP
+  const otp = generateOTP();
 
-  const newUser = {
-    id: crypto.randomUUID(),
-    name,
-    rollnumber,
-    class: studentClass,
-    section,
-    shift,
-    phone,
-    email,
+  // Store user with password and OTP in-memory
+  users[email] = {
     password,
-    verified: false,
-    verificationToken
+    otp,
+    verified: false
   };
 
-  users.push(newUser);
-  saveUsers();
-
-  // Send verification email
-  const verificationUrl = `http://localhost:${PORT}/verify-email?token=${verificationToken}`;
-
+  // Email configuration
   const mailOptions = {
-    from: 'mail.fhs.sup@gmail.com', // User's email
+    from: 'mail.fhs.sup@gmail.com',
     to: email,
-    subject: 'Verify your email for Faridpur High School',
-    html: `<p>Hello ${name},</p>
-           <p>Please verify your email by clicking the link below:</p>
-           <a href="${verificationUrl}">${verificationUrl}</a>`
+    subject: 'Email Verification OTP',
+    text: `Your OTP for email verification is: ${otp}`
   };
 
+  // Send email
   transporter.sendMail(mailOptions, (error, info) => {
     if (error) {
-      console.error('Error sending email:', error);
-      return res.status(500).json({ message: 'Failed to send verification email', error: error.message });
+      console.error(error);
+      return res.status(500).send('Failed to send OTP');
     }
-    res.json({ message: 'Registration successful, verification email sent' });
+    console.log('Email sent: ' + info.response);
+    res.status(200).json({ message: 'OTP sent successfully' });
   });
 });
 
-// Email verification endpoint
-app.get('/verify-email', (req, res) => {
-  const { token } = req.query;
-  const user = users.find(u => u.verificationToken === token);
-  if (!user) {
-    return res.status(400).send('Invalid or expired verification token');
+// Endpoint to verify OTP
+app.post('/verify-otp', (req, res) => {
+  const { email, otp } = req.body;
+
+  // Check if user exists
+  if (!users[email]) {
+    return res.status(400).send('User not found');
   }
-  user.verified = true;
-  user.verificationToken = null;
-  saveUsers();
-  res.send('Email verified successfully! You can now log in.');
+
+  // Check if OTP is correct
+  if (users[email].otp === parseInt(otp)) {
+    // Mark user as verified
+    users[email].verified = true;
+    return res.status(200).send('OTP verified successfully');
+  } else {
+    return res.status(401).send('Invalid OTP');
+  }
 });
 
-// Login endpoint
+// Endpoint to handle login
 app.post('/login', (req, res) => {
   const { email, password } = req.body;
-  const user = users.find(u => u.email === email && u.password === password);
-  if (!user) {
-    return res.status(400).json({ message: 'Invalid email or password' });
+
+  // Check if user exists
+  if (!users[email]) {
+    return res.status(400).json({ message: 'User not found' });
   }
-  if (!user.verified) {
-    return res.status(403).json({ message: 'Email not verified' });
+
+  // Check if email is verified
+  if (!users[email].verified) {
+    return res.status(401).json({ message: 'Email not verified' });
   }
-  res.json({ message: 'Login successful', user: { id: user.id, name: user.name, email: user.email } });
+
+  // Check password (for demo, password is stored as plain text in users object)
+  if (users[email].password !== password) {
+    return res.status(401).json({ message: 'Invalid password' });
+  }
+
+  // Successful login
+  return res.status(200).json({ user: { email } });
 });
 
-app.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`);
+// Start the server
+app.listen(port, () => {
+  console.log(`Server is running on port ${port}`);
 });
