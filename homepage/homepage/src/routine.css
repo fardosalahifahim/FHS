@@ -1,0 +1,251 @@
+/* Styles for highly designed routine tables */
+.routine-section {
+  max-width: 900px;
+  margin: 6rem auto 2rem auto;
+  padding: 1rem;
+  background: linear-gradient(135deg, #5a2a83, #7b3fbf);
+  border-radius: 20px;
+  box-shadow: 0 0 30px #a678ff;
+  color: #f0e6ff;
+}
+
+.routine-section h2 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  text-shadow: 0 0 10px #d8b3ff;
+}
+
+.routine-table {
+  width: 100%;
+  border-collapse: collapse;
+  box-shadow: 0 0 20px #7b3fbf;
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+.routine-table th,
+.routine-table td {
+  padding: 12px 15px;
+  text-align: center;
+  border: 1px solid #a678ff;
+}
+
+.routine-table thead {
+  background: linear-gradient(135deg, #7b3fbf, #a678ff);
+  color: #fff;
+  font-weight: 700;
+  font-size: 1.1rem;
+  text-shadow: 0 0 5px #2e0854;
+}
+
+.routine-table tbody tr:nth-child(even) {
+  background: rgba(123, 63, 191, 0.3);
+}
+
+.routine-table tbody tr:hover {
+  background: rgba(166, 120, 255, 0.5);
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.highly-designed-select {
+  background: linear-gradient(135deg, #7b3fbf, #a678ff);
+  color: #fff;
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 0.4rem 1rem;
+  border: none;
+  border-radius: 25px;
+  box-shadow: 0 4px 10px rgba(123, 63, 191, 0.6);
+  cursor: pointer;
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+  outline: none;
+}
+
+.highly-designed-select:hover,
+.highly-designed-select:focus {
+  background: linear-gradient(135deg, #a678ff, #7b3fbf);
+  box-shadow: 0 6px 15px rgba(166, 120, 255, 0.8);
+  outline: none;
+}
+
+.highly-designed-select option {
+  background-color: #7b3fbf;
+  color: #f0e6ff;
+  font-weight: 600;
+  padding: 0.3rem 1rem;
+}
+
+/* New style for highly designed routine image */
+.highly-designed-routine-image {
+  display: block;
+  margin: 2rem auto 12rem auto;
+  max-width: 90%;
+  height: auto;
+  border-radius: 15px;
+  box-shadow: 0 0 25px #a678ff;
+  transition: transform 0.3s ease;
+}
+
+.highly-designed-routine-image:hover {
+  transform: scale(1.05);
+}
+
+/* New style for routine image container background */
+.routine-image-container {
+  max-width: 900px;
+  margin: 8rem auto 12rem auto;
+  padding: 2rem;
+  background: linear-gradient(135deg, #7b3fbf, #a678ff);
+  border-radius: 25px;
+  box-shadow: 0 0 40px #a678ff;
+  display: block;
+  position: relative;
+}
+
+/* Position the selection bar at top right inside the container */
+.routine-select-container {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* New styles for phone buttons */
+.routine-phone-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.routine-btn {
+  background: linear-gradient(135deg, #a678ff, #7b3fbf);
+  color: #fff;
+  font-weight: 700;
+  font-size: 1rem;
+  padding: 0.6rem 1.5rem;
+  border: none;
+  border-radius: 30px;
+  box-shadow: 0 4px 15px rgba(123, 63, 191, 0.8);
+  cursor: pointer;
+  transition: background 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+  outline: none;
+}
+
+.routine-btn:hover,
+.routine-btn:focus {
+  background: linear-gradient(135deg, #7b3fbf, #a678ff);
+  box-shadow: 0 6px 20px rgba(166, 120, 255, 1);
+  transform: scale(1.05);
+  outline: none;
+}
+
+/* Responsive navigation styles */
+.nav-toggle {
+  display: none;
+  font-size: 2rem;
+  cursor: pointer;
+  color: #a678ff;
+  user-select: none;
+}
+
+.nav-menu {
+  display: flex;
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+.nav-menu.left-menu,
+.nav-menu.right-menu {
+  flex-wrap: nowrap;
+}
+
+.more-dropdown-menu {
+  display: none;
+  position: absolute;
+  background: linear-gradient(135deg, #7b3fbf, #a678ff);
+  border-radius: 10px;
+  box-shadow: 0 0 15px #a678ff;
+  padding: 0.5rem 0;
+  margin-top: 0.5rem;
+  min-width: 150px;
+  z-index: 1000;
+}
+
+.more-dropdown-menu.show {
+  display: block;
+}
+
+.more-dropdown-menu li {
+  padding: 0.5rem 1rem;
+}
+
+.more-dropdown-menu li a {
+  color: #f0e6ff;
+  text-decoration: none;
+  display: block;
+}
+
+.more-dropdown-menu li a:hover,
+.more-dropdown-menu li a:focus {
+  background: rgba(166, 120, 255, 0.5);
+  outline: none;
+}
+
+/* Responsive adjustments for small screens */
+@media (max-width: 768px) {
+  .nav-toggle {
+    display: block;
+  }
+
+  .nav-menu {
+    display: none;
+    flex-direction: column;
+    background: linear-gradient(135deg, #7b3fbf, #a678ff);
+    position: absolute;
+    top: 60px;
+    left: 0;
+    right: 0;
+    border-radius: 0 0 15px 15px;
+    box-shadow: 0 0 20px #a678ff;
+    padding: 1rem 0;
+    z-index: 1000;
+  }
+
+  .nav-menu.active {
+    display: flex;
+  }
+
+  .nav-menu.left-menu,
+  .nav-menu.right-menu {
+    flex-direction: column;
+  }
+
+  .nav-menu li {
+    margin: 0.5rem 0;
+  }
+
+  .nav-menu li a {
+    padding: 0.5rem 1.5rem;
+    display: block;
+  }
+
+  .more-dropdown-menu {
+    position: static;
+    box-shadow: none;
+    background: transparent;
+    padding: 0;
+    margin: 0;
+    min-width: auto;
+  }
+
+  .more-dropdown-menu li a {
+    color: #f0e6ff;
+    padding-left: 2rem;
+  }
+}

@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Routine - Faridpur High School</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="src/resources/image/logo.png" />
+    <link rel="shortcut icon" href="src/resources/image/logo.png" />
+    <link rel="stylesheet" href="src/styles.css" />
+    <link rel="stylesheet" href="src/routine.css" />
+    <link rel="stylesheet" href="src/loader.css" />
+  </head>
+<body>
+  <div id="loading-spinner" style="display:none;"></div>
+  <div id="offline-message" style="display:none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
+    background: rgba(45, 0, 90, 0.9); color: #d8b3ff; padding: 2rem 3rem; border-radius: 15px; box-shadow: 0 0 20px #a678ff; font-size: 1.5rem; text-align: center; z-index: 100000;">
+    You are currently offline. Please check your internet connection.
+  </div>
+  <nav>
+    <div class="nav-container container">
+      <div class="nav-logo" tabindex="0" aria-label="Faridpur High School Home">
+        <img src="src/resources/image/logo.png" alt="Faridpur High School Logo" />
+      </div>
+      <div class="nav-toggle" aria-label="Toggle navigation menu" tabindex="0">&#9776;</div>
+      <ul id="nav-menu" class="nav-menu left-menu" role="menubar" aria-label="Primary navigation">
+        <li class="nav-item" role="none"><a href="index.html" class="nav-link" role="menuitem" tabindex="0">Home</a></li>
+        <li class="nav-item" role="none"><a href="school.html" class="nav-link" role="menuitem" tabindex="0">School</a></li>
+        <li class="nav-item" role="none"><a href="academic.html" class="nav-link" role="menuitem" tabindex="0">Academic</a></li>
+        <li class="nav-item" role="none"><a href="curriculum.html" class="nav-link" role="menuitem" tabindex="0">Curriculum</a></li>
+        <li class="nav-item" role="none"><a href="routine.html" class="nav-link" role="menuitem" tabindex="0">Routine</a></li>
+        <li class="nav-item" role="none"><a href="#" class="nav-link" role="menuitem" tabindex="0">Message</a></li>
+        <li class="nav-item" role="none"><a href="result.html" class="nav-link" role="menuitem" tabindex="0">Result</a></li>
+
+        <li class="nav-item more-menu" role="none" aria-haspopup="true" aria-expanded="false">
+          <ul class="more-dropdown-menu" role="menu" aria-label="More navigation items">
+            <!-- Removed See More menu items as per user request -->
+          </ul>
+        </li>
+      </ul>
+      <ul class="nav-menu right-menu" role="menubar" aria-label="Right navigation">
+        <li class="nav-item dropdown" role="none">
+          <a href="registration.html" class="nav-link dropdown-toggle" role="menuitem" aria-haspopup="true" aria-expanded="false" tabindex="0">Registration</a>
+          <ul class="dropdown-menu" role="menu" aria-label="Registration submenu">
+            <!-- Removed Student Registration and Admin Registration options as requested -->
+          </ul>
+        </li>
+        <li class="nav-item" role="none"><a href="login.html" class="nav-link" role="menuitem" tabindex="0">Login</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+    <div id="routine-image-container" class="routine-image-container">
+      <h1 style="color: #f0e6ff; text-align: center; margin-bottom: 1rem;">Your Routine</h1>
+      <div class="routine-select-container">
+        <select id="time-of-day-select" class="highly-designed-select" aria-label="Select time of day" style="min-width: 120px; margin-right: 1rem;">
+          <option value="morning" selected>Morning</option>
+          <option value="day">Day</option>
+          <option value="board">Board</option>
+        </select>
+        <select id="class-select" class="highly-designed-select" aria-label="Select class routine" style="min-width: 160px;">
+          <option value="6A" selected>6A</option>
+          <option value="6B">6B</option>
+          <option value="7A">7A</option>
+          <option value="7B">7B</option>
+          <option value="8A">8A</option>
+          <option value="8B">8B</option>
+          <option value="9A">9A</option>
+          <option value="9B">9B</option>
+          <option value="9C">9C</option>
+          <option value="10A">10A</option>
+          <option value="10B">10B</option>
+          <option value="10C">10C</option>
+        </select>
+        <select id="board-select" class="highly-designed-select" aria-label="Select board routine" style="min-width: 160px; display: none;">
+          <option value="ssc" selected>SSC</option>
+          <option value="jsc">JSC</option>
+        </select>
+      </div>
+      <img id="routine-image" src="src/resources/image/class6A-routine.png" alt="Class 6A Routine" class="highly-designed-routine-image" />
+      <div class="routine-phone-buttons">
+        <button id="fullscreen-btn" class="routine-btn" aria-label="Full Screen">Full Screen</button>
+        <button id="download-btn" class="routine-btn" aria-label="Download Your Routine">Download Your Routine</button>
+      </div>
+    </div>
+  </main>
+
+    <script>
+    const timeOfDaySelect = document.getElementById('time-of-day-select');
+    const classSelect = document.getElementById('class-select');
+    const boardSelect = document.getElementById('board-select');
+    const routineImage = document.getElementById('routine-image');
+    const fullscreenBtn = document.getElementById('fullscreen-btn');
+    const downloadBtn = document.getElementById('download-btn');
+
+    const routineImages = {
+      morning6A: { src: 'src/resources/image/morning6A-routine.png', alt: 'Morning 6A Routine' },
+      morning6B: { src: 'src/resources/image/morning6B-routine.png', alt: 'Morning 6B Routine' },
+      morning7A: { src: 'src/resources/image/morning7A-routine.png', alt: 'Morning 7A Routine' },
+      morning7B: { src: 'src/resources/image/morning7B-routine.png', alt: 'Morning 7B Routine' },
+      morning8A: { src: 'src/resources/image/morning8A-routine.png', alt: 'Morning 8A Routine' },
+      morning8B: { src: 'src/resources/image/morning8B-routine.png', alt: 'Morning 8B Routine' },
+      morning9A: { src: 'src/resources/image/morning9A-routine.png', alt: 'Morning 9A Routine' },
+      morning9B: { src: 'src/resources/image/morning9B-routine.png', alt: 'Morning 9B Routine' },
+      morning9C: { src: 'src/resources/image/morning9C-routine.png', alt: 'Morning 9C Routine' },
+      morning10A: { src: 'src/resources/image/morning10A-routine.png', alt: 'Morning 10A Routine' },
+      morning10B: { src: 'src/resources/image/morning10B-routine.png', alt: 'Morning 10B Routine' },
+      morning10C: { src: 'src/resources/image/morning10C-routine.png', alt: 'Morning 10C Routine' },
+      day6A: { src: 'src/resources/image/day6A-routine.png', alt: 'Day 6A Routine' },
+      day6B: { src: 'src/resources/image/day6B-routine.png', alt: 'Day 6B Routine' },
+      day7A: { src: 'src/resources/image/day7A-routine.png', alt: 'Day 7A Routine' },
+      day7B: { src: 'src/resources/image/day7B-routine.png', alt: 'Day 7B Routine' },
+      day8A: { src: 'src/resources/image/day8A-routine.png', alt: 'Day 8A Routine' },
+      day8B: { src: 'src/resources/image/day8B-routine.png', alt: 'Day 8B Routine' },
+      day9A: { src: 'src/resources/image/day9A-routine.png', alt: 'Day 9A Routine' },
+      day9B: { src: 'src/resources/image/day9B-routine.png', alt: 'Day 9B Routine' },
+      day9C: { src: 'src/resources/image/day9C-routine.png', alt: 'Day 9C Routine' },
+      day10A: { src: 'src/resources/image/day10A-routine.png', alt: 'Day 10A Routine' },
+      day10B: { src: 'src/resources/image/day10B-routine.png', alt: 'Day 10B Routine' },
+      day10C: { src: 'src/resources/image/day10C-routine.png', alt: 'Day 10C Routine' },
+      ssc: { src: 'src/resources/image/ssc-routine.png', alt: 'SSC Board Routine' },
+      jsc: { src: 'src/resources/image/jsc-routine.png', alt: 'JSC Board Routine' },
+    };
+
+    function updateRoutineImage() {
+      const timeOfDay = timeOfDaySelect.value;
+      let key = '';
+
+      if (timeOfDay === 'board') {
+        key = boardSelect.value;
+      } else {
+        const classSelected = classSelect.value;
+        key = timeOfDay + classSelected;
+      }
+
+      if (routineImages[key]) {
+        routineImage.src = routineImages[key].src;
+        routineImage.alt = routineImages[key].alt;
+      }
+    }
+
+    timeOfDaySelect.addEventListener('change', () => {
+      if (timeOfDaySelect.value === 'board') {
+        classSelect.style.display = 'none';
+        boardSelect.style.display = 'inline-block';
+      } else {
+        classSelect.style.display = 'inline-block';
+        boardSelect.style.display = 'none';
+      }
+      updateRoutineImage();
+    });
+    classSelect.addEventListener('change', updateRoutineImage);
+    boardSelect.addEventListener('change', updateRoutineImage);
+
+    fullscreenBtn.addEventListener('click', () => {
+      if (document.fullscreenElement) {
+        document.exitFullscreen();
+      } else {
+        routineImage.requestFullscreen();
+      }
+    });
+
+    downloadBtn.addEventListener('click', () => {
+      const link = document.createElement('a');
+      link.href = routineImage.src;
+      link.download = routineImage.alt.replace(/\s+/g, '_').toLowerCase() + '.png';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    });
+
+    // Initialize image on page load
+    updateRoutineImage();
+  </script>
+  <script>
+    // Responsive nav toggle
+    const navToggle = document.querySelector('.nav-toggle');
+    const navMenu = document.getElementById('nav-menu');
+    const moreMenu = document.querySelector('.more-menu');
+    const moreDropdown = document.querySelector('.more-dropdown-menu');
+
+    navToggle.addEventListener('click', () => {
+      navMenu.classList.toggle('active');
+    });
+
+    moreMenu.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const expanded = moreMenu.getAttribute('aria-expanded') === 'true';
+      moreMenu.setAttribute('aria-expanded', !expanded);
+      moreDropdown.classList.toggle('show');
+    });
+
+    // Close more menu if clicking outside
+    document.addEventListener('click', () => {
+      moreMenu.setAttribute('aria-expanded', 'false');
+      moreDropdown.classList.remove('show');
+    });
+
+    // Keyboard accessibility for nav toggle
+    navToggle.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        navMenu.classList.toggle('active');
+      }
+    });
+
+    // Keyboard accessibility for more menu
+    moreMenu.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        const expanded = moreMenu.getAttribute('aria-expanded') === 'true';
+        moreMenu.setAttribute('aria-expanded', !expanded);
+        moreDropdown.classList.toggle('show');
+      }
+    });
+  </script>
+</body>
+</html>

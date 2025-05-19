@@ -1,0 +1,311 @@
+/* New Academic Page Styles - Enhancing beauty and theme */
+
+/* Base content section styling */
+.content-section {
+  background: rgba(45, 0, 90, 0.85);
+  border-radius: 20px;
+  padding: 3rem 4rem;
+  margin: 3rem auto;
+  max-width: 1100px;
+  box-shadow: 0 0 50px #7b3fbf;
+  color: #e0d7ff;
+  font-size: 1.2rem;
+  line-height: 1.8;
+  transition: box-shadow 0.4s ease, transform 0.3s ease;
+}
+
+.content-section:hover {
+  box-shadow: 0 0 80px #a678ff;
+  transform: translateY(-5px);
+}
+
+.content-section h2 {
+  font-size: 3rem;
+  font-weight: 800;
+  margin-bottom: 2rem;
+  color: #d8b3ff;
+  text-shadow: 0 0 20px #a678ff;
+  letter-spacing: 2px;
+  user-select: none;
+  border-bottom: 3px solid #a678ff;
+  padding-bottom: 0.5rem;
+}
+
+.content-section h3 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-top: 2rem;
+  margin-bottom: 1.2rem;
+  color: #c0a0ff;
+  text-shadow: 0 0 15px #7b3fbf;
+}
+
+/* Paragraph and list styling */
+.content-section p,
+.content-section ul {
+  margin-bottom: 1.2rem;
+  color: #d0c4ff;
+  text-shadow: 0 0 10px #5a2a83;
+}
+
+.content-section ul {
+  padding-left: 2rem;
+  list-style-type: disc;
+}
+
+.content-section ul li {
+  margin-bottom: 0.7rem;
+  font-weight: 600;
+  line-height: 1.6;
+  transition: color 0.3s ease;
+}
+
+.content-section ul li:hover {
+  color: #a678ff;
+  cursor: default;
+  text-shadow: 0 0 15px #d8b3ff;
+}
+
+/* Location & Contact Section */
+.section-location p {
+  font-style: italic;
+  color: #c8b3ff;
+  text-shadow: 0 0 15px #6a4dbf;
+}
+
+/* Footer styles */
+.site-footer {
+  background: linear-gradient(135deg, #2e0854, #5a2a83);
+  color: #d8b3ff;
+  padding: 2rem 1rem 1rem 1rem;
+  font-family: 'Poppins', sans-serif;
+  box-shadow: 0 0 30px rgba(123, 63, 191, 0.7);
+  margin-top: 5rem;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  max-width: 1100px;
+  margin: 0 auto;
+  gap: 2rem;
+}
+
+.footer-about,
+.footer-contact,
+.footer-links {
+  flex: 1 1 250px;
+  min-width: 200px;
+}
+
+.footer-about h3,
+.footer-contact h4,
+.footer-links h4 {
+  font-weight: 700;
+  margin-bottom: 1rem;
+  text-shadow: 0 0 10px #a678ff;
+}
+
+.footer-about p,
+.footer-contact address,
+.footer-links ul {
+  font-size: 1rem;
+  line-height: 1.5;
+  text-shadow: 0 0 5px #7b3fbf;
+}
+
+.footer-contact address {
+  font-style: normal;
+}
+
+.footer-links ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-links ul li {
+  margin-bottom: 0.5rem;
+}
+
+.footer-links ul li a {
+  color: #d8b3ff;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-links ul li a:hover,
+.footer-links ul li a:focus {
+  color: #a678ff;
+  text-decoration: underline;
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 2rem;
+  font-size: 0.9rem;
+  color: #b3a1d6;
+  text-shadow: 0 0 5px #5a2a83;
+}
+
+/* Responsive footer */
+@media (max-width: 768px) {
+  .footer-container {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .footer-about,
+  .footer-contact,
+  .footer-links {
+    min-width: auto;
+  }
+}
+
+/* Additional responsive improvements for footer in academic.html */
+@media (max-width: 480px) {
+  .site-footer {
+    display: none;
+  }
+}
+
+/* Smooth scroll for anchor links */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+  .content-section {
+    padding: 2rem 3rem;
+    margin: 2rem 1.5rem;
+    font-size: 1.1rem;
+  }
+  .content-section h2 {
+    font-size: 2.5rem;
+  }
+  .content-section h3 {
+    font-size: 1.7rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .content-section {
+    padding: 1.5rem 2rem;
+    margin: 1.5rem 1rem;
+    font-size: 1rem;
+  }
+  .content-section h2 {
+    font-size: 2rem;
+  }
+  .content-section h3 {
+    font-size: 1.4rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .content-section {
+    padding: 1rem 1rem;
+    margin: 1rem 0.5rem;
+    font-size: 0.95rem;
+  }
+  .content-section h2 {
+    font-size: 1.6rem;
+  }
+  .content-section h3 {
+    font-size: 1.2rem;
+  }
+}
+
+/* Style for the View Routine button */
+.routine-button-container {
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.btn-routine {
+  font-weight: 700;
+  padding: 1rem 2.5rem;
+  font-size: 1.2rem;
+  border-radius: 40px;
+  background: linear-gradient(135deg, #a678ff, #d8b3ff);
+  color: #2e0854;
+  box-shadow: 0 0 25px #a678ff;
+  transition: background 0.4s ease, box-shadow 0.4s ease, transform 0.3s ease;
+  user-select: none;
+  cursor: pointer;
+  border: none;
+  display: inline-block;
+  text-decoration: none;
+}
+
+.btn-routine:hover,
+.btn-routine:focus {
+  background: linear-gradient(135deg, #d8b3ff, #a678ff);
+  box-shadow: 0 0 40px #d8b3ff;
+  outline: none;
+  transform: scale(1.05);
+}
+
+/* Distinct styles for each section */
+.section-general {
+  background: linear-gradient(135deg, #5a2a83, #7b3fbf);
+  box-shadow: 0 0 40px #7b3fbf;
+  border-radius: 20px;
+  padding: 2rem 3rem;
+  margin-bottom: 3rem;
+  color: #f0e6ff;
+  text-shadow: 0 0 10px #a678ff;
+}
+
+.section-curriculum {
+  background: linear-gradient(135deg, #4a1a7a, #6a1b9a);
+  box-shadow: 0 0 40px #6a1b9a;
+  border-radius: 20px;
+  padding: 2rem 3rem;
+  margin-bottom: 3rem;
+  color: #e1bee7;
+  text-shadow: 0 0 10px #ce93d8;
+}
+
+.section-features {
+  background: linear-gradient(135deg, #3b2a6a, #5a2a83);
+  box-shadow: 0 0 40px #5a2a83;
+  border-radius: 20px;
+  padding: 2rem 3rem;
+  margin-bottom: 3rem;
+  color: #d8b3ff;
+  text-shadow: 0 0 10px #7b3fbf;
+}
+
+.section-extracurricular {
+  background: linear-gradient(135deg, #2e0854, #4a1a7a);
+  box-shadow: 0 0 40px #4a1a7a;
+  border-radius: 20px;
+  padding: 2rem 3rem;
+  margin-bottom: 3rem;
+  color: #c8b3ff;
+  text-shadow: 0 0 10px #6a4dbf;
+}
+
+.section-facilities {
+  background: linear-gradient(135deg, #1b1b3a, #2e2e5a);
+  box-shadow: 0 0 40px #2e2e5a;
+  border-radius: 20px;
+  padding: 2rem 3rem;
+  margin-bottom: 3rem;
+  color: #b3b3e6;
+  text-shadow: 0 0 10px #4a4abf;
+}
+
+.section-location {
+  background: linear-gradient(135deg, #3a2e2e, #5a4a4a);
+  box-shadow: 0 0 40px #5a4a4a;
+  border-radius: 20px;
+  padding: 2rem 3rem;
+  margin-bottom: 3rem;
+  color: #d8b3b3;
+  text-shadow: 0 0 10px #a67b7b;
+}

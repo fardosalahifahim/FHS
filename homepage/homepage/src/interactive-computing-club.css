@@ -1,0 +1,849 @@
+/* Styles for Interactive Computing Club page */
+
+body {
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  color: #a0e9fd;
+  font-family: 'Poppins', sans-serif;
+  background-color: #ffffff;
+}
+
+/* Further enhanced nav bar styles for Interactive Computing Club page */
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+nav {
+  display: flex !important;
+  background: rgba(45, 0, 90, 0.7);
+  backdrop-filter: blur(10px);
+  position: fixed;
+  width: 96%;
+  top: 20px;
+  left: 2%;
+  z-index: 10000;
+  box-shadow: 0 8px 30px rgba(75, 0, 130, 0.7);
+  border-radius: 15px;
+  transition: box-shadow 0.3s ease;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  padding: 0;
+  margin: 0 auto;
+}
+
+.nav-container {
+  display: flex !important;
+  justify-content: space-between;
+  align-items: center;
+  height: 60px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.nav-menu {
+  display: flex !important;
+  gap: 1rem;
+  align-items: center;
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+.nav-item {
+  position: relative;
+}
+
+.nav-link {
+  font-weight: 600;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  color: #d8b3ff;
+  text-shadow: 0 0 5px #d8b3ff;
+  user-select: none;
+}
+
+.nav-link:hover,
+.nav-link:focus {
+  background: #0b6b97;
+  color: #0c6a8f;
+  box-shadow: 0 0 15px #499ff0;
+  outline: none;
+}
+
+.nav-toggle {
+  display: block;
+  font-size: 2rem;
+  color: #b4b3ff;
+  cursor: pointer;
+  user-select: none;
+}
+
+  .nav-toggle:hover,
+  .nav-toggle:focus {
+    color: #be78ff;
+    outline: none;
+  }
+
+h1, h2, h3 {
+  text-shadow: 0 0 15px #00ffff;
+  color: #00ffff;
+  font-weight: 700;
+  margin-top: 5.5rem;
+}
+
+h2 {
+  margin-top: 1rem;
+}
+
+.hero-section {
+  text-align: center;
+  padding: 3rem 1rem;
+  background: linear-gradient(135deg, #004d66, #008080);
+  border-radius: 20px;
+  box-shadow: 0 0 30px #00ffff;
+  margin-bottom: 3rem;
+}
+
+.hero-section h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.hero-section p {
+  font-size: 1.25rem;
+  color: #a0e9fd;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.club-events-section {
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 1rem 2rem;
+  background: rgba(0, 255, 255, 0.1);
+  border-radius: 20px;
+  box-shadow: 0 0 30px #00ffff;
+}
+
+.club-events-section h2 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.club-events-list {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.club-event {
+  background: rgba(0, 255, 255, 0.15);
+  border-radius: 15px;
+  box-shadow: 0 0 20px #00ffff;
+  padding: 1rem;
+  width: 200px;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.club-event:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 40px #00ffff;
+}
+
+.club-event img {
+  width: 100%;
+  height: 140px;
+  border-radius: 15px;
+  object-fit: cover;
+  box-shadow: 0 0 15px #00ffff;
+  margin-bottom: 0.75rem;
+}
+
+.club-event p {
+  font-size: 1.1rem;
+  color: #a0e9fd;
+  margin: 0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  body {
+    background: #004d66; /* solid background color for phone */
+  }
+
+  /* Hide nav bar on phone for interactive computing club page */
+  nav {
+    display: none !important;
+  }
+
+  .extraordinary-students {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .student-card {
+    width: 90%;
+  }
+
+  .student-activities-section,
+  .school-extracurricular-activities {
+    width: 90%;
+    padding: 1rem;
+  }
+
+  /* Redesigned nav bar for phone */
+  nav {
+    background: linear-gradient(90deg, #008080, #004d66);
+    box-shadow: 0 4px 15px rgba(0, 77, 102, 0.8);
+    border-radius: 0 0 15px 15px;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 12000;
+    padding: 0.75rem 1.25rem;
+    display: flex !important;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .nav-container {
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 0;
+    display: flex !important;
+    justify-content: flex-start; /* logo on left side */
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .nav-logo img {
+    width: 48px;
+    height: 48px;
+    filter: drop-shadow(0 0 10px #00ffff);
+  }
+
+  /* Make images responsive */
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* Flex container adjustments */
+  .extraordinary-students {
+    flex-wrap: wrap;
+  }
+
+  /* Slider container adjustments */
+  .slider-container {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+.slides-wrapper {
+  display: flex;
+  gap: 1rem;
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(135deg, #004d66, #008080);
+  padding: 1rem 0;
+  box-sizing: border-box;
+}
+
+  .slider-slide {
+    min-width: 80%;
+    flex-shrink: 0;
+  }
+}
+@media (max-width: 768px) {
+  .nav-toggle {
+    display: block;
+    font-size: 2.5rem;
+    color: #00ffff;
+    cursor: pointer;
+    user-select: none;
+    transition: color 0.3s ease;
+  }
+
+  .nav-toggle:hover,
+  .nav-toggle:focus {
+    color: #66ffff;
+    outline: none;
+  }
+
+  #nav-menu {
+    display: none !important;
+    flex-direction: column;
+    background: rgba(0, 77, 102, 0.95);
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    padding: 1rem 0;
+    border-radius: 0 0 15px 15px;
+    box-shadow: 0 4px 20px rgba(0, 255, 255, 0.7);
+    z-index: 10999;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+  }
+
+  #nav-menu.show {
+    display: flex !important;
+    max-height: 500px; /* enough height to show menu */
+  }
+
+  .nav-menu.right-menu {
+    display: none !important;
+  }
+
+  #nav-menu.show ~ .nav-menu.right-menu {
+    display: none !important;
+  }
+
+  .nav-menu.left-menu {
+    gap: 0;
+  }
+
+  .nav-item {
+    width: 100%;
+  }
+
+  .nav-link {
+    display: block;
+    width: 100%;
+    padding: 1rem 1.5rem;
+    font-size: 1.2rem;
+    color: #00ffff;
+    text-shadow: 0 0 10px #00ffff;
+    border-bottom: 1px solid rgba(0, 255, 255, 0.2);
+    transition: background-color 0.3s ease;
+  }
+
+  .nav-link:hover,
+  .nav-link:focus {
+    background-color: #004d66;
+    color: #a0e9fd;
+    outline: none;
+  }
+}
+
+
+  .club-events-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .club-event {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background: rgba(0, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 1rem;
+    box-shadow: 0 0 15px #00ffff;
+  }
+
+  .club-event img {
+    width: 80px;
+    height: 80px;
+    border-radius: 12px;
+    object-fit: cover;
+    box-shadow: 0 0 10px #00ffff;
+  }
+
+  .club-event p {
+    font-size: 1.1rem;
+    color: #a0e9fd;
+    margin: 0;
+  }
+
+
+/* Workshops and Training section styles */
+.workshops-section {
+  background: rgba(0, 255, 255, 0.1);
+  border-radius: 20px;
+  box-shadow: 0 0 30px #00ffff;
+  padding: 2rem 3rem;
+  max-width: 900px;
+  margin: 2rem auto;
+  color: #a0e9fd;
+  font-size: 1.2rem;
+  line-height: 1.8;
+  transition: background 0.5s ease;
+}
+
+.slider-container.extraordinary-students {
+  position: relative;
+  width: 100vw;
+  margin: 0 auto;
+  background: linear-gradient(135deg, #004d66, #008080);
+  padding: 2rem 1rem;
+  box-sizing: border-box;
+}
+
+.workshops-section h2 {
+  text-align: center;
+  color: #00ffff;
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  text-shadow: 0 0 15px #00ffff;
+}
+
+.workshops-section ul {
+  list-style: none;
+  padding-left: 0;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.workshops-section ul li {
+  position: relative;
+  padding-left: 3rem;
+  margin-bottom: 1rem;
+  cursor: default;
+  transition: color 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.workshops-section ul li::before {
+  content: "✔";
+  position: absolute;
+  left: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #00ffff;
+  font-weight: bold;
+  font-size: 1.2rem;
+  text-shadow: 0 0 5px #00ffff;
+}
+
+.workshops-section ul li:hover {
+  color: #d8b3ff;
+}
+
+.workshop-icon {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+  filter: drop-shadow(0 0 3px #00ffff);
+}
+
+.workshop-gallery-container {
+  background: linear-gradient(135deg, rgba(0, 255, 255, 0.15), rgba(0, 128, 128, 0.15));
+  border-radius: 24px;
+  padding: 1.5rem 2rem;
+  box-shadow: 0 0 40px 5px rgba(0, 255, 255, 0.3);
+  margin-top: 1.5rem;
+  transition: box-shadow 0.5s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.workshop-gallery-container::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle at center, rgba(0, 255, 255, 0.2), transparent 70%);
+  animation: pulseGlow 6s ease-in-out infinite;
+  pointer-events: none;
+  border-radius: 24px;
+  z-index: 0;
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.6;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 1;
+  }
+}
+
+.workshop-gallery {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  margin-top: 1.5rem;
+  position: relative;
+  z-index: 1;
+}
+
+.workshop-photo-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 180px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.workshop-photo {
+  width: 180px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 16px;
+  box-shadow: 0 0 20px 3px rgba(0, 255, 255, 0.6);
+  border: 2px solid rgba(0, 255, 255, 0.4);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  cursor: pointer;
+  background: linear-gradient(135deg, rgba(74, 20, 140, 0.2), rgba(106, 27, 154, 0.2));
+}
+
+.workshop-photo:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 40px 6px rgba(0, 255, 255, 0.8);
+  filter: brightness(1.1);
+}
+
+.workshop-description {
+  margin-top: 0.5rem;
+  font-size: 1rem;
+  color: #a0e9fd;
+  text-shadow: 0 0 5px #00ffff;
+  font-weight: 600;
+  user-select: none;
+}
+.extraordinary-students {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+  margin-bottom: 3rem;
+}
+
+.student-card {
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0, 255, 255, 0.7);
+  padding: 1.5rem;
+  text-align: center;
+  background: linear-gradient(135deg, #00ffff, #008080);
+  color: #f0e6ff;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  margin-bottom: 1.5rem;
+  max-width: 400px;
+}
+
+.student-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 12px 30px rgba(123, 63, 191, 0.9);
+}
+
+.student-card img {
+  width: 250px;
+  height: 200px;
+  border-radius: 15px;
+  object-fit: cover;
+  box-shadow: 0 0 20px #00ffff;
+  transition: transform 0.3s ease;
+  margin-bottom: 1rem;
+}
+
+.student-card img:hover {
+  transform: scale(1.1);
+}
+
+.extraordinary-students {
+  display: flex;
+  flex-direction: row;
+  gap: 0.2rem;
+  align-items: flex-start;
+}
+
+.student-card.left-align {
+  align-self: flex-start;
+  text-align: left;
+}
+
+.student-card.right-align {
+  align-self: flex-end;
+  text-align: right;
+}
+
+.student-activities-section {
+  background: radial-gradient(circle at center, #7b3fbf, #5a2a83);
+  padding: 3rem 4rem;
+  border-radius: 30px;
+  box-shadow: 0 0 40px #7b3fbf;
+  color: #f0e6ff;
+  max-width: 99%;
+  margin: 2rem auto;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  text-align: left;
+  width: 99%;
+  border-radius: 40px;
+  padding: 4rem 5rem;
+}
+
+.student-card h3 {
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+  text-shadow: 0 0 10px #00ffff;
+  font-weight: 700;
+}
+
+.student-card p {
+  font-size: 1.1rem;
+  line-height: 1.5;
+  color: #a0e9fd;
+  text-shadow: 0 0 8px #00ffff;
+  margin-bottom: 1rem;
+}
+
+.student-card img {
+  border-radius: 25px;
+  box-shadow: 0 0 35px #00ffff;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.student-card:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 50px #00ffff;
+}
+
+.left-align {
+  text-align: left;
+  align-self: flex-start;
+  margin-right: auto;
+}
+
+.student-card img {
+  width: 100%;
+  height: 200px;
+  border-radius: 20px;
+  object-fit: cover;
+  box-shadow: 0 0 25px #00ffff;
+  margin-bottom: 1rem;
+  transition: transform 0.3s ease;
+}
+
+.student-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 40px #00ffff;
+}
+
+.student-activities-section,
+.school-extracurricular-activities {
+  background: rgba(0, 255, 255, 0.1);
+  border-radius: 20px;
+  box-shadow: 0 0 30px #00ffff;
+  padding: 1.5rem 2rem;
+  margin-bottom: 3rem;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+  border: 1px solid #00ffff;
+}
+
+.student-activities-section h2,
+.school-extracurricular-activities h2 {
+  text-align: center;
+  margin-bottom: 1rem;
+  color: #00ffff;
+}
+
+.student-activities-section ul,
+.school-extracurricular-activities ul {
+  list-style-type: disc;
+  padding-left: 2rem;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #a0e9fd;
+}
+
+.student-activities-section ul li,
+.school-extracurricular-activities ul li {
+  margin-bottom: 0.5rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .extraordinary-students {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .student-card {
+    width: 90%;
+  }
+
+  .student-activities-section,
+  .school-extracurricular-activities {
+    width: 90%;
+    padding: 1rem;
+  }
+
+  /* Hide nav menu by default on mobile */
+  #nav-menu {
+    display: none;
+  }
+
+  /* Show nav menu when .show class is added */
+  #nav-menu.show {
+    display: flex;
+    flex-direction: column;
+    background: #001f33;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    padding: 1rem 0;
+    border-radius: 0 0 12px 12px;
+    box-shadow: 0 4px 15px rgba(0, 255, 255, 0.5);
+    z-index: 10000;
+  }
+
+  /* Hide right-menu when nav menu is shown on mobile */
+  #nav-menu.show ~ .nav-menu.right-menu {
+    display: none;
+  }
+
+  /* Hide registration and login nav items on interactive-computing-club page */
+  .nav-menu.right-menu {
+    display: none;
+  }
+
+  .club-events-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .club-event {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background: rgba(0, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 1rem;
+    box-shadow: 0 0 15px #00ffff;
+  }
+
+  .club-event img {
+    width: 80px;
+    height: 80px;
+    border-radius: 12px;
+    object-fit: cover;
+    box-shadow: 0 0 10px #00ffff;
+  }
+
+  .club-event p {
+    font-size: 1.1rem;
+    color: #a0e9fd;
+    margin: 0;
+  }
+}
+
+  .student-card {
+    width: 90%;
+  }
+
+  .student-activities-section,
+  .school-extracurricular-activities {
+    width: 90%;
+    padding: 1rem;
+  }
+
+  /* Hide nav menu by default on mobile */
+  #nav-menu {
+    display: none;
+  }
+
+  /* Show nav menu when .show class is added */
+  #nav-menu.show {
+    display: flex;
+    flex-direction: column;
+    background: #001f33;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    padding: 1rem 0;
+    border-radius: 0 0 12px 12px;
+    box-shadow: 0 4px 15px rgba(0, 255, 255, 0.5);
+    z-index: 10000;
+  }
+
+  /* Hide right-menu when nav menu is shown on mobile */
+  #nav-menu.show ~ .nav-menu.right-menu {
+    display: none;
+  }
+
+  /* Hide registration and login nav items on interactive-computing-club page */
+  .nav-menu.right-menu {
+    display: none;
+  }
+
+
+/* Navigation bar styles for Interactive Computing Club theme */
+.nav-container {
+  background: #001f33;
+  border-bottom: 2px solid #00ffff;
+  box-shadow: 0 2px 10px rgba(0, 255, 255, 0.5);
+  border-radius: 12px;
+  padding: 0.75rem 1.5rem;
+}
+
+.nav-logo img {
+  filter: drop-shadow(0 0 5px #00ffff);
+}
+
+.nav-menu {
+  background: transparent;
+}
+
+.nav-link {
+  color: #00ffff;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.nav-link:hover,
+.nav-link:focus {
+  color: #66ffff;
+  text-shadow: 0 0 8px #66ffff;
+  outline: none;
+}
+
+.nav-toggle {
+  color: #00ffff;
+  font-size: 1.5rem;
+  cursor: pointer;
+  user-select: none;
+  transition: color 0.3s ease;
+}
+
+.nav-toggle:hover,
+.nav-toggle:focus {
+  color: #66ffff;
+  outline: none;
+}
+
+/* Removed duplicate navigation bar styles for interactive computing club theme */

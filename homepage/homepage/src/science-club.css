@@ -1,0 +1,63 @@
+.student-card {
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(123, 63, 191, 0.7);
+  padding: 1.5rem;
+  text-align: center;
+  background: linear-gradient(135deg, #7b3fbf, #5a2a83);
+  color: #f0e6ff;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  margin-bottom: 1.5rem;
+  max-width: 400px;
+}
+
+.student-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 12px 30px rgba(123, 63, 191, 0.9);
+}
+
+.student-card img {
+  width: 100%;
+  height: 250px;
+  border-radius: 15px;
+  object-fit: cover;
+  box-shadow: 0 0 20px #a678ff;
+  transition: transform 0.3s ease;
+  margin-bottom: 1rem;
+}
+
+.student-card img:hover {
+  transform: scale(1.1);
+}
+
+.extraordinary-students {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  align-items: flex-start;
+}
+
+.student-card.left-align {
+  align-self: flex-start;
+  text-align: left;
+}
+
+.student-card.right-align {
+  align-self: flex-end;
+  text-align: right;
+}
+
+.student-activities-section {
+  background: radial-gradient(circle at center, #7b3fbf, #5a2a83);
+  padding: 3rem 4rem;
+  border-radius: 30px;
+  box-shadow: 0 0 40px #7b3fbf;
+  color: #f0e6ff;
+  max-width: 99%;
+  margin: 2rem auto;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  text-align: left;
+  width: 99%;
+  border-radius: 40px;
+  padding: 4rem 5rem;
+}

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Contact - Faridpur High School</title>
+  <link rel="stylesheet" href="src/styles.css" />
+  <link rel="stylesheet" href="src/loader.css" />
+</head>
+<body>
+  <div id="loading-spinner" style="display:none;"></div>
+  <div id="offline-message" style="display:none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
+    background: rgba(45, 0, 90, 0.9); color: #d8b3ff; padding: 2rem 3rem; border-radius: 15px; box-shadow: 0 0 20px #a678ff; font-size: 1.5rem; text-align: center; z-index: 100000;">
+    You are currently offline. Please check your internet connection.
+  </div>
+  <nav>
+    <div class="nav-container container">
+      <div class="nav-logo" tabindex="0" aria-label="Faridpur High School Home">
+        <img src="src/resources/image/logo.png" alt="Faridpur High School Logo" />
+      </div>
+      <div class="nav-toggle" aria-label="Toggle navigation menu" tabindex="0">&#9776;</div>
+      <ul class="nav-menu left-menu" role="menubar" aria-label="Primary navigation">
+        <li class="nav-item" role="none"><a href="index.html" class="nav-link" role="menuitem" tabindex="0">Home</a></li>
+        <li class="nav-item" role="none"><a href="school.html" class="nav-link" role="menuitem" tabindex="0">School</a></li>
+        <li class="nav-item" role="none"><a href="academic.html" class="nav-link" role="menuitem" tabindex="0">Academic</a></li>
+        <li class="nav-item" role="none"><a href="curriculum.html" class="nav-link" role="menuitem" tabindex="0">Curriculum</a></li>
+        <li class="nav-item" role="none"><a href="routine.html" class="nav-link" role="menuitem" tabindex="0">Routine</a></li>
+        <li class="nav-item" role="none"><a href="#" class="nav-link" role="menuitem" tabindex="0">Message</a></li>
+        <li class="nav-item" role="none"><a href="result.html" class="nav-link" role="menuitem" tabindex="0">Result</a></li>
+
+        <li class="nav-item more-menu" role="none" aria-haspopup="true" aria-expanded="false">
+          <button class="nav-link more-button" tabindex="0">See More</button>
+          <ul class="more-dropdown-menu" role="menu" aria-label="More navigation items">
+            <li class="nav-item" role="none"><a href="#" class="nav-link" role="menuitem" tabindex="0">Contact</a></li>
+            <li class="nav-item" role="none"><a href="#" class="nav-link" role="menuitem" tabindex="0">Admission</a></li>
+            <li class="nav-item" role="none"><a href="#" class="nav-link" role="menuitem" tabindex="0">Attendance</a></li>
+          </ul>
+        </li>
+      </ul>
+      <ul class="nav-menu right-menu" role="menubar" aria-label="Right navigation">
+        <li class="nav-item dropdown" role="none">
+          <a href="registration.html" class="nav-link dropdown-toggle" role="menuitem" aria-haspopup="true" aria-expanded="false" tabindex="0">Registration</a>
+          <ul class="dropdown-menu" role="menu" aria-label="Registration submenu">
+            <li role="none"><a href="registration.html" class="dropdown-item" role="menuitem" tabindex="0">Student Registration</a></li>
+            <li role="none"><a href="registration.html" class="dropdown-item" role="menuitem" tabindex="0">Admin Registration</a></li>
+          </ul>
+        </li>
+        <li class="nav-item" role="none"><a href="login.html" class="nav-link" role="menuitem" tabindex="0">Login</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <header class="hero" role="banner" aria-label="Contact Us">
+    <h1>Contact Faridpur High School</h1>
+    <p>We would love to hear from you. Please reach out with any questions or comments.</p>
+  </header>
+
+  <main>
+    <section class="content-section">
+      <h2>Contact Information</h2>
+      <p>Email: info@faridpurhighschool.edu</p>
+      <p>Phone: +123 456 7890</p>
+      <p>Address: 123 School Street, Faridpur City</p>
+    </section>
+
+    <section class="content-section">
+      <h2>Send Us a Message</h2>
+      <form id="contact-form" aria-label="Contact form">
+        <label for="name">Name:</label><br />
+        <input type="text" id="name" name="name" required /><br />
+        <label for="email">Email:</label><br />
+        <input type="email" id="email" name="email" required /><br />
+        <label for="message">Message:</label><br />
+        <textarea id="message" name="message" rows="5" required></textarea><br />
+        <button type="submit" class="btn btn-primary">Send Message</button>
+      </form>
+    </section>
+     
+  </main>
+  <script src="src/scripts.js"></script>
+</body>
+</html>

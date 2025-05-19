@@ -1,0 +1,238 @@
+<!DOCTYPE html><html lang="en"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Faridpur High School</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="src/resources/image/logo.png">
+  <link rel="shortcut icon" href="src/resources/image/logo.png">
+  <link rel="stylesheet" href="src/styles.css">
+  <link rel="stylesheet" href="src/loader.css">
+</head>
+<body>
+  <div id="loading-spinner" style="display:none;"></div>
+  <div id="offline-message" style="display:none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
+    background: rgba(45, 0, 90, 0.9); color: #d8b3ff; padding: 2rem 3rem; border-radius: 15px; box-shadow: 0 0 20px #a678ff; font-size: 1.5rem; text-align: center; z-index: 100000;">
+    You are currently offline. Please check your internet connection.
+  </div>
+  <nav>
+    <div class="nav-container container">
+      <div class="nav-logo" tabindex="0" aria-label="Faridpur High School Home">
+        <img src="src/resources/image/logo.png" alt="Faridpur High School Logo">
+      </div>
+      <div class="nav-toggle" aria-label="Toggle navigation menu" tabindex="0">☰</div>
+      <ul id="nav-menu" class="nav-menu left-menu" role="menubar" aria-label="Primary navigation">
+        <li class="nav-item" role="none"><a href="index.html" class="nav-link" role="menuitem" tabindex="0">Home</a></li>
+        <li class="nav-item" role="none"><a href="school.html" class="nav-link" role="menuitem" tabindex="0">School</a></li>
+        <li class="nav-item" role="none"><a href="academic.html" class="nav-link" role="menuitem" tabindex="0">Academic</a></li>
+        <li class="nav-item" role="none"><a href="curriculum.html" class="nav-link" role="menuitem" tabindex="0">Curriculum</a></li>
+        <li class="nav-item" role="none"><a href="routine.html" class="nav-link" role="menuitem" tabindex="0">Routine</a></li>
+        <li class="nav-item" role="none"><a href="#" class="nav-link" role="menuitem" tabindex="0">Message</a></li>
+        <li class="nav-item" role="none"><a href="result.html" class="nav-link" role="menuitem" tabindex="0">Result</a></li>
+
+        <li class="nav-item more-menu" role="none" aria-haspopup="true" aria-expanded="false">
+          <ul class="more-dropdown-menu" role="menu" aria-label="More navigation items">
+            <!-- Removed See More menu items as per user request -->
+          </ul>
+        </li>
+      </ul>
+      <ul class="nav-menu right-menu" role="menubar" aria-label="Right navigation">
+        <li class="nav-item dropdown" role="none">
+          <a href="registration.html" class="nav-link dropdown-toggle" role="menuitem" aria-haspopup="true" aria-expanded="false" tabindex="0">Registration</a>
+          <ul class="dropdown-menu" role="menu" aria-label="Registration submenu">
+            <!-- Removed Student Registration item as requested -->
+          </ul>
+        </li>
+        <li class="nav-item" role="none"><a href="login.html" class="nav-link" role="menuitem" tabindex="0">Login</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <header class="hero" role="banner" aria-label="Welcome section">
+    <div class="hero-content">
+      <div class="hero-banner">
+        <h1>Faridpur High School</h1>
+        <p>Welcome to Faridpur High School, where excellence and pride meet to shape the future.</p>
+        <div class="hero-buttons">
+          <a href="admission.html" class="btn btn-primary">Admission</a>
+          <a href="routine.html" class="btn btn-routine">View Routine</a>
+        </div>
+      </div>
+      <div class="hero-image-container">
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="content-section about-teacher-section">
+      <h2>About Our Teacher</h2>
+      <div class="about-teacher-content">
+        <img src="admin/uploads/photo-1747648169477-400164334.jpg" alt="">
+        <div class="about-teacher-text">
+          <p>Meet our dedicated and experienced teachers who are committed to nurturing and guiding students towards academic excellence and personal growth.  -test</p>
+          <p>Our faculty members bring a wealth of knowledge and passion to the classroom, fostering a supportive and inspiring learning environment.</p>
+          <p>They engage students with innovative teaching methods and personalized attention to help each student reach their full potential.</p>
+          <a href="teachers.html" class="btn btn-primary see-teachers-btn">See Teachers</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section literature-section">
+      <div class="literature-content" style="position: relative;">
+        <p style="position: absolute; top: 0; left: 0; margin: 0; padding: 0.5rem 1rem; background: rgba(45, 0, 90, 0.7); color: #d8b3ff; border-radius: 0 0 10px 10px; font-weight: bold; z-index: 10;">School Literature</p>
+        <img src="src/resources/image/school2.jpg" alt="School Literature">
+        <p>Explore the rich literary heritage and activities of Faridpur High School, fostering creativity and expression among students.</p>
+      </div>
+    </section>
+
+    <section class="content-section our-campus-section">
+      <h2>Our Campus</h2>
+      
+      <div class="campus-content" style="display: flex; flex-wrap: wrap; gap: 2rem; justify-content: center; align-items: flex-start;">
+        <div class="campus-feature" style="flex: 1 1 300px; max-width: 350px; background: linear-gradient(135deg, #5a2a83, #7b3fbf); border-radius: 15px; box-shadow: 0 0 20px #a678ff; padding: 1rem; color: #f0e6ff;">
+          <img src="src/resources/image/campus1.jpg" alt="Campus Feature 1" style="width: 100%; border-radius: 15px; box-shadow: 0 0 15px #a678ff;">
+          <h3 style="margin-top: 1rem;">Modern Classrooms</h3>
+          <p>Our campus features state-of-the-art classrooms equipped with modern technology to enhance learning.</p>
+        </div>
+        <div class="campus-feature" style="flex: 1 1 300px; max-width: 350px; background: linear-gradient(135deg, #5a2a83, #7b3fbf); border-radius: 15px; box-shadow: 0 0 20px #a678ff; padding: 1rem; color: #f0e6ff;">
+          <img src="admin/uploads/photo-1747648160744-808829698.jpg" alt="" style="width: 100%; border-radius: 15px; box-shadow: 0 0 15px #a678ff;">
+          <h3 style="margin-top: 1rem;">Spacious Library</h3>
+          <p>Our library offers a vast collection of books and digital resources in a spacious and quiet environment.</p>
+        </div>
+        <div class="campus-feature" style="flex: 1 1 300px; max-width: 350px; background: linear-gradient(135deg, #5a2a83, #7b3fbf); border-radius: 15px; box-shadow: 0 0 20px #a678ff; padding: 1rem; color: #f0e6ff;">
+          <img src="src/resources/image/campus3.jpg" alt="Campus Feature 3" style="width: 100%; border-radius: 15px; box-shadow: 0 0 15px #a678ff;">
+          <h3 style="margin-top: 1rem;">Sports Facilities</h3>
+          <p>We provide excellent sports facilities including fields, courts, and equipment for various sports.</p>
+        </div>
+      </div>
+    
+    </section>
+    <section class="content-section extracurricular-section">
+      <h2>Extracurricular Activities</h2>
+       <button class="extracurricular-slider-button prev" aria-label="Previous extracurricular image">‹</button>
+      <div class="extracurricular-content">
+        <div class="activity">
+          <img src="src/resources/image/activity1.jpg" alt="Activity 1">
+          <h3>interactive computing club</h3>
+          <p>A student-led club exploring coding, robotics, and digital creativity through fun projects, workshops, and teamwork.</p>
+          <button class="btn btn-primary"><a href="interactive-computing-club.html" style="color: white; text-decoration: none;">Learn More</a></button>
+        </div>
+      <!--<div class="activity">
+        <img src="src/resources/image/activity2.jpg" alt="Activity 2" />
+        <h3>Sports and Games</h3>
+        <p>Promoting physical fitness and teamwork through various sports and games.</p>
+      </div>--> 
+        <div class="activity">
+          <img src="src/resources/image/activity4.jpg" alt="Activity 4">
+          <h3>BNCC</h3>
+          <p>Building discipline, leadership, and patriotism through BNCC activities and training.</p>
+          <button class="btn btn-primary"><a href="bncc.html" style="color: white; text-decoration: none;">Learn More</a></button>
+        </div>
+        <div class="activity">
+          <img src="src/resources/image/activity3.jpg" alt="Activity 3">
+          <h3>Scout Club</h3>
+          <p>Fostering leadership and social skills through various scout activities and community service.</p>
+          <button class="btn btn-primary"><a href="scout-club.html" style="color: white; text-decoration: none;">Learn More</a></button>
+        </div>
+      </div>
+      <button class="extracurricular-slider-button next" aria-label="Next extracurricular image">›</button>
+    </section>
+    <section class="content-section gallery-section">
+      <h2>Gallery</h2>
+      <button class="gallery-slider-button prev" aria-label="Previous gallery image">‹</button>
+      <div class="gallery-content" style="display: flex; overflow-x: auto; gap: 1.5rem; padding-bottom: 1rem; -webkit-overflow-scrolling: touch;">
+        <figure style="flex: 0 0 auto; width: 300px; margin: 0; border-radius: 15px; box-shadow: 0 0 15px #a678ff; background: #2d005a; color: #d8b3ff; text-align: center; user-select: none;">
+          <img src="/src/resources/image/gallery1.jpg" alt="" style="width: 100%; border-radius: 15px 15px 0 0; display: block;">
+          <figcaption style="padding: 0.5rem 0; font-weight: bold;">School Annual Day Celebration</figcaption>
+        </figure>
+        <figure style="flex: 0 0 auto; width: 300px; margin: 0; border-radius: 15px; box-shadow: 0 0 15px #a678ff; background: #2d005a; color: #d8b3ff; text-align: center; user-select: none;">
+          <img src="src/resources/image/gallery2.jpg" alt="" style="width: 100%; border-radius: 15px 15px 0 0; display: block;">
+          <figcaption style="padding: 0.5rem 0; font-weight: bold;">Science Exhibition</figcaption>
+        </figure>
+        <figure style="flex: 0 0 auto; width: 300px; margin: 0; border-radius: 15px; box-shadow: 0 0 15px #a678ff; background: #2d005a; color: #d8b3ff; text-align: center; user-select: none;">
+          <img src="src/resources/image/gallery3.jpg" alt="Gallery Image 3" style="width: 100%; border-radius: 15px 15px 0 0; display: block;">
+          <figcaption style="padding: 0.5rem 0; font-weight: bold;">Sports Day Highlights</figcaption>
+        </figure>
+        <figure style="flex: 0 0 auto; width: 300px; margin: 0; border-radius: 15px; box-shadow: 0 0 15px #a678ff; background: #2d005a; color: #d8b3ff; text-align: center; user-select: none;">
+          <img src="src/resources/image/gallery4.jpg" alt="Gallery Image 4" style="width: 100%; border-radius: 15px 15px 0 0; display: block;">
+          <figcaption style="padding: 0.5rem 0; font-weight: bold;">Art and Craft Workshop</figcaption>
+        </figure>
+        <figure style="flex: 0 0 auto; width: 300px; margin: 0; border-radius: 15px; box-shadow: 0 0 15px #a678ff; background: #2d005a; color: #d8b3ff; text-align: center; user-select: none;">
+          <img src="src/resources/image/gallery5.jpg" alt="Gallery Image 5" style="width: 100%; border-radius: 15px 15px 0 0; display: block;">
+          <figcaption style="padding: 0.5rem 0; font-weight: bold;">Field Trip to Museum</figcaption>
+        </figure>
+      </div>
+      <button class="gallery-slider-button next" aria-label="Next gallery image">›</button>
+    </section>
+  </main>
+  <section class="content-section welcome-bottom-section" style="background-color: #2d005a; color: #d8b3ff; padding: 2rem 1rem; text-align: center;">
+    <h2>Welcome to Faridpur High School</h2>
+    <p>Where excellence and pride meet to shape the future.</p>
+    <div class="welcome-bottom-cards" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 2rem; margin-top: 1.5rem;">
+      <div class="welcome-card" style="flex: 1 1 250px; max-width: 300px; background: linear-gradient(135deg, #5a2a83, #7b3fbf); border-radius: 15px; padding: 1rem; box-shadow: 0 0 15px #a678ff;">
+        <h3>Admission</h3>
+        <p>Join our community of learners and achievers. Apply now for the upcoming academic year.</p>
+        <a href="admission.html" class="btn btn-primary">Learn More</a>
+      </div>
+      <div class="welcome-card" style="flex: 1 1 250px; max-width: 300px; background: linear-gradient(135deg, #5a2a83, #7b3fbf); border-radius: 15px; padding: 1rem; box-shadow: 0 0 15px #a678ff;">
+        <h3>Class Routine</h3>
+        <p>Stay organized with our updated class schedules and routines.</p>
+        <a href="routine.html" class="btn btn-routine">View Routine</a>
+      </div>
+      <div class="welcome-card" style="flex: 1 1 250px; max-width: 300px; background: linear-gradient(135deg, #5a2a83, #7b3fbf); border-radius: 15px; padding: 1rem; box-shadow: 0 0 15px #a678ff;">
+        <h3>Contact Us</h3>
+        <p>Have questions? Reach out to us anytime for assistance.</p>
+        <a href="contact.html" class="btn btn-secondary">Get in Touch</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer" role="contentinfo" aria-label="Homepage website footer">
+    <div class="footer-container">
+      <div class="footer-about">
+        <h3>Faridpur High School</h3>
+        <p>Committed to academic excellence and community spirit.</p>
+      </div>
+      <div class="footer-contact">
+        <h4>Contact Us</h4>
+        <address>
+          123 School Street, Faridpur<br>
+          Phone: (123) 456-7890<br>
+          Email: info@faridpurhighschool.edu
+        </address>
+      </div>
+      <div class="footer-links">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="academic.html">Academic</a></li>
+          <li><a href="curriculum.html">Curriculum</a></li>
+          <li><a href="routine.html">Routine</a></li>
+          <li><a href="result.html">Result</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2024 Faridpur High School. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="src/scripts.js"></script>
+  <script>
+    document.addEventListener('readystatechange', () => {
+      const spinner = document.getElementById('loading-spinner');
+      const offlineMessage = document.getElementById('offline-message');
+      if (!navigator.onLine) {
+        spinner.style.display = 'none';
+        offlineMessage.style.display = 'block';
+      } else if (document.readyState === 'loading') {
+        spinner.style.display = 'block';
+        offlineMessage.style.display = 'none';
+      } else {
+        spinner.style.display = 'none';
+        offlineMessage.style.display = 'none';
+      }
+    });
+  </script>
+
+
+</body></html>

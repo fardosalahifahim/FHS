@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Admin Dashboard - Faridpur High School</title>
+  <link rel="stylesheet" href="css/admin-style.css" />
+</head>
+<body>
+  <header>Admin Dashboard - Faridpur High School</header>
+  <nav>
+    <a href="javascript:void(0)" id="edit-academic">Edit Academic Page</a>
+    <a href="javascript:void(0)" id="edit-admission">Edit Admission Page</a>
+    <a href="javascript:void(0)" id="edit-admitcard">Edit Admit Card Page</a>
+    <a href="javascript:void(0)" id="edit-bncc">Edit BNCC Page</a>
+    <a href="javascript:void(0)" id="edit-contact">Edit Contact Page</a>
+    <a href="javascript:void(0)" id="edit-curriculum">Edit Curriculum Page</a>
+    <a href="javascript:void(0)" id="edit-index">Edit Index Page</a>
+    <a href="javascript:void(0)" id="edit-interactiveComputingClub">Edit Interactive Computing Club Page</a>
+    <a href="javascript:void(0)" id="edit-result">Edit Result Page</a>
+    <a href="javascript:void(0)" id="edit-routine">Edit Routine Page</a>
+    <a href="javascript:void(0)" id="edit-school">Edit School Page</a>
+    <a href="javascript:void(0)" id="edit-scoutClub">Edit Scout Club Page</a>
+    <a href="javascript:void(0)" id="edit-teachers">Edit Teachers Page</a>
+    <!-- Add more links as needed -->
+  </nav>
+  <script>
+    document.getElementById('edit-academic').addEventListener('click', (e) => {
+      e.preventDefault();
+      console.log('Loading academic page');
+      loadPageContent('academic');
+    });
+    document.getElementById('edit-admission').addEventListener('click', (e) => {
+      e.preventDefault();
+      console.log('Loading admission page');
+      loadPageContent('admission');
+    });
+    document.getElementById('edit-contact').addEventListener('click', (e) => {
+      e.preventDefault();
+      console.log('Loading contact page');
+      loadPageContent('contact');
+    });
+    document.getElementById('edit-home').addEventListener('click', (e) => {
+      e.preventDefault();
+      console.log('Loading home page');
+      loadPageContent('home');
+    });
+    document.getElementById('edit-index').addEventListener('click', (e) => {
+      e.preventDefault();
+      console.log('Loading index page');
+      loadPageContent('index');
+    });
+    document.getElementById('edit-result').addEventListener('click', (e) => {
+      e.preventDefault();
+      console.log('Loading result page');
+      loadPageContent('result');
+    });
+    document.getElementById('edit-routine').addEventListener('click', (e) => {
+      e.preventDefault();
+      console.log('Loading routine page');
+      loadPageContent('routine');
+    });
+    document.getElementById('edit-school').addEventListener('click', (e) => {
+      e.preventDefault();
+      console.log('Loading school page');
+      loadPageContent('school');
+    });
+    document.getElementById('edit-teachers').addEventListener('click', (e) => {
+      e.preventDefault();
+      console.log('Loading teachers page');
+      loadPageContent('teachers');
+    });
+    document.getElementById('edit-curriculum').addEventListener('click', (e) => {
+      e.preventDefault();
+      console.log('Loading curriculum page');
+      loadPageContent('curriculum');
+    });
+    document.getElementById('edit-admitcard').addEventListener('click', (e) => {
+      e.preventDefault();
+      console.log('Loading admitcard page');
+      loadPageContent('admitcard');
+    });
+    document.getElementById('edit-bncc').addEventListener('click', (e) => {
+      e.preventDefault();
+      console.log('Loading bncc page');
+      loadPageContent('bncc');
+    });
+    document.getElementById('edit-interactiveComputingClub').addEventListener('click', (e) => {
+      e.preventDefault();
+      console.log('Loading interactive computing club page');
+      loadPageContent('interactiveComputingClub');
+    });
+    document.getElementById('edit-scoutClub').addEventListener('click', (e) => {
+      e.preventDefault();
+      console.log('Loading scout club page');
+      loadPageContent('scoutClub');
+    });
+  </script>
+  <main>
+    <section>
+      <h2 id="edit-page-title">Select Section to Edit</h2>
+      <div class="section-list">
+        <select id="section-select" aria-label="Select section to edit">
+          <option value="" disabled selected>Select a section</option>
+        </select>
+      </div>
+      <div id="paragraphs-container" aria-live="polite" aria-atomic="true">
+        <!-- Editable paragraphs will be inserted here -->
+      </div>
+      <button id="save-btn">Save Changes</button>
+    </section>
+  </main>
+  <button class="logout-btn" id="logout-btn" aria-label="Logout from admin panel">Logout</button>
+
+  <script>
+    const sectionSelect = document.getElementById('section-select');
+    const paragraphsContainer = document.getElementById('paragraphs-container');
+    const saveBtn = document.getElementById('save-btn');
+    const logoutBtn = document.getElementById('logout-btn');
+
+    // Map page keys to file paths
+    const pages = {
+      academic: '../academic.html',
+      admission: '../admission.html',
+      admitcard: '../admitcard.html',
+      bncc: '../bncc.html',
+      contact: '../contact.html',
+      curriculum: '../curriculum.html',
+      index: '../index.html',
+      interactiveComputingClub: '../interactive-computing-club.html',
+      result: '../result.html',
+      routine: '../routine.html',
+      school: '../school.html',
+      scoutClub: '../scout-club.html',
+      teachers: '../teachers.html',
+      // Add more pages as needed
+    };
+
+    let currentPage = 'academic';
+    let pageSections = [];
+
+    async function loadPageContent(pageKey) {
+      try {
+        const response = await fetch(pages[pageKey]);
+        if (!response.ok) {
+          paragraphsContainer.innerHTML = 'Failed to load page content. HTTP status: ' + response.status;
+          console.error('Failed to load page content:', response.status, response.statusText);
+          return;
+        }
+        const text = await response.text();
+        currentPage = pageKey;
+        // Update the edit page title
+        const editPageTitle = document.getElementById('edit-page-title');
+        if (editPageTitle) {
+          const pageName = pageKey.charAt(0).toUpperCase() + pageKey.slice(1).replace(/([A-Z])/g, ' $1');
+          editPageTitle.textContent = `Select Section to Edit: ${pageName}`;
+        }
+        parseSections(text);
+        populateSectionSelect();
+      } catch (error) {
+        paragraphsContainer.innerHTML = 'Error loading page content: ' + error.message;
+        console.error('Error loading page content:', error);
+      }
+    }
+
+    function parseSections(htmlText) {
+      const parser = new DOMParser();
+      const doc = parser.parseFromString(htmlText, 'text/html');
+      const sections = Array.from(doc.querySelectorAll('section'));
+      pageSections = sections.map((section, index) => {
+        return {
+          id: index,
+          title: section.querySelector('h2') ? section.querySelector('h2').textContent : 'Section ' + (index + 1),
+          paragraphs: Array.from(section.querySelectorAll('p')).map(p => p.textContent)
+        };
+      });
+    }
+
+    function populateSectionSelect() {
+      sectionSelect.innerHTML = '<option value="" disabled selected>Select a section</option>';
+      pageSections.forEach(section => {
+        const option = document.createElement('option');
+        option.value = section.id;
+        option.textContent = section.title;
+        sectionSelect.appendChild(option);
+      });
+      paragraphsContainer.innerHTML = '';
+    }
+
+    function displayParagraphs(sectionId) {
+      paragraphsContainer.innerHTML = '';
+      const section = pageSections.find(s => s.id == sectionId);
+      if (!section) return;
+      section.paragraphs.forEach((para, idx) => {
+        const p = document.createElement('div');
+        p.className = 'editable-paragraph';
+        p.contentEditable = 'true';
+        p.setAttribute('data-index', idx);
+        p.textContent = para;
+        paragraphsContainer.appendChild(p);
+      });
+    }
+
+    sectionSelect.addEventListener('change', (e) => {
+      displayParagraphs(e.target.value);
+    });
+
+    saveBtn.addEventListener('click', () => {
+      // Collect edited paragraphs
+      const editedParagraphs = [];
+      paragraphsContainer.querySelectorAll('.editable-paragraph').forEach(p => {
+        editedParagraphs.push(p.textContent);
+      });
+      alert('Saving changes is not implemented in this demo. Edited paragraphs: ' + JSON.stringify(editedParagraphs));
+    });
+
+    logoutBtn.addEventListener('click', async () => {
+      try {
+        const response = await fetch('/api/logout', { method: 'POST' });
+        const data = await response.json();
+        if (data.success) {
+          window.location.href = 'login.html';
+        }
+      } catch (error) {
+        console.error('Logout failed:', error);
+      }
+    });
+
+    // Load default page content on load
+    loadPageContent(currentPage);
+    document.getElementById('edit-index').addEventListener('click', (e) => {
+      e.preventDefault();
+      console.log('Loading index page');
+      loadPageContent('index');
+    });
+    document.getElementById('edit-result').addEventListener('click', (e) => {
+      e.preventDefault();
+      console.log('Loading result page');
+      loadPageContent('result');
+    });
+    document.getElementById('edit-routine').addEventListener('click', (e) => {
+      e.preventDefault();
+      console.log('Loading routine page');
+      loadPageContent('routine');
+    });
+    document.getElementById('edit-school').addEventListener('click', (e) => {
+      e.preventDefault();
+      console.log('Loading school page');
+      loadPageContent('school');
+    });
+    document.getElementById('edit-teachers').addEventListener('click', (e) => {
+      e.preventDefault();
+      console.log('Loading teachers page');
+      loadPageContent('teachers');
+    });
+    document.getElementById('edit-curriculum').addEventListener('click', (e) => {
+      e.preventDefault();
+      console.log('Loading curriculum page');
+      loadPageContent('curriculum');
+    });
+  </script>
+</body>
+</html>
