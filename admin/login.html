@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Admin Login</title>
+  <link rel="stylesheet" href="css/admin-style.css" />
+  <style>
+    .login-container {
+      max-width: 400px;
+      margin: 100px auto;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-family: Arial, sans-serif;
+    }
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: bold;
+    }
+    input[type="text"], input[type="password"] {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 15px;
+      box-sizing: border-box;
+    }
+    button {
+      width: 100%;
+      padding: 10px;
+      background-color: #007bff;
+      border: none;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 3px;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <div class="login-container">
+    <h2>Admin Login</h2>
+    <form onsubmit="return validateLogin()">
+      <label for="username">Username:</label>
+      <input type="text" id="username" name="username" required />
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password" required />
+    <input type="checkbox" id="show-password" />
+    <label for="show-password">Show Password</label>
+    <button type="submit">Login</button>
+  </form>
+  <p id="error-message" style="color: red; display: none;">Invalid username or password.</p>
+</div>
+
+<script>
+  document.getElementById('show-password').addEventListener('change', function() {
+    const passwordInput = document.getElementById('password');
+    if (this.checked) {
+      passwordInput.type = 'text';
+    } else {
+      passwordInput.type = 'password';
+    }
+  });
+
+  function validateLogin() {
+    const username = document.getElementById('username').value;
+    const password = document.getElementById('password').value;
+    if (username === 'FaridpurHighSchool' && password === 'FHS2025faridpurhighschool') {
+      alert('Login successful! Redirecting to dashboard...');
+      // Redirect to dashboard.html or any other page
+      window.location.href = 'dashboard.html';
+      return false; // Prevent form submission
+    } else {
+      const errorMessage = document.getElementById('error-message');
+      errorMessage.style.display = 'block';
+      return false; // Prevent form submission
+    }
+  }
+</script>
+</body>
+</html>

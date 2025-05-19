@@ -318,7 +318,7 @@ header.hero::before {
   align-items: flex-start;
 }
 
-.hero-banner {
+  .hero-banner {
   flex: 3;
   min-width: 500px;
   min-height: 600px;
