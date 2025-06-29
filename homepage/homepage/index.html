@@ -61,18 +61,43 @@
     </div>
   </header>
 
-  <main>
+  <section class="content-section notish-board-result-container" style="display: flex; gap: 2rem; margin: 2rem auto; max-width: 1200px; padding: 2rem; border-radius: 15px; background: rgba(45, 0, 90, 0.7); box-shadow: 0 0 30px #a678ff; color: #d8b3ff;">
+    <div class="toggle-buttons" style="display:none; position: absolute; top: 1rem; right: 1rem; z-index: 100;">
+      <button id="toggleNotishUsefulBtn" style="padding: 0.5rem 1rem; border-radius: 8px; border: none; background: #a678ff; color: #2e0854; cursor: pointer;">Show Useful Websites</button>
+    </div>
+    <section class="notish-board-section" style="flex: 2; background-color: #3a1a6a; padding: 2rem; border-radius: 15px; box-shadow: 0 0 20px #a678ff;">
+      <h2>Notish Board <button id="notishBoardToggleBtn" aria-label="Toggle Notish Board" style="display:none;">☰</button></h2>
+      <div id="notishBoardContent" style="font-size: 1.1rem; line-height: 1.5;">
+      </div>
+    </section>
+  <aside class="left-links-section" aria-label="Useful website links" style="flex: 1; background-color: #5a2a83; padding: 2rem; border-radius: 15px; box-shadow: 0 0 20px #7b3fbf;">
+    <h2>Useful Websites</h2>
+      <ul style="list-style: disc inside; margin-top: 1rem; font-size: 1.1rem; line-height: 1.5;">
+        <li><a href="https://www.dhakaeducationboard.gov.bd/" target="_blank" rel="noopener noreferrer" style="color: #d8b3ff; text-decoration: none;">Board results</a></li>
+        <li><a href="https://www.eximusedu.com/login" target="_blank" rel="noopener noreferrer" style="color: #d8b3ff; text-decoration: none;">School Results</a></li>
+        <li><a href="routine.html" target="_blank" rel="noopener noreferrer" style="color: #d8b3ff; text-decoration: none;">School class routine</a></li>
+        <li><a href="routine.html" target="_blank" rel="noopener noreferrer" style="color: #d8b3ff; text-decoration: none;">Board Exam Routine</a></li>
+        <li><a href="https://www.eximusedu.com/login" target="_blank" rel="noopener noreferrer" style="color: #d8b3ff; text-decoration: none;">Tuition Fees</a></li>
+        <li><a href="admitcard.html" target="_blank" rel="noopener noreferrer" style="color: #d8b3ff; text-decoration: none;">Download Admitcard</a></li>
+      </ul>
+  </aside>
+  </section>
+</main>
     <section class="content-section about-teacher-section">
       <h2>About Our Teacher</h2>
       <div class="about-teacher-content">
-        <img src="admin/uploads/photo-1747648169477-400164334.jpg" alt="">
-        <div class="about-teacher-text">
-          <p>Meet our dedicated and experienced teachers who are committed to nurturing and guiding students towards academic excellence and personal growth.  -test</p>
-          <p>Our faculty members bring a wealth of knowledge and passion to the classroom, fostering a supportive and inspiring learning environment.</p>
-          <p>They engage students with innovative teaching methods and personalized attention to help each student reach their full potential.</p>
+        <img src="src/resources/image/campus1.jpg" alt="" class="desktop-teacher-photo">
+      <div class="about-teacher-text">
+          <p class="desktop-teacher-text">Meet our dedicated and experienced teachers who are committed to nurturing and guiding students towards academic excellence and personal growth.  -test Our faculty members bring a wealth of knowledge and passion to the classroom, fostering a supportive and inspiring learning environment. They engage students with innovative teaching methods and personalized attention to help each student reach their full potential.</p>
           <a href="teachers.html" class="btn btn-primary see-teachers-btn">See Teachers</a>
         </div>
       </div>
+    </section>
+
+    <section class="content-section extra-teacher-section">
+      <img src="src/resources/image/campus1.jpg" alt="Teacher" class="extra-teacher-image">
+      <p class="extra-teacher-text">Our dedicated teachers nurture students with passion and personalized attention for academic and personal growth.</p>
+      <a href="teachers.html" class="btn btn-primary extra-teacher-btn">See Teachers</a>
     </section>
 
     <section class="content-section literature-section">
@@ -85,25 +110,23 @@
 
     <section class="content-section our-campus-section">
       <h2>Our Campus</h2>
-      
-      <div class="campus-content" style="display: flex; flex-wrap: wrap; gap: 2rem; justify-content: center; align-items: flex-start;">
-        <div class="campus-feature" style="flex: 1 1 300px; max-width: 350px; background: linear-gradient(135deg, #5a2a83, #7b3fbf); border-radius: 15px; box-shadow: 0 0 20px #a678ff; padding: 1rem; color: #f0e6ff;">
-          <img src="src/resources/image/campus1.jpg" alt="Campus Feature 1" style="width: 100%; border-radius: 15px; box-shadow: 0 0 15px #a678ff;">
-          <h3 style="margin-top: 1rem;">Modern Classrooms</h3>
+      <div class="extracurricular-content">
+        <div class="activity">
+          <img src="src/resources/image/campus1.jpg" alt="Modern Classrooms">
+          <h3>Modern Classrooms</h3>
           <p>Our campus features state-of-the-art classrooms equipped with modern technology to enhance learning.</p>
         </div>
-        <div class="campus-feature" style="flex: 1 1 300px; max-width: 350px; background: linear-gradient(135deg, #5a2a83, #7b3fbf); border-radius: 15px; box-shadow: 0 0 20px #a678ff; padding: 1rem; color: #f0e6ff;">
-          <img src="admin/uploads/photo-1747648160744-808829698.jpg" alt="" style="width: 100%; border-radius: 15px; box-shadow: 0 0 15px #a678ff;">
-          <h3 style="margin-top: 1rem;">Spacious Library</h3>
+        <div class="activity">
+          <img src="src/resources/image/library-placeholder.jpg" alt="Spacious Library">
+          <h3>Spacious Library</h3>
           <p>Our library offers a vast collection of books and digital resources in a spacious and quiet environment.</p>
         </div>
-        <div class="campus-feature" style="flex: 1 1 300px; max-width: 350px; background: linear-gradient(135deg, #5a2a83, #7b3fbf); border-radius: 15px; box-shadow: 0 0 20px #a678ff; padding: 1rem; color: #f0e6ff;">
-          <img src="src/resources/image/campus3.jpg" alt="Campus Feature 3" style="width: 100%; border-radius: 15px; box-shadow: 0 0 15px #a678ff;">
-          <h3 style="margin-top: 1rem;">Sports Facilities</h3>
+        <div class="activity">
+          <img src="src/resources/image/campus3.jpg" alt="Sports Facilities">
+          <h3>Sports Facilities</h3>
           <p>We provide excellent sports facilities including fields, courts, and equipment for various sports.</p>
         </div>
       </div>
-    
     </section>
     <section class="content-section extracurricular-section">
       <h2>Extracurricular Activities</h2>
@@ -217,6 +240,7 @@
   </footer>
 
   <script src="src/scripts.js"></script>
+  <script src="src/campus-slider.js"></script>
   <script>
     document.addEventListener('readystatechange', () => {
       const spinner = document.getElementById('loading-spinner');
@@ -232,7 +256,115 @@
         offlineMessage.style.display = 'none';
       }
     });
+
+    // Load and display notish board content
+    document.addEventListener('DOMContentLoaded', () => {
+      const notishBoardDiv = document.getElementById('notishBoardContent');
+      const savedContent = localStorage.getItem('notishBoardContent');
+      if (savedContent) {
+        notishBoardDiv.innerHTML = savedContent;
+      } else {
+        notishBoardDiv.innerHTML = '<p>No notices available at the moment.</p>';
+      }
+    });
   </script>
 
+  <script>
+    // Toggle Notish Board and Useful Websites on mobile
+    document.addEventListener('DOMContentLoaded', () => {
+      const showNotishBoardBtn = document.getElementById('showNotishBoardBtn');
+      const showUsefulWebsitesBtn = document.getElementById('showUsefulWebsitesBtn');
+      const notishBoardSection = document.querySelector('.notish-board-section');
+      const usefulWebsitesSection = document.querySelector('.left-links-section');
+      const toggleButtonsDiv = document.querySelector('.toggle-buttons');
 
+      function updateVisibility(showNotish) {
+        if (showNotish) {
+          notishBoardSection.style.display = 'block';
+          usefulWebsitesSection.style.display = 'none';
+          showNotishBoardBtn.style.background = '#a678ff';
+          showNotishBoardBtn.style.color = '#2e0854';
+          showUsefulWebsitesBtn.style.background = '#5a2a83';
+          showUsefulWebsitesBtn.style.color = '#d8b3ff';
+        } else {
+          notishBoardSection.style.display = 'none';
+          usefulWebsitesSection.style.display = 'block';
+          showNotishBoardBtn.style.background = '#5a2a83';
+          showNotishBoardBtn.style.color = '#d8b3ff';
+          showUsefulWebsitesBtn.style.background = '#a678ff';
+          showUsefulWebsitesBtn.style.color = '#2e0854';
+        }
+      }
+
+      function checkScreenWidth() {
+        if (window.innerWidth <= 768) {
+          toggleButtonsDiv.style.display = 'block';
+          // Default show Notish Board on mobile
+          updateVisibility(true);
+        } else {
+          toggleButtonsDiv.style.display = 'none';
+          notishBoardSection.style.display = 'block';
+          usefulWebsitesSection.style.display = 'block';
+        }
+      }
+
+      showNotishBoardBtn.addEventListener('click', () => {
+        updateVisibility(true);
+      });
+
+      showUsefulWebsitesBtn.addEventListener('click', () => {
+        updateVisibility(false);
+      });
+
+      window.addEventListener('resize', checkScreenWidth);
+
+      checkScreenWidth();
+    });
+
+    // Toggle single button for Notish Board and Useful Websites
+    document.addEventListener('DOMContentLoaded', () => {
+      const toggleBtn = document.getElementById('toggleNotishUsefulBtn');
+      const notishBoardSection = document.querySelector('.notish-board-section');
+      const usefulWebsitesSection = document.querySelector('.left-links-section');
+
+      function showNotishBoard() {
+        notishBoardSection.style.display = 'block';
+        usefulWebsitesSection.style.display = 'none';
+        toggleBtn.textContent = 'Show Useful Websites';
+        toggleBtn.style.background = '#a678ff';
+        toggleBtn.style.color = '#2e0854';
+      }
+
+      function showUsefulWebsites() {
+        notishBoardSection.style.display = 'none';
+        usefulWebsitesSection.style.display = 'block';
+        toggleBtn.textContent = 'Show Notish Board';
+        toggleBtn.style.background = '#5a2a83';
+        toggleBtn.style.color = '#d8b3ff';
+      }
+
+      toggleBtn.addEventListener('click', () => {
+        if (notishBoardSection.style.display === 'block' || notishBoardSection.style.display === '') {
+          showUsefulWebsites();
+        } else {
+          showNotishBoard();
+        }
+      });
+
+      // Initialize view based on screen width
+      function checkScreenWidth() {
+        if (window.innerWidth <= 768) {
+          toggleBtn.parentElement.style.display = 'block';
+          showNotishBoard();
+        } else {
+          toggleBtn.parentElement.style.display = 'none';
+          notishBoardSection.style.display = 'block';
+          usefulWebsitesSection.style.display = 'block';
+        }
+      }
+
+      window.addEventListener('resize', checkScreenWidth);
+      checkScreenWidth();
+    });
+  </script>
 </body></html>

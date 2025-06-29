@@ -42,21 +42,45 @@
       <section class="content-section head-teacher-section">
         <h2>Head Teacher</h2>
         <article class="head-teacher-card">
-          <img src="src/resources/image/head-teacher.jpg" alt="Head Teacher" />
+          <img id="headTeacherPhoto" src="src/resources/image/head-teacher.jpg" alt="Head Teacher" />
           <div class="head-teacher-info">
-            <h3>MD.shiddikur rahman</h3>
-            <p>Our esteemed Head Teacher with over 20 years of experience, dedicated to academic excellence and student development.</p>
+            <h3 id="headTeacherName">MD.shiddikur rahman</h3>
+            <p id="headTeacherParagraph">Our esteemed Head Teacher with over 20 years of experience, dedicated to academic excellence and student development.</p>
           </div>
         </article>
       </section>
 
+      <script>
+        document.addEventListener('DOMContentLoaded', () => {
+          const headTeacherPhoto = document.getElementById('headTeacherPhoto');
+          const headTeacherName = document.getElementById('headTeacherName');
+          const headTeacherParagraph = document.getElementById('headTeacherParagraph');
+
+          const savedTeachersContent = localStorage.getItem('teachersContent');
+          if (savedTeachersContent) {
+            const data = JSON.parse(savedTeachersContent);
+            if (data.headTeacher) {
+              if (data.headTeacher.photo) {
+                headTeacherPhoto.src = data.headTeacher.photo;
+              }
+              if (data.headTeacher.name) {
+                headTeacherName.textContent = data.headTeacher.name;
+              }
+              if (data.headTeacher.paragraph) {
+                headTeacherParagraph.textContent = data.headTeacher.paragraph;
+              }
+            }
+          }
+        });
+      </script>
+
       <section class="content-section assistant-head-teacher-section">
         <h2>Assistant Head Teacher</h2>
         <article class="assistant-head-teacher-card">
-          <img src="src/resources/image/assistant-head-teacher.jpg" alt="Assistant Head Teacher" />
+          <img id="assistantTeacherPhoto" src="src/resources/image/assistant-head-teacher.jpg" alt="Assistant Head Teacher" />
           <div class="assistant-head-teacher-info">
-            <h3>Shamima begom</h3>
-            <p>Assistant Head Teacher with 15 years of experience, supporting academic programs and student welfare.</p>
+            <h3 id="assistantTeacherName">Shamima begom</h3>
+            <p id="assistantTeacherParagraph">Assistant Head Teacher with 15 years of experience, supporting academic programs and student welfare.</p>
           </div>
         </article>
       </section>
@@ -64,32 +88,104 @@
 
     <section class="content-section senior-teachers-section">
       <h2>Senior Teachers</h2>
-      <div class="teachers-list senior-teachers-list">
-        <article class="teacher-card senior-teacher-card">
-          <img src="src/resources/image/teacher1.jpg" alt="Teacher 1" />
-          <h3>Jahangir alom</h3>
-          <p>Mathematics Teacher with 10 years of experience in high school education.</p>
-        </article>
-        <article class="teacher-card senior-teacher-card">
-          <img src="src/resources/image/teacher2.jpg" alt="Teacher 2" />
-          <h3>Amzad hossshen polash</h3>
-          <p>English Literature Teacher passionate about fostering creativity and critical thinking.</p>
-        </article>
+      <div class="teachers-list senior-teachers-list" id="seniorTeachersList">
       </div>
     </section>
 
     <section class="content-section junior-teachers-section">
       <h2>Junior Teachers</h2>
-      <div class="teachers-list junior-teachers-list">
-        <article class="teacher-card junior-teacher-card">
-          <img src="src/resources/image/teacher3.jpg" alt="Teacher 3" />
-          <h3>Mr. Ahmed Khan</h3>
-          <p>Science Teacher specializing in Physics and Chemistry with a focus on practical learning.</p>
-        </article>
-        <!-- Add more junior teacher cards as needed -->
+      <div class="teachers-list junior-teachers-list" id="juniorTeachersList">
       </div>
     </section>
   </main>
-  <script src="src/scripts.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const headTeacherPhoto = document.getElementById('headTeacherPhoto');
+      const headTeacherName = document.getElementById('headTeacherName');
+      const headTeacherParagraph = document.getElementById('headTeacherParagraph');
+
+      const assistantTeacherPhoto = document.getElementById('assistantTeacherPhoto');
+      const assistantTeacherName = document.getElementById('assistantTeacherName');
+      const assistantTeacherParagraph = document.getElementById('assistantTeacherParagraph');
+
+      const seniorTeachersList = document.getElementById('seniorTeachersList');
+      const juniorTeachersList = document.getElementById('juniorTeachersList');
+
+      const savedTeachersContent = localStorage.getItem('teachersContent');
+      if (savedTeachersContent) {
+        const data = JSON.parse(savedTeachersContent);
+        if (data.headTeacher) {
+          if (data.headTeacher.photo) {
+            headTeacherPhoto.src = data.headTeacher.photo;
+          }
+          if (data.headTeacher.name) {
+            headTeacherName.textContent = data.headTeacher.name;
+          }
+          if (data.headTeacher.paragraph) {
+            headTeacherParagraph.textContent = data.headTeacher.paragraph;
+          }
+        }
+        if (data.assistantTeacher) {
+          if (data.assistantTeacher.photo) {
+            assistantTeacherPhoto.src = data.assistantTeacher.photo;
+          }
+          if (data.assistantTeacher.name) {
+            assistantTeacherName.textContent = data.assistantTeacher.name;
+          }
+          if (data.assistantTeacher.paragraph) {
+            assistantTeacherParagraph.textContent = data.assistantTeacher.paragraph;
+          }
+        }
+        if (data.seniorTeachers) {
+          const names = data.seniorTeachers.names ? data.seniorTeachers.names.split(',') : [];
+          const paragraphs = data.seniorTeachers.paragraphs ? data.seniorTeachers.paragraphs.split('\n') : [];
+          const joinYears = data.seniorTeachers.joinYears ? data.seniorTeachers.joinYears.split(',') : [];
+          const photos = data.seniorTeachers.photos ? data.seniorTeachers.photos.split(',') : [];
+          seniorTeachersList.innerHTML = '';
+          for (let i = 0; i < names.length; i++) {
+            const name = names[i].trim();
+            const paragraph = paragraphs[i] ? paragraphs[i].trim() : '';
+            const joinYear = joinYears[i] ? joinYears[i].trim() : '';
+            const photo = photos[i] ? photos[i].trim() : '';
+            if (name) {
+              const teacherCard = document.createElement('article');
+              teacherCard.className = 'teacher-card senior-teacher-card';
+              teacherCard.innerHTML = `
+                <img src="${photo || `src/resources/image/teacher${i + 1}.jpg`}" alt="Senior Teacher ${i + 1}" />
+                <h3>${name}</h3>
+                <p>${paragraph}</p>
+                <p>Join Year: ${joinYear}</p>
+              `;
+              seniorTeachersList.appendChild(teacherCard);
+            }
+          }
+        }
+        if (data.juniorTeachers) {
+          const names = data.juniorTeachers.names ? data.juniorTeachers.names.split(',') : [];
+          const paragraphs = data.juniorTeachers.paragraphs ? data.juniorTeachers.paragraphs.split('\n') : [];
+          const joinYears = data.juniorTeachers.joinYears ? data.juniorTeachers.joinYears.split(',') : [];
+          const photos = data.juniorTeachers.photos ? data.juniorTeachers.photos.split(',') : [];
+          juniorTeachersList.innerHTML = '';
+          for (let i = 0; i < names.length; i++) {
+            const name = names[i].trim();
+            const paragraph = paragraphs[i] ? paragraphs[i].trim() : '';
+            const joinYear = joinYears[i] ? joinYears[i].trim() : '';
+            const photo = photos[i] ? photos[i].trim() : '';
+            if (name) {
+              const teacherCard = document.createElement('article');
+              teacherCard.className = 'teacher-card junior-teacher-card';
+              teacherCard.innerHTML = `
+                <img src="${photo || `src/resources/image/teacher${i + 3}.jpg`}" alt="Junior Teacher ${i + 1}" />
+                <h3>${name}</h3>
+                <p>${paragraph}</p>
+                <p>Join Year: ${joinYear}</p>
+              `;
+              juniorTeachersList.appendChild(teacherCard);
+            }
+          }
+        }
+      }
+    });
+  </script>
 </body>
 </html>

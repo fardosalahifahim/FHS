@@ -1,74 +1,258 @@
+/* Reset and base styles */
 body {
-  font-family: 'Poppins', sans-serif;
-  background: linear-gradient(135deg, #2e0854, #5a2a83, #7b3fbf);
-  color: #f0e6ff;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   margin: 0;
   padding: 0;
-  min-height: 100vh;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  height: 100vh;
+  background: linear-gradient(135deg, #3a0f5f, #5e2a8a);
+  color: #d1c4e9;
 }
 
-.dashboard-section {
-  background: rgba(45, 0, 90, 0.85);
-  padding: 2rem 3rem;
-  border-radius: 20px;
-  box-shadow: 0 0 30px #a678ff;
-  width: 100%;
-  max-width: 400px;
+/* Navigation styles */
+nav {
+  width: 260px;
+  background: linear-gradient(180deg, #6a0dad, #4b0082);
+  color: #e6e0f8;
+  display: flex;
+  flex-direction: column;
+  padding-top: 30px;
+  box-shadow: 3px 0 15px rgba(75, 0, 130, 0.6);
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+  font-weight: 600;
+  user-select: none;
+}
+
+nav h2 {
   text-align: center;
-}
-
-.dashboard-section h1 {
   margin-bottom: 1.5rem;
-  font-size: 2rem;
-  color: #d8b3ff;
-  text-shadow: 0 0 10px #a678ff;
+  font-size: 1.8rem;
+  letter-spacing: 1.5px;
+  text-shadow: 0 2px 6px rgba(75, 0, 130, 0.8);
+  border-bottom: 2px solid rgba(179, 157, 219, 0.6);
+  padding-bottom: 12px;
 }
 
-#student-info p {
-  font-size: 1.2rem;
-  margin: 0.5rem 0;
-  color: #d8b3ff;
-  text-shadow: 0 0 5px #7b3fbf;
-}
-
-.btn-primary {
-  background-color: #a678ff;
-  color: #2e0854;
-  font-weight: 700;
-  padding: 0.75rem 1.5rem;
-  border-radius: 30px;
+nav button {
+  background: transparent;
   border: none;
+  color: #d1c4e9;
+  padding: 18px 25px;
+  text-align: left;
+  font-size: 1.1rem;
   cursor: pointer;
-  box-shadow: 0 0 15px #a678ff;
-  transition: background-color 0.3s ease, box-shadow 0.3s ease;
-  margin-top: 1.5rem;
+  border-left: 6px solid transparent;
+  transition: background-color 0.4s ease, border-left-color 0.4s ease, color 0.3s ease;
+  margin: 0 10px 8px 10px;
+  border-radius: 8px;
+  box-shadow: inset 0 0 0 0 transparent;
 }
 
-.btn-primary:hover,
-.btn-primary:focus {
-  background-color: #d8b3ff;
-  box-shadow: 0 0 25px #d8b3ff;
-  outline: none;
+nav button:hover, nav button.active {
+  background-color: rgba(179, 157, 219, 0.25);
+  border-left-color: #d1c4e9;
+  color: #e6e0f8;
+  box-shadow: inset 5px 0 10px rgba(209, 196, 233, 0.6);
 }
 
-/* Responsive styles */
-@media (max-width: 480px) {
-  body {
-    padding: 1rem;
-  }
-  .dashboard-section {
-    padding: 1.5rem 2rem;
-    max-width: 100%;
-  }
-  .dashboard-section h1 {
-    font-size: 1.5rem;
-  }
-  .btn-primary {
-    width: 100%;
-    padding: 0.75rem;
-    font-size: 1rem;
-  }
+/* Main content styles */
+main {
+  flex-grow: 1;
+  padding: 30px 40px;
+  background-color: rgba(179, 157, 219, 0.13);
+  margin: 20px;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(75, 0, 130, 0.5);
+  overflow-y: auto;
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  transition: background-color 0.3s ease;
+  color: #d1c4e9;
+}
+
+/* Sections */
+section {
+  display: none;
+  animation: fadeIn 0.5s ease forwards;
+}
+
+section.active {
+  display: block;
+}
+
+/* Headings */
+h1 {
+  margin-top: 0;
+  color: #d1c4e9;
+  font-weight: 800;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  letter-spacing: 1.2px;
+  text-shadow: 0 1px 3px rgba(179, 157, 219, 0.7);
+}
+
+/* Student info container */
+.student-info {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+/* Student info text container */
+.student-info-text {
+  width: 100%;
+}
+
+/* Student info paragraphs */
+.student-info p {
+  margin: 0.6rem 0;
+  font-size: 1.1rem;
+  color: #d1c4e9;
+  line-height: 1.5;
+  border-bottom: 1px solid #b39ddb;
+  padding-bottom: 6px;
+  width: 100%;
+}
+
+/* Profile picture section */
+.profile-picture-section {
+  width: 140px;
+  height: 140px;
+  background-color: rgba(75, 0, 130, 0.3);
+  border-radius: 15px;
+  padding: 10px;
+  box-shadow: 0 0 15px rgba(209, 196, 233, 0.8);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.profile-pic-label {
+  font-weight: 700;
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+  color: #d1c4e9;
+  text-shadow: 0 1px 2px rgba(75, 0, 130, 0.8);
+  user-select: none;
+}
+
+.profile-pic-container {
+  position: relative;
+  width: 120px;
+  height: 120px;
+}
+
+.profile-pic-display {
+  width: 120px;
+  height: 120px;
+  border-radius: 15px; /* square with rounded corners */
+  object-fit: cover;
+  border: 4px solid #d1c4e9;
+  box-shadow: 0 0 15px rgba(209, 196, 233, 0.8);
+  transition: box-shadow 0.3s ease;
+  display: block;
+  margin: 0 auto;
+}
+
+.profile-pic-container:hover .profile-pic-display {
+  box-shadow: 0 0 25px rgba(255, 204, 0, 0.9);
+}
+
+#photo-upload {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 120px;
+  height: 120px;
+  opacity: 0;
+  cursor: pointer;
+  border-radius: 15px;
+}
+
+/* Logout button */
+#logout-btn {
+  margin-top: auto;
+  margin-bottom: 30px;
+  background: linear-gradient(45deg, #6a0dad, #4b0082);
+  border: none;
+  color: #e6e0f8;
+  padding: 12px 20px;
+  font-size: 1.1rem;
+  border-radius: 12px;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(75, 0, 130, 0.7);
+  transition: background 0.4s ease, box-shadow 0.4s ease;
+  align-self: center;
+  width: 80%;
+}
+
+#logout-btn:hover {
+  background: linear-gradient(45deg, #4b0082, #6a0dad);
+  box-shadow: 0 6px 20px rgba(75, 0, 130, 0.9);
+}
+
+/* Fade in animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Feed styles */
+.feed-content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.feed-post {
+  background: rgba(75, 0, 130, 0.3);
+  border-radius: 15px;
+  padding: 15px 20px;
+  box-shadow: 0 4px 15px rgba(75, 0, 130, 0.5);
+  color: #e6e0f8;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.post-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.profile-pic {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 15px;
+  border: 2px solid #d1c4e9;
+}
+
+.post-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.post-author {
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: #f3e5f5;
+}
+
+.post-timestamp {
+  font-size: 0.85rem;
+  color: #b39ddb;
+}
+
+.post-content {
+  font-size: 1rem;
+  line-height: 1.4;
+  color: #d1c4e9;
+  white-space: pre-wrap;
 }

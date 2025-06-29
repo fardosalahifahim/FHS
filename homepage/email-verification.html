@@ -93,76 +93,65 @@
       <p id="message"></p>
     </section>
   </main>
-  <script src="src/email-verification-handler-copy.js"></script>
-  <script>
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.8.1/firebase-app.js";
+    import { getAuth, sendEmailVerification, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/11.8.1/firebase-auth.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyD3fKEG0NmEfEp1sR559zRoAVkhLTuFU04",
+      authDomain: "faridpur-high-school.firebaseapp.com",
+      projectId: "faridpur-high-school",
+      storageBucket: "faridpur-high-school.firebasestorage.app",
+      messagingSenderId: "323975497844",
+      appId: "1:323975497844:web:455afa394066b511172921",
+      measurementId: "G-SED3BLB20X"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+
     const emailDisplay = document.getElementById('email-display');
-    let userEmail = emailDisplay.textContent.trim();
-
-    emailDisplay.addEventListener('input', () => {
-      userEmail = emailDisplay.textContent.trim();
-    });
-
     const sendOtpBtn = document.getElementById('send-otp-btn');
-    const otpInputSection = document.getElementById('otp-input-section');
-    const verifyOtpBtn = document.getElementById('verify-otp-btn');
     const messageEl = document.getElementById('message');
+
+    // Get email from URL query parameter
+    const urlParams = new URLSearchParams(window.location.search);
+    const userEmail = urlParams.get('email');
+    if (userEmail) {
+      emailDisplay.textContent = userEmail;
+      emailDisplay.contentEditable = false;
+    }
 
     sendOtpBtn.addEventListener('click', async () => {
       messageEl.textContent = '';
-      if (!userEmail || !userEmail.includes('@')) {
-        messageEl.style.color = 'red';
-        messageEl.textContent = 'Please enter a valid email address.';
-        return;
-      }
       try {
-        const response = await fetch('http://localhost:3001/send-otp', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ email: userEmail })
-        });
-        if (response.ok) {
+        const user = auth.currentUser;
+        if (user) {
+          await sendEmailVerification(user);
           messageEl.style.color = 'green';
-          messageEl.textContent = 'OTP sent to your email.';
-          otpInputSection.style.display = 'block';
+          messageEl.textContent = 'Verification email sent. Please check your inbox.';
           sendOtpBtn.disabled = true;
         } else {
-          const text = await response.text();
           messageEl.style.color = 'red';
-          messageEl.textContent = 'Failed to send OTP: ' + text;
+          messageEl.textContent = 'No authenticated user found. Please register or login first.';
         }
       } catch (error) {
         messageEl.style.color = 'red';
-        messageEl.textContent = 'Error sending OTP: ' + error.message;
+        messageEl.textContent = 'Error sending verification email: ' + error.message;
       }
     });
 
-    verifyOtpBtn.addEventListener('click', async () => {
-      const otp = document.getElementById('otp-input').value.trim();
-      if (otp.length !== 6) {
-        messageEl.style.color = 'red';
-        messageEl.textContent = 'Please enter a valid 6-digit OTP.';
-        return;
-      }
-      try {
-        const response = await fetch('http://localhost:3001/verify-otp', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ email: userEmail, otp })
-        });
-        if (response.ok) {
+    // Monitor auth state and redirect if email verified
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        if (user.emailVerified) {
           messageEl.style.color = 'green';
-          messageEl.textContent = 'Email verified successfully! You can now log in.';
+          messageEl.textContent = 'Email verified! Redirecting to login page...';
           setTimeout(() => {
+            signOut(auth);
             window.location.href = 'login.html';
           }, 2000);
-        } else {
-          const text = await response.text();
-          messageEl.style.color = 'red';
-          messageEl.textContent = 'OTP verification failed: ' + text;
         }
-      } catch (error) {
-        messageEl.style.color = 'red';
-        messageEl.textContent = 'Error verifying OTP: ' + error.message;
       }
     });
   </script>

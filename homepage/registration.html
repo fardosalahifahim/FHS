@@ -7,12 +7,61 @@
     <link rel="icon" type="image/png" sizes="32x32" href="src/resources/image/logo.png" />
     <link rel="shortcut icon" href="src/resources/image/logo.png" />
     <link rel="stylesheet" href="src/registration-styles.css" />
+    <style>
+      /* Enhanced styling for ID number input and button */
+      #id-number {
+        width: 220px;
+        padding: 0.6rem 1.2rem;
+        font-size: 1.1rem;
+        border: 2px solid #6a0dad;
+        border-radius: 8px;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        color: #4b0082;
+        background-color: #f9f5ff;
+        box-shadow: 0 0 8px rgba(106, 13, 173, 0.5);
+        transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        margin-right: 10px;
+      }
+      #id-number:focus {
+        border-color: #9b30ff;
+        outline: none;
+        box-shadow: 0 0 12px #9b30ff;
+      }
+      #check-id-btn {
+        padding: 0.6rem 1.2rem;
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: #fff;
+        background-color: #6a0dad;
+        border-radius: 8px;
+        cursor: pointer;
+        user-select: none;
+        transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        border: none;
+        box-shadow: 0 0 8px #6a0dad;
+      }
+      #check-id-btn:hover {
+        background-color: #9b30ff;
+        box-shadow: 0 0 14px #9b30ff;
+      }
+      #id-message {
+        color: red;
+        font-weight: 600;
+        margin-top: 0.5rem;
+      }
+    </style>
   </head>
 <body>
   <main>
     <section class="form-section">
       <h2>Registration</h2>
-      <form class="form" action="#" method="POST" aria-label="Registration form">
+      <form id="registration-form" class="form" action="#" method="POST" aria-label="Registration form">
+        <label for="id-number">ID Number</label><br />
+        <input type="number" id="id-number" name="idNumber" placeholder="Enter your ID number" required />
+        <button type="button" id="check-id-btn">Check ID</button>
+        <div id="id-message" role="alert" aria-live="assertive"></div>
+
         <label for="reg-name">Full Name</label>
         <input type="text" id="reg-name" name="name" placeholder="Enter your full name" required />
 
@@ -48,8 +97,16 @@
 
         <button type="submit" class="btn btn-primary">Register</button>
       </form>
+      <section id="otp-section" style="display:none;">
+        <form id="otp-form" aria-label="OTP verification form">
+          <label for="otp-input">Enter OTP</label>
+          <input type="text" id="otp-input" maxlength="6" required />
+          <button type="submit" class="btn btn-primary">Verify OTP</button>
+        </form>
+      </section>
     </section>
   </main>
-  <script src="src/registration-handler-updated.js"></script>
+  <!-- Removed other registration handler scripts to avoid conflicts -->
+  <script type="module" src="src/registration-handler.js"></script>
 </body>
 </html>

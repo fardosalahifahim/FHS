@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Admin Panel - Faridpur High School</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #2d005a;
+      color: #d8b3ff;
+      margin: 0;
+      padding: 2rem;
+    }
+    header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    h1 {
+      margin: 0;
+    }
+    .admin-content {
+      max-width: 800px;
+      margin: 0 auto;
+      background: linear-gradient(135deg, #5a2a83, #7b3fbf);
+      padding: 2rem;
+      border-radius: 15px;
+      box-shadow: 0 0 20px #a678ff;
+    }
+    .logout-button {
+      background-color: #d8b3ff;
+      color: #2d005a;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+      float: right;
+    }
+    .logout-button:hover {
+      background-color: #a678ff;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Admin Panel</h1>
+    <button class="logout-button" onclick="logout()">Logout</button>
+  </header>
+  <section class="admin-content">
+    <p>Welcome to the Faridpur High School Admin Panel.</p>
+    <p>Here you can manage the website content and settings.</p>
+    <!-- Add admin panel features here -->
+  </section>
+
+  <script>
+    function logout() {
+      window.location.href = 'admin.html';
+    }
+  </script>
+</body>
+</html>

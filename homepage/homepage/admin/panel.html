@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Admin Panel - Faridpur High School</title>
+    <link rel="stylesheet" href="/homepage/admin/css/panel.css" />
+  </head>
+  <body>
+    <div class="admin-nav-select">
+      <label for="admin-section-select" class="sr-only">Select Admin Section</label>
+      <select id="admin-section-select" aria-label="Select Admin Section">
+        <option value="home" selected>Home</option>
+        <option value="teachers">Teachers</option>
+      </select>
+      <button class="logout-button" onclick="logout()">Logout</button>
+    </div>
+    <section class="admin-content">
+      <div id="notishboard-section">
+        <h2>Notish Board Editor</h2>
+        <textarea id="notishBoardEditor" rows="10" class="admin-textarea" aria-label="Edit Notish Board content"></textarea>
+        <div class="admin-button-group">
+          <button id="saveNotishBoardBtn" class="admin-button">Save</button>
+          <button id="loadNotishBoardBtn" class="admin-button admin-button-secondary">Load</button>
+        </div>
+      </div>
+
+      <div id="teachers-section" style="display:none;">
+        <h2 style="color: #d8b3ff; text-shadow: 0 0 15px #a678ff;">Teachers Management</h2>
+        <button type="button" id="addTeacherBtn" class="admin-button" style="margin-bottom: 1rem;">Add Teacher</button>
+        <form id="teachersForm" class="admin-form">
+          <fieldset>
+            <legend>Head Teacher</legend>
+            <label for="headTeacherPhoto">Photo URL:</label>
+            <input type="text" id="headTeacherPhoto" name="headTeacherPhoto" class="admin-input" />
+            <img id="headTeacherPhotoPreview" src="" alt="Head Teacher Photo Preview" style="width: 150px; height: auto; margin-top: 0.5rem; border-radius: 10px; box-shadow: 0 0 10px #a678ff;" />
+            <label for="headTeacherName">Name:</label>
+            <input type="text" id="headTeacherName" name="headTeacherName" class="admin-input" />
+            <label for="headTeacherParagraph">Paragraph:</label>
+            <textarea id="headTeacherParagraph" name="headTeacherParagraph" class="admin-textarea"></textarea>
+            <label for="headTeacherJoinYear">Join Year:</label>
+            <input type="text" id="headTeacherJoinYear" name="headTeacherJoinYear" class="admin-input" />
+            <button type="button" id="saveHeadTeacherBtn" class="admin-button">Save Head Teacher</button>
+          </fieldset>
+
+          <fieldset>
+            <legend>Assistant Head Teacher</legend>
+            <label for="assistantTeacherPhoto">Photo URL:</label>
+            <input type="text" id="assistantTeacherPhoto" name="assistantTeacherPhoto" class="admin-input" />
+            <img id="assistantTeacherPhotoPreview" src="" alt="Assistant Head Teacher Photo Preview" style="width: 150px; height: auto; margin-top: 0.5rem; border-radius: 10px; box-shadow: 0 0 10px #a678ff;" />
+            <label for="assistantTeacherName">Name:</label>
+            <input type="text" id="assistantTeacherName" name="assistantTeacherName" class="admin-input" />
+            <label for="assistantTeacherParagraph">Paragraph:</label>
+            <textarea id="assistantTeacherParagraph" name="assistantTeacherParagraph" class="admin-textarea"></textarea>
+            <label for="assistantTeacherJoinYear">Join Year:</label>
+            <input type="text" id="assistantTeacherJoinYear" name="assistantTeacherJoinYear" class="admin-input" />
+            <button type="button" id="saveAssistantTeacherBtn" class="admin-button">Save Assistant Head Teacher</button>
+          </fieldset>
+
+          <fieldset>
+            <legend>Senior Teachers</legend>
+            <label for="seniorTeachersNames">Names (comma separated):</label>
+            <textarea id="seniorTeachersNames" name="seniorTeachersNames" class="admin-textarea"></textarea>
+            <label for="seniorTeachersParagraphs">Paragraphs (one per line):</label>
+            <textarea id="seniorTeachersParagraphs" name="seniorTeachersParagraphs" class="admin-textarea" style="height: 6rem;"></textarea>
+            <button type="button" id="saveSeniorTeachersBtn" class="admin-button">Save Senior Teachers</button>
+          </fieldset>
+
+          <fieldset>
+            <legend>Junior Teachers (comma separated names)</legend>
+            <label for="juniorTeachersPhoto">Photo URL:</label>
+            <input type="text" id="juniorTeachersPhoto" name="juniorTeachersPhoto" class="admin-input" />
+            <img id="juniorTeachersPhotoPreview" src="" alt="Junior Teachers Photo Preview" style="width: 150px; height: auto; margin-top: 0.5rem; border-radius: 10px; box-shadow: 0 0 10px #a678ff;" />
+            <label for="juniorTeachersNames">Names:</label>
+            <textarea id="juniorTeachersNames" name="juniorTeachersNames" class="admin-textarea"></textarea>
+            <label for="juniorTeachersParagraphs">Paragraphs (comma separated):</label>
+            <textarea id="juniorTeachersParagraphs" name="juniorTeachersParagraphs" class="admin-textarea"></textarea>
+            <button type="button" id="saveJuniorTeachersBtn" class="admin-button">Save Junior Teachers</button>
+          </fieldset>
+
+          <div class="admin-button-group">
+            <button type="button" id="saveTeachersBtn" class="admin-button">Save All Teachers</button>
+            <button type="button" id="loadTeachersBtn" class="admin-button admin-button-secondary">Load All Teachers</button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+  <script>
+    // Check if admin is logged in
+    document.addEventListener('DOMContentLoaded', function() {
+      if (localStorage.getItem('isAdminLoggedIn') !== 'true') {
+        window.location.href = 'index.html';
+      }
+
+      // Add Teacher Modal Elements
+      const addTeacherBtn = document.getElementById('addTeacherBtn');
+
+      // Create modal container
+      const modal = document.createElement('div');
+      modal.id = 'addTeacherModal';
+      modal.style.position = 'fixed';
+      modal.style.top = '50%';
+      modal.style.left = '50%';
+      modal.style.transform = 'translate(-50%, -50%)';
+      modal.style.backgroundColor = '#2d005a';
+      modal.style.padding = '2rem';
+      modal.style.borderRadius = '15px';
+      modal.style.boxShadow = '0 0 30px #a678ff';
+      modal.style.zIndex = '10000';
+      modal.style.display = 'none';
+      modal.style.width = '400px';
+      modal.style.color = '#d8b3ff';
+
+      // Modal content HTML
+      modal.innerHTML = `
+        <h2>Add New Teacher</h2>
+        <label for="newTeacherName">Name:</label>
+        <input type="text" id="newTeacherName" class="admin-input" />
+        <label for="newTeacherBio">Bio:</label>
+        <textarea id="newTeacherBio" class="admin-textarea" style="height: 6rem;"></textarea>
+        <label for="newTeacherPhotoUpload">Upload Photo:</label>
+        <input type="file" id="newTeacherPhotoUpload" accept="image/*" class="admin-input" />
+        <img id="newTeacherPhotoPreview" src="" alt="New Teacher Photo Preview" style="width: 150px; height: auto; margin-top: 0.5rem; border-radius: 10px; box-shadow: 0 0 10px #a678ff; display: none;" />
+        <label for="newTeacherSection">Section:</label>
+        <select id="newTeacherSection" class="admin-input">
+          <option value="seniorTeachers">Senior Teachers</option>
+          <option value="juniorTeachers">Junior Teachers</option>
+          <option value="staff">Staff</option>
+        </select>
+        <div style="margin-top: 1rem; display: flex; justify-content: space-between;">
+          <button id="saveNewTeacherBtn" class="admin-button">Save</button>
+          <button id="cancelNewTeacherBtn" class="admin-button admin-button-secondary">Cancel</button>
+        </div>
+      `;
+
+      document.body.appendChild(modal);
+
+      // Show modal on button click
+      addTeacherBtn.addEventListener('click', () => {
+        modal.style.display = 'block';
+      });
+
+      // New Teacher Photo Upload Preview
+      const newTeacherPhotoUpload = modal.querySelector('#newTeacherPhotoUpload');
+      const newTeacherPhotoPreview = modal.querySelector('#newTeacherPhotoPreview');
+
+      newTeacherPhotoUpload.addEventListener('change', function() {
+        const file = this.files[0];
+        if (file) {
+          const reader = new FileReader();
+          reader.onload = function(e) {
+            newTeacherPhotoPreview.src = e.target.result;
+            newTeacherPhotoPreview.style.display = 'block';
+            newTeacherPhotoUpload.dataset.base64 = e.target.result;
+          };
+          reader.readAsDataURL(file);
+        } else {
+          newTeacherPhotoPreview.src = '';
+          newTeacherPhotoPreview.style.display = 'none';
+          newTeacherPhotoUpload.dataset.base64 = '';
+        }
+      });
+
+      // Cancel button closes modal
+      document.getElementById('cancelNewTeacherBtn').addEventListener('click', () => {
+        modal.style.display = 'none';
+        clearNewTeacherForm();
+      });
+
+      // Save new teacher button handler
+      document.getElementById('saveNewTeacherBtn').addEventListener('click', () => {
+        const name = document.getElementById('newTeacherName').value.trim();
+        const bio = document.getElementById('newTeacherBio').value.trim();
+        const photo = newTeacherPhotoUpload.dataset.base64 || '';
+        const section = document.getElementById('newTeacherSection').value;
+
+        if (!name || !bio) {
+          alert('Please enter both name and bio.');
+          return;
+        }
+
+        // Load existing teachers data
+        let teachersData = localStorage.getItem('teachersContent');
+        let data = teachersData ? JSON.parse(teachersData) : {};
+
+        if (!data[section]) {
+          data[section] = { names: '', paragraphs: '', photos: '', joinYears: '' };
+        }
+
+        // Append new teacher data
+        data[section].names = data[section].names ? data[section].names + ',' + name : name;
+        data[section].paragraphs = data[section].paragraphs ? data[section].paragraphs + '\n' + bio : bio;
+        data[section].photos = data[section].photos ? data[section].photos + ',' + photo : photo;
+        data[section].joinYears = data[section].joinYears ? data[section].joinYears + ',' : '';
+
+        // Save updated data
+        localStorage.setItem('teachersContent', JSON.stringify(data));
+        alert('New teacher added successfully.');
+
+        modal.style.display = 'none';
+        clearNewTeacherForm();
+      });
+
+      function clearNewTeacherForm() {
+        document.getElementById('newTeacherName').value = '';
+        document.getElementById('newTeacherBio').value = '';
+        document.getElementById('newTeacherPhoto').value = '';
+        document.getElementById('newTeacherSection').value = 'seniorTeachers';
+      }
+
+      // Elements
+      const editor = document.getElementById('notishBoardEditor');
+      const savedContent = localStorage.getItem('notishBoardContent');
+
+      const sectionSelect = document.getElementById('admin-section-select');
+      const notishboardSection = document.getElementById('notishboard-section');
+      const teachersSection = document.getElementById('teachers-section');
+
+      const teachersForm = document.getElementById('teachersForm');
+      const headTeacherPhotoInput = document.getElementById('headTeacherPhoto');
+      const headTeacherPhotoPreview = document.getElementById('headTeacherPhotoPreview');
+      const headTeacherNameInput = document.getElementById('headTeacherName');
+      const headTeacherParagraphInput = document.getElementById('headTeacherParagraph');
+      const headTeacherJoinYearInput = document.getElementById('headTeacherJoinYear');
+      const saveHeadTeacherBtn = document.getElementById('saveHeadTeacherBtn');
+
+      const assistantTeacherNameInput = document.getElementById('assistantTeacherName');
+      const assistantTeacherParagraphInput = document.getElementById('assistantTeacherParagraph');
+      const assistantTeacherJoinYearInput = document.getElementById('assistantTeacherJoinYear');
+
+      const seniorTeachersNamesInput = document.getElementById('seniorTeachersNames');
+      const seniorTeachersParagraphsInput = document.getElementById('seniorTeachersParagraphs');
+      const seniorTeachersJoinYearsInput = document.getElementById('seniorTeachersJoinYears');
+
+      const juniorTeachersNamesInput = document.getElementById('juniorTeachersNames');
+      const juniorTeachersParagraphsInput = document.getElementById('juniorTeachersParagraphs');
+      const juniorTeachersJoinYearsInput = document.getElementById('juniorTeachersJoinYears');
+
+      // Load Notish Board content
+      if (savedContent) {
+        editor.value = savedContent;
+      }
+
+      // Show/hide editors based on select option
+      function updateSectionVisibility() {
+        const selectedValue = sectionSelect.value;
+        if (selectedValue === 'home') {
+          notishboardSection.style.display = 'block';
+          teachersSection.style.display = 'none';
+        } else if (selectedValue === 'teachers') {
+          notishboardSection.style.display = 'none';
+          teachersSection.style.display = 'block';
+          loadTeachersContent();
+        } else {
+          notishboardSection.style.display = 'none';
+          teachersSection.style.display = 'none';
+        }
+      }
+      updateSectionVisibility();
+
+      sectionSelect.addEventListener('change', (event) => {
+        updateSectionVisibility();
+      });
+
+      // Save Notish Board content
+      document.getElementById('saveNotishBoardBtn').addEventListener('click', function() {
+        localStorage.setItem('notishBoardContent', editor.value);
+        alert('Notish Board content saved successfully.');
+      });
+
+      // Load Notish Board content
+      document.getElementById('loadNotishBoardBtn').addEventListener('click', function() {
+        const editor = document.getElementById('notishBoardEditor');
+        const savedContent = localStorage.getItem('notishBoardContent');
+        if (savedContent) {
+          editor.value = savedContent;
+          alert('Notish Board content loaded.');
+        } else {
+          alert('No saved content found.');
+        }
+      });
+
+      // Save Teachers content (all)
+      document.getElementById('saveTeachersBtn').addEventListener('click', function() {
+        saveTeachersContent();
+      });
+
+      // Load Teachers content (all)
+      document.getElementById('loadTeachersBtn').addEventListener('click', function() {
+        loadTeachersContent();
+      });
+
+      // Save Head Teacher content individually
+      saveHeadTeacherBtn.addEventListener('click', function() {
+        const data = getTeachersData();
+        localStorage.setItem('teachersContent', JSON.stringify(data));
+        alert('Head Teacher content saved successfully.');
+      });
+
+      // Save Assistant Head Teacher content individually
+      const saveAssistantTeacherBtn = document.getElementById('saveAssistantTeacherBtn');
+      saveAssistantTeacherBtn.addEventListener('click', function() {
+        const data = getTeachersData();
+        localStorage.setItem('teachersContent', JSON.stringify(data));
+        alert('Assistant Head Teacher content saved successfully.');
+      });
+
+      // Save Senior Teachers content individually
+      const saveSeniorTeachersBtn = document.getElementById('saveSeniorTeachersBtn');
+      saveSeniorTeachersBtn.addEventListener('click', function() {
+        const data = getTeachersData();
+        localStorage.setItem('teachersContent', JSON.stringify(data));
+        alert('Senior Teachers content saved successfully.');
+      });
+
+      // Save Junior Teachers content individually
+      const saveJuniorTeachersBtn = document.getElementById('saveJuniorTeachersBtn');
+      saveJuniorTeachersBtn.addEventListener('click', function() {
+        const data = getTeachersData();
+        localStorage.setItem('teachersContent', JSON.stringify(data));
+        alert('Junior Teachers content saved successfully.');
+      });
+
+      // Update photo preview when photo URL input changes
+      headTeacherPhotoInput.addEventListener('input', function() {
+        const url = headTeacherPhotoInput.value.trim();
+        if (url) {
+          headTeacherPhotoPreview.src = url;
+        } else {
+          headTeacherPhotoPreview.src = '';
+        }
+      });
+
+      assistantTeacherPhotoInput.addEventListener('input', function() {
+        const url = assistantTeacherPhotoInput.value.trim();
+        if (url) {
+          assistantTeacherPhotoPreview.src = url;
+        } else {
+          assistantTeacherPhotoPreview.src = '';
+        }
+      });
+
+      // Helper: Get teachers data from form inputs
+      function getTeachersData() {
+        return {
+          headTeacher: {
+            photo: headTeacherPhotoInput.value.trim(),
+            name: headTeacherNameInput.value.trim(),
+            paragraph: headTeacherParagraphInput.value.trim(),
+            joinYear: headTeacherJoinYearInput.value.trim()
+          },
+          assistantTeacher: {
+            photo: assistantTeacherPhotoInput.value.trim(),
+            name: assistantTeacherNameInput.value.trim(),
+            paragraph: assistantTeacherParagraphInput.value.trim(),
+            joinYear: assistantTeacherJoinYearInput.value.trim()
+          },
+          seniorTeachers: {
+            names: seniorTeachersNamesInput.value.trim(),
+            paragraphs: seniorTeachersParagraphsInput.value.trim(),
+            joinYears: seniorTeachersJoinYearsInput.value.trim()
+          },
+          juniorTeachers: {
+            names: juniorTeachersNamesInput.value.trim(),
+            paragraphs: juniorTeachersParagraphsInput.value.trim(),
+            joinYears: juniorTeachersJoinYearsInput.value.trim()
+          }
+        };
+      }
+
+      // Helper: Load teachers data into form inputs
+      function loadTeachersContent() {
+        const saved = localStorage.getItem('teachersContent');
+        if (saved) {
+          const data = JSON.parse(saved);
+          headTeacherPhotoInput.value = data.headTeacher.photo || '';
+          headTeacherPhotoPreview.src = data.headTeacher.photo || '';
+          headTeacherNameInput.value = data.headTeacher.name || '';
+          headTeacherParagraphInput.value = data.headTeacher.paragraph || '';
+          headTeacherJoinYearInput.value = data.headTeacher.joinYear || '';
+
+          assistantTeacherPhotoInput.value = data.assistantTeacher.photo || '';
+          assistantTeacherPhotoPreview.src = data.assistantTeacher.photo || '';
+          assistantTeacherNameInput.value = data.assistantTeacher.name || '';
+          assistantTeacherParagraphInput.value = data.assistantTeacher.paragraph || '';
+          assistantTeacherJoinYearInput.value = data.assistantTeacher.joinYear || '';
+
+          seniorTeachersNamesInput.value = data.seniorTeachers.names || '';
+          seniorTeachersParagraphsInput.value = data.seniorTeachers.paragraphs || '';
+          seniorTeachersJoinYearsInput.value = data.seniorTeachers.joinYears || '';
+
+          juniorTeachersNamesInput.value = data.juniorTeachers.names || '';
+          juniorTeachersParagraphsInput.value = data.juniorTeachers.paragraphs || '';
+          juniorTeachersJoinYearsInput.value = data.juniorTeachers.joinYears || '';
+        } else {
+          alert('No saved teachers content found.');
+        }
+      }
+    });
+
+    function logout() {
+      // Clear login flag
+      localStorage.removeItem('isAdminLoggedIn');
+      window.location.href = 'index.html';
+    }
+  </script>
+</body>
+</html>

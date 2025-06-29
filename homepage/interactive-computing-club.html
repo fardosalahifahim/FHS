@@ -72,41 +72,57 @@
       color: #00ffff;
       text-shadow: 0 0 15px #00ffff;
     }
+    .see-more-btn {
+      background: none;
+      border: none;
+      color: #00ffff;
+      cursor: pointer;
+      font-weight: 600;
+      text-decoration: underline;
+      padding: 0;
+      margin-top: 0.5rem;
+      align-self: flex-start;
+    }
   </style>
   <div class="slides-wrapper">
     <div class="slider-slide">
       <div class="student-card left-align" style="margin-left: 0; display: flex; flex-direction: column; align-items: flex-start;">
         <img src="src/resources/image/student1.jpg" alt="Student 1" style="width: 350px; height: 450px;" />
-        <h3>Student Name 1</h3>
-        <p style="margin-top: auto;">Outstanding achievements in interactive computing projects and competitions.</p>
+        <h3>Fardos Alahi Fahim</h3>
+        <p class="student-description" style="margin-top: auto;">Leader of the Interactive Computing Club with a passion for robotics, AI, data science, Hackintosh systems, and web development. Focused on innovation, collaboration, and building real-world tech solutions.</p>
+        <button class="see-more-btn" aria-expanded="false" aria-label="See more description">See More</button>
       </div>
     </div>
     <div class="slider-slide">
       <div class="student-card left-align" style="margin-left: 0; display: flex; flex-direction: column; align-items: flex-start;">
         <img src="src/resources/image/student2.jpg" alt="Student 2" style="width: 350px; height: 450px;" />
         <h3>Student Name 2</h3>
-        <p style="margin-top: auto;">Active participant in coding challenges and robotics workshops.</p>
+        <p class="student-description" style="margin-top: auto;">Active participant in coding challenges and robotics workshops. this website is created by fardos alahi fahim </p>
+        <button class="see-more-btn" aria-expanded="false" aria-label="See more description">See More</button>
       </div>
     </div>
     <div class="slider-slide">
       <div class="student-card left-align" style="margin-left: 0; display: flex; flex-direction: column; align-items: flex-start;">
         <img src="src/resources/image/student3.jpg" alt="Student 3" style="width: 350px; height: 450px;" />
         <h3>Student Name 3</h3>
-        <p style="margin-top: auto;">Innovative problem solver and team leader in coding projects.</p>
+        <p class="student-description" style="margin-top: auto;">Innovative problem solver and team leader in coding projects.</p>
+        <button class="see-more-btn" aria-expanded="false" aria-label="See more description">See More</button>
       </div>
     </div>
     <div class="slider-slide">
       <div class="student-card left-align" style="margin-left: 0; display: flex; flex-direction: column; align-items: flex-start;">
         <img src="src/resources/image/student4.jpg" alt="Student 4" style="width: 350px; height: 450px;" />
         <h3>Student Name 4</h3>
-        <p style="margin-top: auto;">Passionate about robotics and AI research.</p>
+        <p class="student-description" style="margin-top: auto;">Passionate about robotics and AI research.</p>
+        <button class="see-more-btn" aria-expanded="false" aria-label="See more description">See More</button>
       </div>
     </div>
     <div class="slider-slide">
       <div class="student-card left-align" style="margin-left: 0; display: flex; flex-direction: column; align-items: flex-start;">
         <img src="src/resources/image/student5.jpg" alt="Student 5" style="width: 350px; height: 450px;" />
         <h3>Student Name 5</h3>
-        <p style="margin-top: auto;">Creative coder and hackathon winner.</p>
+        <p class="student-description" style="margin-top: auto;">Creative coder and hackathon winner.</p>
+        <button class="see-more-btn" aria-expanded="false" aria-label="See more description">See More</button>
       </div>
     </div>
   </div>
@@ -124,30 +140,38 @@
       </ul>
     </section>
   </main>
+    <section class="small-height-card-section" aria-label="Computing Club Highlights Section">
+      <h2>Computing Club Highlights</h2>
+      <div class="slider-container" role="list">
+        <div class="slider-slide" role="listitem">
+          <div class="compact-card" tabindex="0" aria-expanded="false" aria-label="Card about Robotics">
+            <img src="src/resources/image/robotics.jpg" alt="Robotics" />
+            <h3>Robotics</h3>
+            <p class="desc" data-full="Join our robotics team to build and program robots for local and national contests. Gain skills in mechanics, electronics, and coding.">Join our robotics team to build and program robots for local and national contests. Gain skills in mechanics, electronics, and coding.</p>
+            <button class="toggle-desc-btn" aria-expanded="false" aria-label="See more description for Robotics">See More</button>
+          </div>
+        </div>
+        <div class="slider-slide" role="listitem">
+          <div class="compact-card" tabindex="0" aria-expanded="false" aria-label="Card about Coding">
+            <img src="src/resources/image/coding.jpg" alt="Coding" />
+            <h3>Coding</h3>
+            <p class="desc" data-full="Learn multiple programming languages and work on real-world projects. Collaborate with peers and mentors to innovate and solve problems.">Learn multiple programming languages and work on real-world projects. Collaborate with peers and mentors to innovate and solve problems.</p>
+            <button class="toggle-desc-btn" aria-expanded="false" aria-label="See more description for Coding">See More</button>
+          </div>
+        </div>
+        <div class="slider-slide" role="listitem">
+          <div class="compact-card" tabindex="0" aria-expanded="false" aria-label="Card about AI & Data Science">
+            <img src="src/resources/image/ai.jpg" alt="AI and Data Science" />
+            <h3>AI & Data Science</h3>
+            <p class="desc" data-full="Explore machine learning algorithms, data analysis, and AI applications. Build models and gain insights from data.">Explore machine learning algorithms, data analysis, and AI applications. Build models and gain insights from data.</p>
+            <button class="toggle-desc-btn" aria-expanded="false" aria-label="See more description for AI & Data Science">See More</button>
+          </div>
+        </div>
+        <a class="prev" aria-label="Previous Slide">&#10094;</a>
+        <a class="next" aria-label="Next Slide">&#10095;</a>
+      </div>
+    </section>
   <section class="club-events-section">
-    <h2>Club Events</h2>
-    <div class="slider-container club-events-slider">
-      <div class="slider-slide fade">
-        <img src="src/resources/image/coding-marathon.jpg" alt="Annual Coding Marathon" />
-        <p class="slider-caption">Annual Coding Marathon</p>
-      </div>
-      <div class="slider-slide fade">
-        <img src="src/resources/image/robotics-competition.jpg" alt="Robotics Competition" />
-        <p class="slider-caption">Robotics Competition</p>
-      </div>
-      <div class="slider-slide fade">
-        <img src="src/resources/image/guest-lecture.jpg" alt="Guest Lectures from Industry Experts" />
-        <p class="slider-caption">Guest Lectures from Industry Experts</p>
-      </div>
-      <div class="slider-slide fade">
-        <img src="src/resources/image/hackathon.jpg" alt="Hackathons and Innovation Challenges" />
-        <p class="slider-caption">Hackathons and Innovation Challenges</p>
-      </div>
-      <a class="prev" aria-label="Previous Slide">&#10094;</a>
-      <a class="next" aria-label="Next Slide">&#10095;</a>
-    </div>
-  </section>
-  <section class="workshops-section">
     <h2>Workshops and Training</h2>
     <ul>
     </ul>
@@ -255,6 +279,90 @@
           e.preventDefault();
           toggleMenus();
         }
+      });
+    });
+  </script>
+  <script>
+    // JavaScript for Learn More toggle buttons in compact cards with truncation to first 10 words
+    function truncateText(text, wordLimit) {
+      const words = text.split(' ');
+      if (words.length <= wordLimit) {
+        return text;
+      }
+      return words.slice(0, wordLimit).join(' ') + '...';
+    }
+
+    // Toggle for compact cards in Computing Club Highlights section
+    document.querySelectorAll('.toggle-desc-btn').forEach(button => {
+      const card = button.closest('.compact-card');
+      const desc = card.querySelector('.desc');
+      const fullText = desc.getAttribute('data-full');
+      const truncatedText = truncateText(fullText, 10);
+      desc.textContent = truncatedText;
+
+      button.addEventListener('click', () => {
+        const expanded = button.getAttribute('aria-expanded') === 'true';
+        if (expanded) {
+          desc.textContent = truncatedText;
+          button.textContent = 'See More';
+          button.setAttribute('aria-expanded', 'false');
+          card.setAttribute('aria-expanded', 'false');
+        } else {
+          desc.textContent = fullText;
+          button.textContent = 'See Less';
+          button.setAttribute('aria-expanded', 'true');
+          card.setAttribute('aria-expanded', 'true');
+        }
+      });
+    });
+
+    // Toggle for student-description paragraphs in Extraordinary Students slider
+    document.querySelectorAll('.see-more-btn').forEach(button => {
+      const card = button.closest('.student-card');
+      const desc = card.querySelector('.student-description');
+      if (!desc) return;
+      const fullText = desc.textContent.trim();
+      const truncatedText = truncateText(fullText, 10);
+      desc.textContent = truncatedText;
+
+      button.addEventListener('click', () => {
+        const expanded = button.getAttribute('aria-expanded') === 'true';
+        if (expanded) {
+          desc.textContent = truncatedText;
+          button.textContent = 'See More';
+          button.setAttribute('aria-expanded', 'false');
+          card.setAttribute('aria-expanded', 'false');
+        } else {
+          desc.textContent = fullText;
+          button.textContent = 'See Less';
+          button.setAttribute('aria-expanded', 'true');
+          card.setAttribute('aria-expanded', 'true');
+        }
+      });
+    });
+
+    // Ensure the initial state is set correctly on page load
+    window.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('.toggle-desc-btn').forEach(button => {
+        const card = button.closest('.compact-card');
+        const desc = card.querySelector('.desc');
+        const fullText = desc.getAttribute('data-full');
+        const truncatedText = truncateText(fullText, 10);
+        desc.textContent = truncatedText;
+        button.textContent = 'See More';
+        button.setAttribute('aria-expanded', 'false');
+        card.setAttribute('aria-expanded', 'false');
+      });
+      document.querySelectorAll('.see-more-btn').forEach(button => {
+        const card = button.closest('.student-card');
+        const desc = card.querySelector('.student-description');
+        if (!desc) return;
+        const fullText = desc.textContent.trim();
+        const truncatedText = truncateText(fullText, 10);
+        desc.textContent = truncatedText;
+        button.textContent = 'See More';
+        button.setAttribute('aria-expanded', 'false');
+        card.setAttribute('aria-expanded', 'false');
       });
     });
   </script>

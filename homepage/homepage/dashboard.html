@@ -1,44 +1,188 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Student Dashboard - Faridpur High School</title>
   <link rel="stylesheet" href="src/dashboard.css" />
+  <style>
+    .student-info {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      align-items: flex-start;
+    }
+    .profile-picture-section {
+      margin-top: 0;
+      margin-bottom: 10px;
+    }
+    .profile-pic-display {
+      width: 140px;
+      height: 140px;
+      border-radius: 15px;
+      object-fit: cover;
+      border: 4px solid #d1c4e9;
+      box-shadow: 0 0 15px rgba(209, 196, 233, 0.8);
+      transition: box-shadow 0.3s ease;
+      display: block;
+      margin: 0;
+    }
+    .profile-pic-display:hover {
+      box-shadow: 0 0 25px rgba(255, 204, 0, 0.9);
+    }
+  </style>
 </head>
 <body>
+  <nav>
+    <h2 id="dashboard-title">Student's Dashboard</h2>
+    <button class="nav-btn" data-target="student-info">Student Info</button>
+    <button class="nav-btn" data-target="settings">Settings</button>
+    <button class="nav-btn" data-target="breaking-rules">Breaking the Rules</button>
+    <button class="nav-btn" data-target="fine">Fine</button>
+    <button id="logout-btn">Logout</button>
+  </nav>
   <main>
-    <section class="dashboard-section">
-      <h1>Student Dashboard</h1>
-      <div id="student-info">
-        <!-- Student data will be displayed here -->
+    <section id="student-info" class="active">
+      <h1>Student Info</h1>
+      <div class="student-info">
+        <label for="photo-upload" class="profile-picture-section" tabindex="0" role="button" aria-label="Upload profile picture">
+          <img id="photo-preview" alt="Profile Picture" class="profile-pic-display" />
+          <input type="file" id="photo-upload" accept="image/*" />
+        </label>
+        <div class="student-info-text">
+          <p><strong>Name:</strong> <span id="info-name"></span></p>
+          <p><strong>Section:</strong> <span id="info-section"></span></p>
+          <p><strong>Phone:</strong> <span id="info-phone"></span></p>
+          <p><strong>Roll Number:</strong> <span id="info-rollnumber"></span></p>
+          <p><strong>Class:</strong> <span id="info-class"></span></p>
+          <p><strong>Shift:</strong> <span id="info-shift"></span></p>
+          <p><strong>Email:</strong> <span id="info-email"></span></p>
+          <p><strong>Group:</strong> <span id="info-group">N/A</span></p>
+          <p><strong>Works:</strong> <span id="info-works">N/A</span></p>
+        </div>
       </div>
-      <button id="logout-btn" class="btn btn-primary">Logout</button>
+    </section>
+    <section id="settings">
+      <h1>Settings</h1>
+      <p>Settings content goes here.</p>
+    </section>
+    <section id="breaking-rules">
+      <h1>Breaking the Rules</h1>
+      <p>Breaking the rules content goes here.</p>
+    </section>
+    <section id="fine">
+      <h1>Fine</h1>
+      <p>Fine content goes here.</p>
     </section>
   </main>
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const studentInfoDiv = document.getElementById('student-info');
-      const logoutBtn = document.getElementById('logout-btn');
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.8.1/firebase-app.js";
+    import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/11.8.1/firebase-auth.js";
+    import { idNumberData } from './src/id-number.js';
 
-      const loggedInUser = localStorage.getItem('loggedInUser');
-      if (!loggedInUser) {
-        alert('You are not logged in. Redirecting to login page.');
-        window.location.href = 'login.html';
+    const firebaseConfig = {
+      apiKey: "AIzaSyD3fKEG0NmEfEp1sR559zRoAVkhLTuFU04",
+      authDomain: "faridpur-high-school.firebaseapp.com",
+      projectId: "faridpur-high-school",
+      storageBucket: "faridpur-high-school.firebasestorage.app",
+      messagingSenderId: "323975497844",
+      appId: "1:323975497844:web:455afa394066b511172921",
+      measurementId: "G-SED3BLB20X"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+
+    const navButtons = document.querySelectorAll('nav .nav-btn');
+    const sections = document.querySelectorAll('main section');
+    const dashboardTitle = document.getElementById('dashboard-title');
+    const logoutBtn = document.getElementById('logout-btn');
+    const photoUploadInput = document.getElementById('photo-upload');
+    const photoPreview = document.getElementById('photo-preview');
+
+    async function populateStudentInfo(idNumber) {
+      const userData = idNumberData[idNumber];
+      if (!userData) {
+        alert('Student data not found for ID: ' + idNumber);
         return;
       }
 
-      const user = JSON.parse(loggedInUser);
+      dashboardTitle.textContent = `${userData.name}'s Dashboard`;
 
-      studentInfoDiv.innerHTML = `
-        <p><strong>Name:</strong> ${user.name}</p>
-        <p><strong>Email:</strong> ${user.email}</p>
-      `;
+      document.getElementById('info-name').textContent = userData.name || '';
+      document.getElementById('info-section').textContent = userData.section || '';
+      document.getElementById('info-phone').textContent = userData.phone || '';
+      document.getElementById('info-rollnumber').textContent = userData.rollnumber || '';
+      document.getElementById('info-class').textContent = userData.class || '';
+      document.getElementById('info-shift').textContent = userData.shift || '';
+      const userEmail = auth.currentUser ? auth.currentUser.email : '';
+      document.getElementById('info-email').textContent = userEmail || '';
 
-      logoutBtn.addEventListener('click', () => {
-        localStorage.removeItem('loggedInUser');
-        alert('You have been logged out.');
+      const savedPhoto = localStorage.getItem('studentPhoto');
+      if (savedPhoto) {
+        photoPreview.src = savedPhoto;
+        photoPreview.style.display = 'block';
+      } else {
+        photoPreview.src = 'src/resources/image/default-profile.png';
+        photoPreview.style.display = 'block';
+      }
+
+      document.getElementById('info-group').textContent = 'N/A';
+      document.getElementById('info-works').textContent = 'N/A';
+    }
+
+    photoUploadInput.addEventListener('change', (event) => {
+      const file = event.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          photoPreview.src = e.target.result;
+          photoPreview.style.display = 'block';
+          localStorage.setItem('studentPhoto', e.target.result);
+        };
+        reader.readAsDataURL(file);
+      }
+    });
+
+    onAuthStateChanged(auth, (user) => {
+      if (user && user.emailVerified) {
+        const fullStudentData = JSON.parse(localStorage.getItem('loggedInUser'));
+
+        if (!fullStudentData || !fullStudentData.idNumber) {
+          alert('User data missing or incomplete. Please register again.');
+          signOut(auth).then(() => {
+            window.location.href = 'registration.html';
+          });
+          return;
+        }
+
+        populateStudentInfo(fullStudentData.idNumber);
+
+      } else {
         window.location.href = 'login.html';
+      }
+    });
+
+    logoutBtn.addEventListener('click', () => {
+      signOut(auth).then(() => {
+        localStorage.removeItem('loggedInUser');
+        window.location.href = 'login.html';
+      });
+    });
+
+    navButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        navButtons.forEach(btn => btn.classList.remove('active'));
+        button.classList.add('active');
+
+        const target = button.getAttribute('data-target');
+        sections.forEach(section => {
+          if (section.id === target) {
+            section.classList.add('active');
+          } else {
+            section.classList.remove('active');
+          }
+        });
       });
     });
   </script>
