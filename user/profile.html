@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Profile</title>
+  <link rel="stylesheet" href="/server.css" />
+</head>
+<body>
+  <div class="profile-header">
+    <h1>My Profile</h1>
+  </div>
+  <div class="profile-container">
+    <p>Welcome to your profile page. Here you can view your profile information.</p>
+    <!-- Profile details will be dynamically loaded here -->
+    <div id="profile-details"></div>
+  </div>
+  <script>
+    // Fetch profile data from API and display
+    async function loadProfile() {
+      try {
+        // Assuming user ID is stored in a cookie named 'sessionId'
+        const sessionId = document.cookie.split('; ').find(row => row.startsWith('sessionId=')).split('=')[1];
+        if (!sessionId) {
+          window.location.href = '/login.html';
+          return;
+        }
+        const response = await fetch('/api/profile/' + sessionId, {
+          headers: {
+            'Authorization': 'Bearer valid-token'
+          }
+        });
+        if (response.status === 401) {
+          window.location.href = '/login.html';
+          return;
+        }
+        const profile = await response.json();
+        const detailsDiv = document.getElementById('profile-details');
+        detailsDiv.innerHTML = `
+          <ul>
+            <li><strong>Name:</strong> ${profile.name || ''}</li>
+            <li><strong>Section:</strong> ${profile.section || ''}</li>
+            <li><strong>Class:</strong> ${profile.class || ''}</li>
+            <li><strong>ID Number:</strong> ${profile.idNumber || ''}</li>
+            <li><strong>Phone:</strong> ${profile.phone || ''}</li>
+            <li><strong>Email:</strong> ${profile.email || ''}</li>
+            <li><strong>Roll Number:</strong> ${profile.rollnumber || ''}</li>
+            <li><strong>Shift:</strong> ${profile.shift || ''}</li>
+          </ul>
+        `;
+      } catch (error) {
+        console.error('Error loading profile:', error);
+        window.location.href = '/login.html';
+      }
+    }
+    loadProfile();
+  </script>
+</body>
+</html>

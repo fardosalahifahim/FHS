@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Student Dashboard - Faridpur High School (Updated)</title>
+  <link rel="stylesheet" href="src/dashboard.css" />
+</head>
+<body>
+  <nav>
+    <h2>Student's Dashboard</h2>
+    <button class="nav-btn active" data-target="student-info">Student Info</button>
+    <button class="nav-btn" data-target="settings">Settings</button>
+    <button class="nav-btn" data-target="breaking-rules">Breaking the Rules</button>
+    <button class="nav-btn" data-target="fine">Fine</button>
+    <button class="nav-btn" data-target="feed">Feed</button>
+    <button id="logout-btn">Logout</button>
+  </nav>
+  <main>
+    <section id="student-info" class="active">
+      <h1>Student Info</h1>
+      <div class="student-info">
+        <p><strong>Name:</strong> <span id="info-name"></span></p>
+        <p><strong>Section:</strong> <span id="info-section"></span></p>
+        <p><strong>Phone:</strong> <span id="info-phone"></span></p>
