@@ -428,6 +428,8 @@ html, body {
   padding: 1rem 1.5rem;
   box-shadow: 0 0 10px rgba(166, 120, 255, 0.2);
   color: #e0d7ff; /* ensure text is readable on purple background */
+  max-width: 900px;
+  margin: 0 auto;
 }
 
 /* Enhanced slider banner styles */

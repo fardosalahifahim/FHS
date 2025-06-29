@@ -38,57 +38,47 @@
     button:hover {
       background-color: #0056b3;
     }
-    #error-message {
-      color: red;
-      display: none;
-      margin-top: 10px;
-    }
   </style>
 </head>
 <body>
   <div class="login-container">
     <h2>Admin Login</h2>
-    <form id="loginForm" method="POST" action="/login">
+    <form onsubmit="return validateLogin()">
       <label for="username">Username:</label>
-      <input type="text" id="username" name="username" required autocomplete="off" />
-      <label for="password">Password:</label>
-      <input type="password" id="password" name="password" required autocomplete="off" />
-      <input type="checkbox" id="show-password" />
-      <label for="show-password">Show Password</label>
-      <button type="submit">Login</button>
-    </form>
-    <p id="error-message"></p>
-  </div>
+      <input type="text" id="username" name="username" required />
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password" required />
+    <input type="checkbox" id="show-password" />
+    <label for="show-password">Show Password</label>
+    <button type="submit">Login</button>
+  </form>
+  <p id="error-message" style="color: red; display: none;">Invalid username or password.</p>
+</div>
 
-  <script>
-    const form = document.getElementById('loginForm');
-    const errorMessage = document.getElementById('error-message');
-    const showPasswordCheckbox = document.getElementById('show-password');
+<script>
+  document.getElementById('show-password').addEventListener('change', function() {
     const passwordInput = document.getElementById('password');
+    if (this.checked) {
+      passwordInput.type = 'text';
+    } else {
+      passwordInput.type = 'password';
+    }
+  });
 
-    showPasswordCheckbox.addEventListener('change', () => {
-      if (showPasswordCheckbox.checked) {
-        passwordInput.type = 'text';
-      } else {
-        passwordInput.type = 'password';
-      }
-    });
-
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      errorMessage.style.display = 'none';
-
-      const username = form.username.value;
-      const password = form.password.value;
-
-      // Simple client-side check for the given credentials
-      if (username === 'FaridpurHighSchool' && password === 'FHS2025faridpurhighschool') {
-        window.location.href = '/dashboard.html';
-      } else {
-        errorMessage.textContent = 'Invalid username or password';
-        errorMessage.style.display = 'block';
-      }
-    });
-  </script>
+  function validateLogin() {
+    const username = document.getElementById('username').value;
+    const password = document.getElementById('password').value;
+    if (username === 'FaridpurHighSchool' && password === 'FHS2025faridpurhighschool') {
+      alert('Login successful! Redirecting to dashboard...');
+      // Redirect to dashboard.html or any other page
+      window.location.href = 'dashboard.html';
+      return false; // Prevent form submission
+    } else {
+      const errorMessage = document.getElementById('error-message');
+      errorMessage.style.display = 'block';
+      return false; // Prevent form submission
+    }
+  }
+</script>
 </body>
 </html>

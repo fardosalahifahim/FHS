@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Poppins:wght@400;700&display=swap');
 
 /* Reset */
 * {
@@ -12,6 +12,8 @@ body {
   color: #f0e6ff;
   overflow-x: hidden;
   min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 a {
   color: inherit;
@@ -26,6 +28,34 @@ ul {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 1rem;
+}
+
+/* Notish Board and Useful Websites container responsiveness */
+.content-section.notish-board-result-container {
+  position: relative;
+  display: flex;
+  gap: 2rem;
+  margin: 2rem auto;
+  max-width: 1200px;
+  padding: 2rem;
+  border-radius: 15px;
+  background: rgba(45, 0, 90, 0.7);
+  box-shadow: 0 0 30px #a678ff;
+  color: #d8b3ff;
+  flex-wrap: nowrap;
+}
+
+@media (max-width: 768px) {
+  .content-section.notish-board-result-container {
+    flex-wrap: nowrap;
+    overflow-x: hidden;
+  }
+  .notish-board-section,
+  .left-links-section {
+    flex: 1 1 100%;
+    max-width: 100%;
+    display: block;
+  }
 }
 
 /* Navigation */
@@ -443,7 +473,6 @@ header.hero::before {
 /* Content Section */
 .content-section {
   background: rgba(45, 0, 90, 0.7);
-  border-radius: 15px;
   padding: 2rem;
   margin: 2rem auto;
   max-width: 1200px;
@@ -451,6 +480,23 @@ header.hero::before {
   color: #f0e6ff;
   font-size: 1.1rem;
   line-height: 1.6;
+  border-radius: 15px;
+  border: none;
+}
+.content-section > .inner-container {
+  border-radius: 15px;
+  overflow: hidden;
+  background: inherit;
+  box-shadow: inherit;
+  padding: inherit;
+  margin: 0;
+  max-width: 100%;
+}
+
+/* Add border-radius to inner elements inside content sections */
+.content-section > .inner-container > * {
+  border-radius: 15px;
+  overflow: hidden;
 }
 
 /* Extracurricular activities carousel styles */
@@ -717,37 +763,56 @@ header.hero::before {
 /* Responsive for phone screens */
 @media (max-width: 480px) {
   .about-teacher-content {
+    display: flex;
     flex-direction: column;
+    align-items: center;
     max-width: 100%;
     padding: 1rem;
-    background-image: url('src/resources/image/school1.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
     border-radius: 20px;
+    box-shadow: 0 0 20px #a678ff;
+    background: linear-gradient(135deg, #4a1a7a, #7b3fbf);
   }
-  .about-teacher-content img {
+  .desktop-teacher-photo {
     display: none;
   }
-  .about-teacher-text {
-    order: 1;
-    color: #f0e6ff;
-    text-shadow: 0 0 8px #a678ff;
+  .phone-teacher-photo {
+    position: relative;
+    display: block !important;
+    width: 100%;
+    max-width: 100vw;
+    height: auto;
+    border-radius: 25px;
+    box-shadow: 0 0 20px #a678ff;
+    margin: 0 auto 1rem auto;
+    object-fit: cover;
   }
-  .about-teacher-text p {
+  .about-teacher-photo-container {
+    position: relative;
+    width: 100%;
+    max-width: 450px;
+    margin: 0 auto;
+  }
+  .desktop-teacher-text {
+    display: none;
+  }
+  .phone-teacher-text {
+    display: none !important;
+  }
+  .about-teacher-text {
+    order: 2;
     display: block;
   }
   .about-teacher-text .btn {
+    position: static;
+    bottom: auto;
+    left: auto;
+    transform: none;
     display: block;
-    order: 2;
-    margin-top: 1rem;
-    width: 100%;
-  }
-  .btn {
-    width: 100%;
-    padding: 1rem;
-    padding: 1rem;
-    font-size: 1.1rem;
+    margin: 1rem auto 0 auto;
+    width: auto;
+    min-width: 150px;
+    text-align: center;
+    z-index: auto;
   }
   nav {
     width: 98%;
@@ -782,6 +847,62 @@ header.hero::before {
   }
   .card {
     width: 100%;
+  }
+
+  /* Our Campus slider styles */
+  .campus-slider {
+    position: relative;
+    max-width: 1200px;
+    margin: 2rem auto;
+    overflow: hidden;
+    border-radius: 15px;
+    box-shadow: 0 0 20px #a678ff;
+  }
+  .campus-content {
+    display: flex;
+    gap: 2rem;
+    transition: transform 0.5s ease;
+    will-change: transform;
+  }
+  .campus-feature {
+    flex: 0 0 80%;
+    max-width: 80%;
+    background: linear-gradient(135deg, #5a2a83, #7b3fbf);
+    border-radius: 15px;
+    box-shadow: 0 0 20px #a678ff;
+    padding: 1rem;
+    color: #f0e6ff;
+  }
+  .campus-feature img {
+    width: 100%;
+    border-radius: 15px;
+    box-shadow: 0 0 15px #a678ff;
+  }
+  .campus-slider-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: linear-gradient(135deg, #a678ff, #d8b3ff);
+    border: none;
+    color: #2e0854;
+    box-shadow: 0 0 20px #d8b3ff, 0 0 40px #a678ff;
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    cursor: pointer;
+    font-weight: 900;
+    font-size: 2.6rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    user-select: none;
+    z-index: 100;
+  }
+  .campus-slider-button.prev {
+    left: 10px;
+  }
+  .campus-slider-button.next {
+    right: 10px;
   }
 }
 
@@ -836,6 +957,86 @@ header.hero::before {
   .card {
     width: 100%;
   }
+}
+
+.left-links-section {
+  background: linear-gradient(135deg, #5a2a83, #7b3fbf);
+  box-shadow: 0 0 30px #7b3fbf;
+  border-radius: 20px;
+  padding: 2rem 3rem;
+  color: #d8b3ff;
+  font-size: 1.2rem;
+  line-height: 1.7;
+  max-width: 350px;
+  margin: 0 auto;
+}
+
+.left-links-section h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  text-shadow: 0 0 15px #d8b3ff;
+  letter-spacing: 1.5px;
+  user-select: none;
+  text-align: center;
+}
+
+.left-links-section ul {
+  list-style: disc inside;
+  padding-left: 0;
+}
+
+.left-links-section ul li {
+  margin-bottom: 1rem;
+}
+
+.left-links-section ul li a {
+  color: #d8b3ff;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+.left-links-section ul li a:hover,
+.left-links-section ul li a:focus {
+  color: #a678ff;
+  text-shadow: 0 0 10px #a678ff;
+  outline: none;
+}
+
+.notish-board-section h2.glowing-text {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #d8b3ff;
+  text-align: center;
+  text-shadow:
+    0 0 5px #a678ff,
+    0 0 10px #a678ff,
+    0 0 20px #7b3fbf,
+    0 0 30px #7b3fbf,
+    0 0 40px #5a2a83,
+    0 0 50px #5a2a83,
+    0 0 60px #2d005a;
+  background: linear-gradient(135deg, #5a2a83, #7b3fbf);
+  padding: 0.5rem 1rem;
+  border-radius: 15px;
+  margin-bottom: 1.5rem;
+}
+
+.notish-board-section #notishBoardContent {
+  font-weight: 600;
+  font-size: 1.2rem;
+  color: #a678ff;
+  text-shadow: 0 0 10px #a678ff;
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+  cursor: pointer;
+  user-select: none;
+}
+.notish-board-section #notishBoardContent:hover,
+.notish-board-section #notishBoardContent:focus {
+  color: #d8b3ff;
+  text-shadow: 0 0 15px #d8b3ff;
+  outline: none;
 }
 
 /* Additional responsive improvements for index page */
@@ -938,6 +1139,19 @@ header.hero::before {
     max-width: 100%;
     margin-bottom: 1.5rem;
   }
+
+  /* Notish Board toggle button for mobile */
+  #notishBoardToggleBtn {
+    display: inline-block;
+    background: transparent;
+    border: none;
+    color: #d8b3ff;
+    font-size: 1.5rem;
+    cursor: pointer;
+    user-select: none;
+    padding: 0 0.5rem;
+    margin-left: 0.5rem;
+  }
 }
 
 @media (max-width: 768px) {
@@ -991,9 +1205,17 @@ header.hero::before {
   .literature-content p {
     font-size: 0.9rem;
   }
+  .campus-content {
+    display: flex;
+    gap: 1rem;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+  }
   .campus-feature {
-    flex: 1 1 100%;
-    max-width: 100%;
+    flex: 0 0 80%;
+    max-width: 80%;
+    scroll-snap-align: start;
   }
   .welcome-card {
     flex: 1 1 100%;
@@ -1003,43 +1225,7 @@ header.hero::before {
 
 /* Navigation buttons for campus slider */
 .campus-slider-button {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: linear-gradient(135deg, #17a2b8, #63cdda);
-  border: none;
-  color: #0f3c4b;
-  font-size: 2.6rem;
-  width: 48px;
-  height: 48px;
-  padding: 0;
-  border-radius: 50%;
-  cursor: pointer;
-  box-shadow: 0 0 20px #63cdda, 0 0 40px #17a2b8;
-  user-select: none;
-  transition: background 0.4s ease, box-shadow 0.4s ease, transform 0.3s ease;
-  z-index: 10;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 900;
-  text-shadow: none;
-}
-
-.campus-slider-button:hover,
-.campus-slider-button:focus {
-  background: linear-gradient(135deg, #63cdda, #17a2b8);
-  box-shadow: 0 0 30px #63cdda, 0 0 50px #17a2b8;
-  outline: none;
-  transform: scale(1.15);
-}
-
-.campus-slider-button.prev {
-  left: 10px;
-}
-
-.campus-slider-button.next {
-  right: 10px;
+  display: none !important;
 }
 
 /* About Our Teacher content container */
@@ -1055,6 +1241,106 @@ header.hero::before {
   border-radius: 20px;
   box-shadow: 0 0 30px #a678ff;
   color: #f0e6ff;
+}
+
+/* Add border-radius to School Literature section */
+.literature-section {
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+/* Add border-radius to Our Campus section */
+.our-campus-section {
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+/* Add border-radius to Welcome to Faridpur High School section */
+.welcome-bottom-section {
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+/* Extra Teacher Section */
+.extra-teacher-section {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: linear-gradient(135deg, #5a2a83, #7b3fbf);
+  border-radius: 20px;
+  box-shadow: 0 0 30px #a678ff;
+  color: #f0e6ff;
+  text-align: center;
+}
+
+/* Hide About Our Teacher section on phone */
+@media (max-width: 800px) {
+  .about-teacher-section {
+    display: none !important;
+  }
+}
+
+/* Hide Extra Teacher section on desktop */
+@media (min-width: 801px) {
+  .extra-teacher-section {
+    display: none !important;
+  }
+}
+
+.extra-teacher-image {
+  width: 100%;
+  max-width: 800px;
+  height: auto;
+  border-radius: 25px;
+  box-shadow: 0 0 20px #a678ff;
+  margin: 0 auto 1rem auto;
+  object-fit: cover;
+}
+
+.extra-teacher-text {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.extra-teacher-btn {
+  min-width: 180px;
+  padding: 0.75rem 1.5rem;
+  font-size: 1.1rem;
+  border-radius: 30px;
+  box-shadow: 0 0 15px #a678ff;
+  cursor: pointer;
+  user-select: none;
+  display: inline-block;
+  text-decoration: none;
+  color: #2e0854;
+  background-color: #a678ff;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.extra-teacher-btn:hover,
+.extra-teacher-btn:focus {
+  background-color: #d8b3ff;
+  box-shadow: 0 0 25px #d8b3ff;
+  outline: none;
+}
+
+/* Responsive for phone */
+@media (max-width: 480px) {
+  .extra-teacher-image {
+    max-width: 100vw;
+  }
+  .extra-teacher-text {
+    font-size: 1rem;
+    padding: 0 1rem;
+  }
+  .extra-teacher-btn {
+    width: 100%;
+    min-width: auto;
+  }
 }
 
 /* About Our Teacher image styling */
